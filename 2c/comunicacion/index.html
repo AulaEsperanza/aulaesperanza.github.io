@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>La comunicación y las funciones del lenguaje | 2.º ESO</title>
+
+<style>
+:root{
+  --azul:#355c7d;
+  --azul-claro:#eaf3f8;
+  --verde:#4f7c6a;
+  --verde-claro:#eaf4ef;
+  --ocre:#c28b42;
+  --ocre-claro:#fff5e5;
+  --rosa:#a75d6a;
+  --rosa-claro:#f9ecef;
+  --morado:#76669a;
+  --morado-claro:#f0edf7;
+  --turquesa:#3d7f86;
+  --turquesa-claro:#e8f5f5;
+  --texto:#263238;
+  --gris:#66727a;
+  --fondo:#f7f5f0;
+  --blanco:#ffffff;
+  --bien:#2e7d32;
+  --mal:#b3261e;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:
+    "Aptos","Segoe UI",Arial,sans-serif;
+  background:var(--fondo);
+  color:var(--texto);
+  line-height:1.6;
+}
+
+header{
+  background:linear-gradient(135deg,#355c7d,#4f7c6a);
+  color:white;
+  padding:55px 20px 45px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:clamp(2rem,5vw,3.6rem);
+  line-height:1.08;
+}
+
+header p{
+  max-width:850px;
+  margin:18px auto 0;
+  font-size:1.12rem;
+  opacity:.96;
+}
+
+.badge{
+  display:inline-block;
+  margin-bottom:15px;
+  padding:6px 14px;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:10px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+
+nav a, button{
+  border:0;
+  border-radius:999px;
+  padding:10px 17px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:.95rem;
+}
+
+nav a{
+  color:var(--azul);
+}
+
+nav a:hover{
+  background:var(--azul-claro);
+}
+
+main{
+  max-width:1150px;
+  margin:auto;
+}
+
+section{
+  padding:55px 22px;
+}
+
+h2{
+  color:var(--azul);
+  font-size:clamp(1.7rem,4vw,2.5rem);
+  margin-bottom:8px;
+}
+
+.intro{
+  color:var(--gris);
+  max-width:850px;
+  margin-top:0;
+  margin-bottom:28px;
+}
+
+.idea-clave{
+  background:white;
+  border-left:6px solid var(--ocre);
+  padding:20px 24px;
+  border-radius:12px;
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
+  margin:25px 0 35px;
+}
+
+.idea-clave strong{
+  color:var(--ocre);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:23px;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+  border-top:5px solid var(--azul);
+  transition:.2s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 26px rgba(0,0,0,.10);
+}
+
+.icono{
+  font-size:2.4rem;
+}
+
+.card h3{
+  margin:6px 0 8px;
+  font-size:1.35rem;
+}
+
+.card p{
+  margin:5px 0;
+}
+
+.ejemplo{
+  display:block;
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:10px;
+  background:#f5f7f8;
+  font-style:italic;
+}
+
+.funcion{
+  border-top-color:var(--verde);
+}
+
+.parejas{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.pareja{
+  background:white;
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.pareja .flecha{
+  font-size:1.5rem;
+  color:var(--ocre);
+  font-weight:bold;
+}
+
+.pareja strong{
+  color:var(--verde);
+}
+
+.tabla-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+th,td{
+  padding:14px;
+  text-align:left;
+  border-bottom:1px solid #e6e6e6;
+}
+
+th{
+  background:var(--azul);
+  color:white;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.juego{
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 6px 22px rgba(0,0,0,.08);
+  margin-top:25px;
+}
+
+.pregunta{
+  padding:20px;
+  background:var(--azul-claro);
+  border-radius:14px;
+  margin-bottom:16px;
+}
+
+.pregunta-frase{
+  font-size:1.25rem;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.opciones{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.opcion{
+  background:#f0f2f3;
+  color:var(--texto);
+  border:2px solid transparent;
+}
+
+.opcion:hover{
+  border-color:var(--azul);
+}
+
+.opcion.seleccionada{
+  background:var(--azul);
+  color:white;
+}
+
+.feedback{
+  margin-top:13px;
+  padding:12px;
+  border-radius:10px;
+  display:none;
+}
+
+.feedback.bien{
+  display:block;
+  background:#e8f5e9;
+  color:var(--bien);
+}
+
+.feedback.mal{
+  display:block;
+  background:#fdecea;
+  color:var(--mal);
+}
+
+.acciones{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.btn-principal{
+  background:var(--azul);
+  color:white;
+}
+
+.btn-secundario{
+  background:var(--verde);
+  color:white;
+}
+
+.btn-imprimir{
+  background:var(--ocre);
+  color:white;
+}
+
+.resultado{
+  margin-top:20px;
+  padding:18px;
+  border-radius:14px;
+  background:var(--ocre-claro);
+  font-weight:700;
+  display:none;
+}
+
+.reto{
+  text-align:center;
+  background:linear-gradient(135deg,var(--morado-claro),var(--azul-claro));
+}
+
+.reto-box{
+  max-width:800px;
+  margin:25px auto;
+  background:white;
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,.07);
+}
+
+.frase-grande{
+  font-size:clamp(1.4rem,4vw,2rem);
+  font-weight:800;
+  margin:20px 0;
+}
+
+.solucion-reto{
+  display:none;
+  margin-top:20px;
+  text-align:left;
+  background:var(--verde-claro);
+  border-radius:14px;
+  padding:18px;
+}
+
+.solucion-reto.visible{
+  display:block;
+}
+
+.profesor{
+  background:#fff9ef;
+  border:2px dashed var(--ocre);
+  border-radius:18px;
+  padding:24px;
+}
+
+.soluciones{
+  display:none;
+}
+
+.soluciones.visible{
+  display:block;
+}
+
+footer{
+  text-align:center;
+  padding:35px 20px;
+  background:#263238;
+  color:white;
+}
+
+@media(max-width:600px){
+  section{padding:40px 16px;}
+  .card{padding:18px;}
+  nav{position:static;}
+}
+
+@media print{
+  nav,
+  .acciones,
+  #practica,
+  #reto,
+  .profesor,
+  footer{
+    display:none !important;
+  }
+
+  body{
+    background:white;
+    font-size:11pt;
+  }
+
+  header{
+    background:white !important;
+    color:black;
+    padding:15px 0;
+  }
+
+  header .badge{
+    color:black;
+    border:1px solid black;
+  }
+
+  section{
+    padding:10px 0;
+    break-inside:avoid;
+  }
+
+  .card,.pareja,table,.idea-clave{
+    box-shadow:none;
+  }
+
+  .card{
+    break-inside:avoid;
+  }
+
+  h2{
+    color:black;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <span class="badge">LENGUA CASTELLANA Y LITERATURA · 2.º ESO</span>
+  <h1>💬 La comunicación<br>y las funciones del lenguaje</h1>
+  <p>
+    ¿Quién habla? ¿A quién? ¿Qué quiere conseguir?
+    Descubre cómo funciona cualquier acto de comunicación
+    y qué función del lenguaje predomina en cada mensaje.
+  </p>
+</header>
+
+<nav>
+  <a href="#elementos">💬 Elementos</a>
+  <a href="#funciones">🎯 Funciones</a>
+  <a href="#conexion">🔗 Relación</a>
+  <a href="#practica">🎮 Practica</a>
+  <a href="#reto">⚡ Reto de clase</a>
+</nav>
+
+<main>
+
+<section id="elementos">
+
+<h2>1. Los elementos de la comunicación</h2>
+
+<p class="intro">
+En cualquier acto comunicativo intervienen varios elementos.
+Para comprender bien un mensaje debemos saber quién lo produce,
+quién lo recibe, qué transmite y en qué circunstancias se produce.
+</p>
+
+<div class="idea-clave">
+<strong>💡 Idea clave:</strong>
+en un acto comunicativo aparecen todos estos elementos.
+Después veremos que las funciones del lenguaje se relacionan
+con el elemento sobre el que recae especialmente la intención comunicativa.
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="icono">🗣️</div>
+<h3>Emisor</h3>
+<p>Es quien <strong>produce y transmite</strong> el mensaje.</p>
+<span class="ejemplo">Lucía dice: «Estoy muy contenta».</span>
+</div>
+
+<div class="card">
+<div class="icono">👂</div>
+<h3>Receptor</h3>
+<p>Es quien <strong>recibe e interpreta</strong> el mensaje.</p>
+<span class="ejemplo">Marcos escucha lo que dice Lucía.</span>
+</div>
+
+<div class="card">
+<div class="icono">💌</div>
+<h3>Mensaje</h3>
+<p>Es la <strong>información</strong> que el emisor transmite.</p>
+<span class="ejemplo">«Mañana tenemos examen».</span>
+</div>
+
+<div class="card">
+<div class="icono">🔤</div>
+<h3>Código</h3>
+<p>Es el <strong>sistema de signos y reglas</strong> utilizado para comunicarnos.</p>
+<span class="ejemplo">El castellano, la lengua de signos, el código Morse…</span>
+</div>
+
+<div class="card">
+<div class="icono">📡</div>
+<h3>Canal</h3>
+<p>Es el <strong>medio físico</strong> por el que circula el mensaje.</p>
+<span class="ejemplo">El aire, el papel, el teléfono, Internet…</span>
+</div>
+
+<div class="card">
+<div class="icono">🌍</div>
+<h3>Contexto o referente</h3>
+<p>
+Es la <strong>realidad, situación o asunto</strong>
+al que se refiere el mensaje.
+</p>
+<span class="ejemplo">Una conversación sobre el tiempo de mañana.</span>
+</div>
+
+</div>
+</section>
+
+
+<section id="funciones">
+
+<h2>2. Las funciones del lenguaje</h2>
+
+<p class="intro">
+Cuando hablamos no siempre perseguimos el mismo objetivo.
+Podemos informar, expresar sentimientos, pedir algo,
+comprobar que nos escuchan, hablar de la lengua
+o cuidar especialmente la forma del mensaje.
+</p>
+
+<div class="grid">
+
+<div class="card funcion">
+<div class="icono">❤️</div>
+<h3>Expresiva o emotiva</h3>
+<p>El emisor expresa <strong>emociones, sentimientos, opiniones o estados de ánimo</strong>.</p>
+<span class="ejemplo">«¡Qué alegría verte!»</span>
+</div>
+
+<div class="card funcion">
+<div class="icono">👉</div>
+<h3>Apelativa o conativa</h3>
+<p>Busca <strong>influir en el receptor</strong> o provocar una respuesta.</p>
+<span class="ejemplo">«Cierra la ventana, por favor».</span>
+</div>
+
+<div class="card funcion">
+<div class="icono">📰</div>
+<h3>Representativa o referencial</h3>
+<p>Sirve para <strong>transmitir información sobre la realidad</strong>.</p>
+<span class="ejemplo">«El agua hierve a 100 °C a nivel del mar».</span>
+</div>
+
+<div class="card funcion">
+<div class="icono">📞</div>
+<h3>Fática</h3>
+<p>Sirve para <strong>iniciar, mantener, comprobar o cerrar el canal</strong> de comunicación.</p>
+<span class="ejemplo">«¿Me oyes?»</span>
+</div>
+
+<div class="card funcion">
+<div class="icono">🔤</div>
+<h3>Metalingüística</h3>
+<p>Utilizamos el lenguaje para <strong>hablar del propio lenguaje</strong>.</p>
+<span class="ejemplo">«“Árbol” es un sustantivo».</span>
+</div>
+
+<div class="card funcion">
+<div class="icono">✨</div>
+<h3>Poética</h3>
+<p>La atención se dirige especialmente hacia <strong>la forma del mensaje</strong>.</p>
+<span class="ejemplo">«La luna borda de plata el mar».</span>
+</div>
+
+</div>
+</section>
+
+
+<section id="conexion">
+
+<h2>3. La conexión que tienes que recordar</h2>
+
+<p class="intro">
+No memorices dos listas separadas. Cada función destaca
+especialmente uno de los elementos de la comunicación.
+</p>
+
+<div class="parejas">
+
+<div class="pareja">
+<span class="icono">🗣️</span>
+<div><b>EMISOR</b><br><span class="flecha">↔</span> <strong>EXPRESIVA / EMOTIVA</strong></div>
+</div>
+
+<div class="pareja">
+<span class="icono">👂</span>
+<div><b>RECEPTOR</b><br><span class="flecha">↔</span> <strong>APELATIVA / CONATIVA</strong></div>
+</div>
+
+<div class="pareja">
+<span class="icono">🌍</span>
+<div><b>CONTEXTO / REFERENTE</b><br><span class="flecha">↔</span> <strong>REPRESENTATIVA / REFERENCIAL</strong></div>
+</div>
+
+<div class="pareja">
+<span class="icono">📡</span>
+<div><b>CANAL</b><br><span class="flecha">↔</span> <strong>FÁTICA</strong></div>
+</div>
+
+<div class="pareja">
+<span class="icono">🔤</span>
+<div><b>CÓDIGO</b><br><span class="flecha">↔</span> <strong>METALINGÜÍSTICA</strong></div>
+</div>
+
+<div class="pareja">
+<span class="icono">💌</span>
+<div><b>MENSAJE</b><br><span class="flecha">↔</span> <strong>POÉTICA</strong></div>
+</div>
+
+</div>
+
+<div class="idea-clave">
+<strong>🧠 Truco para entenderlo:</strong><br>
+Pregúntate siempre:
+<strong>«¿Dónde está puesta principalmente la atención?»</strong><br>
+¿En quien habla? ¿En quien escucha? ¿En la realidad?
+¿En comprobar el contacto? ¿En el código? ¿O en cómo está construido el mensaje?
+</div>
+
+<div class="acciones">
+<button class="btn-imprimir" onclick="window.print()">🖨️ Imprimir esquema</button>
+</div>
+
+</section>
+
+
+<section id="practica">
+
+<h2>4. Practica: ¿qué función predomina?</h2>
+
+<p class="intro">
+Lee cada mensaje y selecciona la función predominante.
+Después comprueba tus respuestas.
+</p>
+
+<div class="juego" id="contenedorPreguntas"></div>
+
+<div class="acciones">
+<button class="btn-principal" onclick="corregir()">✓ Comprobar</button>
+<button class="btn-secundario" onclick="reiniciar()">↻ Nuevo intento</button>
+</div>
+
+<div class="resultado" id="resultado"></div>
+
+</section>
+
+
+<section id="reto" class="reto">
+
+<h2>⚡ Reto de clase</h2>
+
+<p>
+Lee la frase. Cada equipo debe decidir:
+<strong>¿qué función predomina y qué elemento destaca?</strong>
+</p>
+
+<div class="reto-box">
+
+<div id="numeroReto">Reto</div>
+
+<div class="frase-grande" id="fraseReto">
+Pulsa «Nueva frase» para empezar.
+</div>
+
+<div class="acciones" style="justify-content:center">
+<button class="btn-principal" onclick="nuevaFrase()">🎲 Nueva frase</button>
+<button class="btn-secundario" onclick="mostrarSolucion()">👀 Ver solución</button>
+</div>
+
+<div class="solucion-reto" id="solucionReto"></div>
+
+</div>
+</section>
+
+
+<section>
+
+<div class="profesor">
+
+<h2>👩‍🏫 Banco de frases · Profesorado</h2>
+
+<p>
+Este bloque contiene el solucionario para dirigir el juego presencial.
+Puedes mostrarlo u ocultarlo.
+</p>
+
+<button class="btn-principal" onclick="toggleSoluciones()">
+Mostrar / ocultar solucionario
+</button>
+
+<div class="soluciones" id="soluciones">
+
+<div class="tabla-wrap">
+<table>
+<thead>
+<tr>
+<th>Frase</th>
+<th>Función</th>
+<th>Elemento destacado</th>
+<th>¿Por qué?</th>
+</tr>
+</thead>
+
+<tbody id="tablaSoluciones"></tbody>
+
+</table>
+</div>
+</div>
+
+</div>
+</section>
+
+</main>
+
+
+<footer>
+<strong>Lengua Castellana y Literatura · 2.º ESO</strong><br>
+Aprender una lengua también es descubrir todo lo que hacemos con ella.
+</footer>
+
+
+<script>
+
+const funciones = [
+"Expresiva / emotiva",
+"Apelativa / conativa",
+"Representativa / referencial",
+"Fática",
+"Metalingüística",
+"Poética"
+];
+
+const banco = [
+
+{
+frase:"¡Qué nerviosa estoy por el examen!",
+funcion:"Expresiva / emotiva",
+elemento:"Emisor",
+porque:"El hablante expresa directamente su estado emocional."
+},
+
+{
+frase:"Por favor, abre el libro por la página veinte.",
+funcion:"Apelativa / conativa",
+elemento:"Receptor",
+porque:"El emisor intenta conseguir que el receptor realice una acción."
+},
+
+{
+frase:"La Tierra tarda aproximadamente 365 días en dar una vuelta alrededor del Sol.",
+funcion:"Representativa / referencial",
+elemento:"Contexto / referente",
+porque:"El mensaje transmite información sobre la realidad."
+},
+
+{
+frase:"¿Me escucháis bien los del fondo?",
+funcion:"Fática",
+elemento:"Canal",
+porque:"Se comprueba que el canal de comunicación funciona."
+},
+
+{
+frase:"La palabra «rápidamente» es un adverbio.",
+funcion:"Metalingüística",
+elemento:"Código",
+porque:"La lengua se utiliza para explicar un elemento de la propia lengua."
+},
+
+{
+frase:"La luna borda de plata el mar.",
+funcion:"Poética",
+elemento:"Mensaje",
+porque:"Destaca especialmente la forma expresiva y estética del mensaje."
+},
+
+{
+frase:"¡Me encanta esta canción!",
+funcion:"Expresiva / emotiva",
+elemento:"Emisor",
+porque:"El hablante manifiesta un sentimiento o valoración personal."
+},
+
+{
+frase:"No olvidéis entregar mañana el trabajo.",
+funcion:"Apelativa / conativa",
+elemento:"Receptor",
+porque:"El mensaje pretende provocar una conducta en los receptores."
+},
+
+{
+frase:"Melilla está situada en el norte de África.",
+funcion:"Representativa / referencial",
+elemento:"Contexto / referente",
+porque:"Se comunica una información acerca de la realidad."
+},
+
+{
+frase:"Hola, hola… ¿sigues ahí?",
+funcion:"Fática",
+elemento:"Canal",
+porque:"El hablante comprueba que el contacto comunicativo continúa."
+},
+
+{
+frase:"«Casa» es un sustantivo común.",
+funcion:"Metalingüística",
+elemento:"Código",
+porque:"El mensaje utiliza la lengua para hablar de la propia lengua."
+},
+
+{
+frase:"Tus palabras son lluvia sobre la tierra seca.",
+funcion:"Poética",
+elemento:"Mensaje",
+porque:"La construcción del mensaje y su valor expresivo adquieren especial importancia."
+},
+
+{
+frase:"¡Qué frío tengo!",
+funcion:"Expresiva / emotiva",
+elemento:"Emisor",
+porque:"Expresa una sensación del hablante."
+},
+
+{
+frase:"¿Puedes bajar un poco la música?",
+funcion:"Apelativa / conativa",
+elemento:"Receptor",
+porque:"Se solicita al receptor que haga algo."
+},
+
+{
+frase:"Los mamíferos son animales vertebrados.",
+funcion:"Representativa / referencial",
+elemento:"Contexto / referente",
+porque:"La intención principal es transmitir información."
+},
+
+{
+frase:"Bueno… sí… ajá… te sigo escuchando.",
+funcion:"Fática",
+elemento:"Canal",
+porque:"Estas expresiones sirven para mantener abierta la comunicación."
+},
+
+{
+frase:"Un sinónimo es una palabra que tiene un significado igual o parecido a otra.",
+funcion:"Metalingüística",
+elemento:"Código",
+porque:"Se emplea la lengua para explicar un concepto lingüístico."
+},
+
+{
+frase:"El viento peinaba lentamente los árboles.",
+funcion:"Poética",
+elemento:"Mensaje",
+porque:"Se utiliza una expresión figurada que llama la atención sobre la forma del mensaje."
+},
+
+{
+frase:"¡Ojalá llegue pronto el fin de semana!",
+funcion:"Expresiva / emotiva",
+elemento:"Emisor",
+porque:"El hablante expresa un deseo."
+},
+
+{
+frase:"Guarda el móvil y presta atención.",
+funcion:"Apelativa / conativa",
+elemento:"Receptor",
+porque:"El mensaje pretende modificar la conducta del receptor."
+},
+
+{
+frase:"El instituto comienza las clases a las ocho y media.",
+funcion:"Representativa / referencial",
+elemento:"Contexto / referente",
+porque:"La finalidad principal es informar."
+},
+
+{
+frase:"¿Sí? ¿Diga?",
+funcion:"Fática",
+elemento:"Canal",
+porque:"Sirve para iniciar y comprobar el contacto comunicativo."
+},
+
+{
+frase:"Los verbos expresan acciones, estados o procesos.",
+funcion:"Metalingüística",
+elemento:"Código",
+porque:"El mensaje explica una característica del sistema lingüístico."
+},
+
+{
+frase:"El cielo encendió sus últimas brasas al atardecer.",
+funcion:"Poética",
+elemento:"Mensaje",
+porque:"Predomina la elaboración estética del mensaje."
+}
+
+];
+
+let preguntasActuales = [];
+let retoActual = null;
+
+function mezclar(array){
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+function cargarPreguntas(){
+
+  preguntasActuales = mezclar(banco).slice(0,6);
+
+  const contenedor = document.getElementById("contenedorPreguntas");
+  contenedor.innerHTML = "";
+
+  preguntasActuales.forEach((p,i)=>{
+
+    const div = document.createElement("div");
+    div.className = "pregunta";
+
+    const opcionesMezcladas = mezclar(funciones);
+
+    div.innerHTML = `
+      <div class="pregunta-frase">
+        ${i+1}. «${p.frase}»
+      </div>
+
+      <div class="opciones">
+        ${opcionesMezcladas.map(f =>
+          `<button class="opcion"
+             data-pregunta="${i}"
+             data-valor="${f}"
+             onclick="seleccionar(this)">
+             ${f}
+           </button>`
+        ).join("")}
+      </div>
+
+      <div class="feedback" id="feedback-${i}"></div>
+    `;
+
+    contenedor.appendChild(div);
+
+  });
+
+  document.getElementById("resultado").style.display="none";
+}
+
+function seleccionar(btn){
+
+  const num = btn.dataset.pregunta;
+
+  document.querySelectorAll(`[data-pregunta="${num}"]`)
+    .forEach(b => b.classList.remove("seleccionada"));
+
+  btn.classList.add("seleccionada");
+}
+
+function corregir(){
+
+  let aciertos = 0;
+
+  preguntasActuales.forEach((p,i)=>{
+
+    const elegida =
+      document.querySelector(`[data-pregunta="${i}"].seleccionada`);
+
+    const feedback =
+      document.getElementById(`feedback-${i}`);
+
+    if(!elegida){
+
+      feedback.className="feedback mal";
+      feedback.innerHTML="⚠️ Elige una respuesta.";
+
+      return;
+    }
+
+    if(elegida.dataset.valor === p.funcion){
+
+      aciertos++;
+
+      feedback.className="feedback bien";
+
+      feedback.innerHTML =
+      `✓ Correcto. <strong>${p.funcion}</strong> →
+       destaca el <strong>${p.elemento}</strong>.
+       ${p.porque}`;
+
+    }else{
+
+      feedback.className="feedback mal";
+
+      feedback.innerHTML =
+      `✗ Revisa la intención del mensaje.
+       Pista: pregúntate sobre qué elemento
+       recae principalmente la atención.`;
+    }
+
+  });
+
+  const resultado=document.getElementById("resultado");
+
+  resultado.style.display="block";
+
+  if(aciertos===6){
+    resultado.innerHTML=
+    `🏆 <strong>6/6.</strong> ¡Excelente!
+     Has reconstruido perfectamente la relación
+     entre funciones y elementos.`;
+  }
+  else if(aciertos>=4){
+    resultado.innerHTML=
+    `👏 Has conseguido <strong>${aciertos}/6</strong>.
+     Vas muy bien. Revisa las que han fallado y vuelve a intentarlo.`;
+  }
+  else{
+    resultado.innerHTML=
+    `🧠 Has conseguido <strong>${aciertos}/6</strong>.
+     Vuelve al esquema de las parejas,
+     fíjate en el elemento destacado y prueba otra vez.`;
+  }
+
+}
+
+function reiniciar(){
+  cargarPreguntas();
+  window.location.hash="practica";
+}
+
+function nuevaFrase(){
+
+  retoActual = banco[Math.floor(Math.random()*banco.length)];
+
+  document.getElementById("fraseReto").innerText =
+    "«" + retoActual.frase + "»";
+
+  document.getElementById("solucionReto")
+    .classList.remove("visible");
+
+  document.getElementById("solucionReto").innerHTML="";
+}
+
+function mostrarSolucion(){
+
+  if(!retoActual){
+    nuevaFrase();
+  }
+
+  const sol=document.getElementById("solucionReto");
+
+  sol.innerHTML=`
+    <strong>🎯 Función:</strong> ${retoActual.funcion}<br>
+    <strong>🔎 Elemento destacado:</strong> ${retoActual.elemento}<br>
+    <strong>💡 Justificación:</strong> ${retoActual.porque}
+  `;
+
+  sol.classList.add("visible");
+}
+
+function cargarSoluciones(){
+
+  const tbody=document.getElementById("tablaSoluciones");
+
+  tbody.innerHTML=banco.map((p,i)=>`
+    <tr>
+      <td><strong>${i+1}.</strong> ${p.frase}</td>
+      <td>${p.funcion}</td>
+      <td>${p.elemento}</td>
+      <td>${p.porque}</td>
+    </tr>
+  `).join("");
+}
+
+function toggleSoluciones(){
+  document.getElementById("soluciones")
+    .classList.toggle("visible");
+}
+
+cargarPreguntas();
+cargarSoluciones();
+
+</script>
+
+</body>
+</html>
