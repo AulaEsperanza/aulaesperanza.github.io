@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Laboratorio de palabras | Morfemas y formación de palabras</title>
+
+<style>
+
+/* =========================================================
+   DISEÑO GENERAL
+========================================================= */
+
+:root{
+  --azul:#243b67;
+  --azul2:#36558f;
+  --verde:#2f7d6d;
+  --verdeClaro:#dff3ec;
+  --amarillo:#f4c95d;
+  --naranja:#ef9b57;
+  --rosa:#e9858f;
+  --lila:#8e7cc3;
+  --crema:#fffaf1;
+  --fondo:#f4f6fb;
+  --blanco:#ffffff;
+  --texto:#263238;
+  --gris:#667085;
+  --borde:#dfe4ee;
+
+  --lexema:#dff3ec;
+  --flexivo:#dce9ff;
+  --derivativo:#ffe5c6;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:
+  "Segoe UI",
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
+
+  background:
+  radial-gradient(circle at top left,#eaf1ff 0,transparent 35%),
+  radial-gradient(circle at top right,#fff0d9 0,transparent 30%),
+  var(--fondo);
+
+  color:var(--texto);
+  line-height:1.55;
+}
+
+button{
+  font:inherit;
+}
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.hero{
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:60px 20px;
+
+  background:
+  linear-gradient(135deg,#243b67 0%,#36558f 55%,#2f7d6d 100%);
+
+  color:white;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+
+.hero::before{
+  width:330px;
+  height:330px;
+  top:-140px;
+  right:-80px;
+}
+
+.hero::after{
+  width:250px;
+  height:250px;
+  bottom:-120px;
+  left:-70px;
+}
+
+.hero-content{
+  max-width:900px;
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  display:inline-block;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.3);
+
+  padding:7px 16px;
+  border-radius:30px;
+
+  font-weight:700;
+  letter-spacing:.04em;
+}
+
+.hero h1{
+  font-size:clamp(2.6rem,7vw,5.4rem);
+  line-height:1;
+  margin:22px 0 15px;
+}
+
+.hero h1 span{
+  color:var(--amarillo);
+}
+
+.hero p{
+  font-size:clamp(1rem,2.2vw,1.35rem);
+  max-width:720px;
+  margin:0 auto 30px;
+}
+
+.hero-btn{
+  border:none;
+  background:var(--amarillo);
+  color:#29364e;
+
+  font-weight:800;
+  font-size:1.05rem;
+
+  padding:14px 24px;
+  border-radius:14px;
+
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+  transition:.2s;
+}
+
+.hero-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+
+  border-bottom:1px solid var(--borde);
+
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+
+  padding:10px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:var(--azul);
+
+  font-weight:700;
+  font-size:.9rem;
+
+  padding:8px 12px;
+  border-radius:10px;
+}
+
+.nav a:hover{
+  background:#edf2ff;
+}
+
+/* =========================================================
+   CONTENEDORES
+========================================================= */
+
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:35px 18px 80px;
+}
+
+section{
+  scroll-margin-top:80px;
+  margin-bottom:65px;
+}
+
+.section-head{
+  margin-bottom:25px;
+}
+
+.section-number{
+  color:var(--naranja);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:.82rem;
+}
+
+.section-head h2{
+  color:var(--azul);
+  font-size:clamp(2rem,4vw,3rem);
+  margin:5px 0;
+}
+
+.section-head p{
+  color:var(--gris);
+  max-width:800px;
+  font-size:1.05rem;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--borde);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(32,54,95,.07);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+/* =========================================================
+   PALABRAS COLOREADAS
+========================================================= */
+
+.word{
+  font-size:1.55rem;
+  font-weight:900;
+  margin:18px 0;
+  line-height:1.8;
+}
+
+.lex{
+  background:var(--lexema);
+  color:#176251;
+  padding:5px 9px;
+  border-radius:8px;
+}
+
+.flex{
+  background:var(--flexivo);
+  color:#2b5597;
+  padding:5px 9px;
+  border-radius:8px;
+}
+
+.der{
+  background:var(--derivativo);
+  color:#a15315;
+  padding:5px 9px;
+  border-radius:8px;
+}
+
+.legend{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+
+.legend span{
+  padding:7px 12px;
+  border-radius:20px;
+  font-weight:800;
+  font-size:.88rem;
+}
+
+/* =========================================================
+   CONCEPTO DE MORFEMA
+========================================================= */
+
+.big-definition{
+  background:linear-gradient(135deg,#fff,#f4f7ff);
+  border-left:7px solid var(--azul2);
+
+  padding:26px;
+  border-radius:18px;
+
+  font-size:1.25rem;
+}
+
+.big-definition strong{
+  color:var(--azul);
+}
+
+.idea{
+  margin-top:18px;
+  background:#fff7d8;
+  border:1px solid #f1d979;
+  padding:16px 18px;
+  border-radius:14px;
+}
+
+/* =========================================================
+   DESMONTA PALABRAS
+========================================================= */
+
+.word-lab{
+  text-align:center;
+}
+
+.word-display{
+  font-size:clamp(2.4rem,7vw,4.5rem);
+  color:var(--azul);
+  font-weight:900;
+  margin:25px 0 15px;
+}
+
+.action{
+  border:none;
+  background:var(--azul);
+  color:white;
+
+  font-weight:800;
+  padding:12px 18px;
+
+  border-radius:12px;
+  cursor:pointer;
+
+  margin:5px;
+  transition:.2s;
+}
+
+.action:hover{
+  transform:translateY(-2px);
+  background:var(--azul2);
+}
+
+.action.orange{
+  background:var(--naranja);
+}
+
+.action.green{
+  background:var(--verde);
+}
+
+.analysis{
+  display:none;
+
+  margin:25px auto 0;
+  max-width:650px;
+
+  background:#f7f9fd;
+  border:2px dashed #bdc9df;
+
+  padding:22px;
+  border-radius:18px;
+
+  animation:pop .3s ease;
+}
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:scale(.95);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* =========================================================
+   FLEXIVOS
+========================================================= */
+
+.flex-box{
+  border-top:6px solid #5888d8;
+}
+
+.der-box{
+  border-top:6px solid var(--naranja);
+}
+
+.big-icon{
+  font-size:2.5rem;
+}
+
+.info-list{
+  padding-left:20px;
+}
+
+.info-list li{
+  margin:8px 0;
+}
+
+/* =========================================================
+   FORMACIÓN DE PALABRAS
+========================================================= */
+
+.process-card{
+  position:relative;
+  overflow:hidden;
+  min-height:300px;
+}
+
+.process-card h3{
+  color:var(--azul);
+  font-size:1.5rem;
+}
+
+.process-number{
+  position:absolute;
+  right:-10px;
+  top:-25px;
+
+  font-size:7rem;
+  font-weight:900;
+
+  color:rgba(36,59,103,.06);
+}
+
+.formula{
+  background:#f6f7fa;
+  padding:13px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:900;
+  margin:15px 0;
+}
+
+.reveal{
+  display:none;
+  margin-top:14px;
+  background:#edf8f4;
+  border-radius:12px;
+  padding:14px;
+}
+
+/* =========================================================
+   CLASIFICADOR
+========================================================= */
+
+.game{
+  background:
+  linear-gradient(145deg,#ffffff,#f6f8ff);
+
+  border:1px solid var(--borde);
+  border-radius:25px;
+  padding:28px;
+
+  text-align:center;
+
+  box-shadow:0 15px 35px rgba(32,54,95,.09);
+}
+
+.game-word{
+  display:inline-block;
+
+  font-size:clamp(2.3rem,6vw,4rem);
+  font-weight:900;
+  color:var(--azul);
+
+  background:white;
+
+  padding:15px 28px;
+  border-radius:18px;
+
+  box-shadow:0 7px 20px rgba(0,0,0,.08);
+
+  margin:15px 0 25px;
+}
+
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+
+.option{
+  border:2px solid var(--azul2);
+  color:var(--azul);
+  background:white;
+
+  padding:11px 16px;
+  border-radius:12px;
+
+  font-weight:800;
+  cursor:pointer;
+}
+
+.option:hover{
+  background:#edf2ff;
+}
+
+.feedback{
+  min-height:60px;
+  margin:20px auto 0;
+  font-weight:800;
+  font-size:1.05rem;
+}
+
+.correct{
+  color:#17704f;
+}
+
+.incorrect{
+  color:#b13e42;
+}
+
+.score{
+  display:inline-block;
+  background:var(--azul);
+  color:white;
+  border-radius:30px;
+  padding:7px 16px;
+  font-weight:800;
+}
+
+/* =========================================================
+   PARASÍNTESIS
+========================================================= */
+
+.parasynthesis{
+  background:
+  linear-gradient(135deg,#fff3df,#fff);
+
+  border:2px solid #f1c47d;
+}
+
+.test{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-top:20px;
+}
+
+.test-item{
+  background:white;
+  border:1px solid #ead4ad;
+  padding:16px;
+  border-radius:14px;
+  text-align:center;
+}
+
+.no{
+  color:#b13e42;
+  font-weight:900;
+}
+
+.yes{
+  color:#17704f;
+  font-weight:900;
+}
+
+/* =========================================================
+   RETO DE ANÁLISIS
+========================================================= */
+
+.challenge{
+  background:#243b67;
+  color:white;
+}
+
+.challenge h2{
+  color:white;
+}
+
+.challenge textarea{
+  width:100%;
+  min-height:100px;
+  padding:15px;
+  border-radius:12px;
+  border:none;
+  font:inherit;
+  margin-top:10px;
+}
+
+.solution{
+  display:none;
+  margin-top:18px;
+  background:rgba(255,255,255,.12);
+  padding:18px;
+  border-radius:15px;
+}
+
+
+/* =========================================================
+   QUIZ FINAL
+========================================================= */
+
+.quiz-question{
+  margin:20px 0;
+  padding:20px;
+  border-radius:17px;
+  background:white;
+  border:1px solid var(--borde);
+}
+
+.quiz-question h3{
+  margin-top:0;
+}
+
+.quiz-option{
+  display:block;
+  width:100%;
+
+  text-align:left;
+
+  background:#f7f8fc;
+  border:1px solid #dfe4ee;
+
+  padding:12px 14px;
+  margin:7px 0;
+
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.quiz-option:hover{
+  background:#edf2ff;
+}
+
+.quiz-option.selected{
+  background:#e5edff;
+  border-color:#527cc5;
+}
+
+.result{
+  display:none;
+  text-align:center;
+
+  background:#eef8f4;
+
+  border-radius:18px;
+  padding:25px;
+  margin-top:25px;
+
+  font-size:1.2rem;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  background:#1f3155;
+  color:white;
+  text-align:center;
+  padding:30px 20px;
+}
+
+footer strong{
+  color:var(--amarillo);
+}
+
+@media(max-width:650px){
+
+  .hero{
+    min-height:360px;
+  }
+
+  .card{
+    padding:19px;
+  }
+
+  .nav{
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+  }
+
+  .nav a{
+    white-space:nowrap;
+  }
+}
+
+
+/* ===== AJUSTES Y NUEVAS SECCIONES ===== */
+#formacion > .grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;}
+#formacion .process-card{height:100%;}
+.analysis .word,.analysis-word{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:3px;font-size:clamp(1.05rem,3vw,1.45rem);overflow-wrap:anywhere;}
+#analisisReto .word-display,.analysis-card .word-display{font-size:clamp(1.55rem,4vw,2.5rem);overflow-wrap:anywhere;word-break:break-word;text-align:center;max-width:100%;}
+.reset-btn{background:#667085;}
+.practice-box{margin-top:18px;padding:18px;border-radius:16px;background:#f7f9fd;border:1px solid var(--borde);}
+.mini-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.mini-feedback{min-height:28px;margin-top:10px;font-weight:800;}
+.quiz-option.correct-answer{background:#dff3ec;border-color:#2f7d6d;color:#176251;font-weight:800;}
+.quiz-option.wrong-answer{background:#ffe5e5;border-color:#b13e42;color:#8e2f33;font-weight:800;}
+.quiz-explanation{margin-top:10px;padding:10px 12px;border-radius:10px;background:#f7f9fd;font-size:.95rem;}
+@media(max-width:760px){#formacion > .grid{grid-template-columns:1fr;}}
+
+
+.mini-options .mini-correct{background:#e4f5ed;border-color:#2f7d6d;color:#176251;}
+.mini-options .mini-wrong{background:#fdeaea;border-color:#b13e42;color:#8f3034;}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- ======================================================
+     PORTADA
+======================================================= -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="kicker">
+LENGUA CASTELLANA Y LITERATURA · 2.º ESO
+</div>
+
+<h1>
+Laboratorio de <span>palabras</span>
+</h1>
+
+<p>
+Hoy vamos a abrir las palabras, desmontarlas pieza a pieza
+y descubrir cómo construye palabras nuevas nuestra lengua.
+</p>
+
+<button class="hero-btn"
+onclick="document.getElementById('morfema').scrollIntoView()">
+
+🔬 Entrar en el laboratorio
+
+</button>
+
+</div>
+
+</header>
+
+
+<nav class="nav">
+
+<a href="#morfema">Morfemas</a>
+<a href="#clases">Clases</a>
+<a href="#laboratorio">Desmontamos</a>
+<a href="#formacion">Formación</a>
+<a href="#familia">Familia léxica</a>
+<a href="#apreciativos">Apreciativos</a>
+<a href="#parasintesis">Parasíntesis</a>
+<a href="#juego">Juego</a>
+<a href="#reto">Reto final</a>
+
+</nav>
+
+
+<main>
+
+
+<!-- ======================================================
+     1. MORFEMA
+======================================================= -->
+
+<section id="morfema">
+
+<div class="section-head">
+
+<div class="section-number">
+01 · Empezamos
+</div>
+
+<h2>¿Qué hay dentro de una palabra?</h2>
+
+<p>
+Las palabras no son bloques indivisibles.
+Muchas pueden separarse en unidades más pequeñas.
+</p>
+
+</div>
+
+
+<div class="big-definition">
+
+Un <strong>morfema</strong> es la unidad mínima de la lengua
+que posee significado léxico o aporta información gramatical.
+
+</div>
+
+
+<div class="legend">
+
+<span style="background:var(--lexema)">
+🟢 LEXEMA
+</span>
+
+<span style="background:var(--flexivo)">
+🔵 MORFEMA FLEXIVO
+</span>
+
+<span style="background:var(--derivativo)">
+🟠 MORFEMA DERIVATIVO
+</span>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🌳 El lexema</h3>
+
+<p>
+Es la parte que contiene el
+<strong>significado básico</strong> de la palabra.
+</p>
+
+<div class="word">
+
+<span class="lex">pan</span>
+
+</div>
+
+<p>
+pan · panadero · panadería · empanar
+</p>
+
+<p>
+Todas pertenecen a la misma familia porque
+comparten el lexema relacionado con <strong>pan</strong>.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🧩 Los morfemas</h3>
+
+<p>
+Se añaden al lexema y pueden hacer dos cosas:
+</p>
+
+<p>
+<strong>1.</strong> Aportar información gramatical.
+</p>
+
+<p>
+<strong>2.</strong> Crear una palabra nueva.
+</p>
+
+<div class="word">
+
+<span class="lex">niñ</span>
+<span class="flex">a</span>
+<span class="flex">s</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="idea">
+
+💡 <strong>Idea clave:</strong>
+
+el lexema aporta el significado fundamental;
+los morfemas pueden modificarlo o aportar
+información gramatical.
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     2. CLASES DE MORFEMAS
+======================================================= -->
+
+<section id="clases">
+
+<div class="section-head">
+
+<div class="section-number">
+02 · Clasificamos
+</div>
+
+<h2>Dos grandes tipos de morfemas</h2>
+
+<p>
+Esta diferencia es fundamental:
+<strong>flexionar</strong> una palabra no es lo mismo que
+<strong>crear</strong> una palabra nueva.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card flex-box">
+
+<div class="big-icon">🔵</div>
+
+<h3>Morfemas flexivos</h3>
+
+<p>
+<strong>No crean palabras nuevas.</strong>
+Aportan información gramatical.
+</p>
+
+<h4>En sustantivos y adjetivos</h4>
+
+<ul class="info-list">
+
+<li>género</li>
+<li>número</li>
+
+</ul>
+
+
+<div class="word">
+
+<span class="lex">niñ</span>
+<span class="flex">a</span>
+<span class="flex">s</span>
+
+</div>
+
+<p>
+<strong>-a</strong> → género femenino<br>
+<strong>-s</strong> → número plural
+</p>
+
+
+<h4>En los verbos</h4>
+
+<p>
+Las desinencias verbales pueden informar sobre:
+</p>
+
+<ul class="info-list">
+
+<li>persona</li>
+<li>número</li>
+<li>tiempo</li>
+<li>modo</li>
+
+</ul>
+
+<div class="word">
+
+<span class="lex">cant</span>
+<span class="flex">ábamos</span>
+
+</div>
+
+<p>
+1.ª persona · plural · pasado · indicativo
+</p>
+
+</div>
+
+
+
+<div class="card der-box">
+
+<div class="big-icon">🟠</div>
+
+<h3>Morfemas derivativos</h3>
+
+<p>
+Se añaden al lexema y permiten
+<strong>crear palabras nuevas</strong>.
+</p>
+
+<h4>Prefijos</h4>
+
+<p>
+Se colocan delante del lexema.
+</p>
+
+<div class="word">
+
+<span class="der">des</span>
+<span class="lex">orden</span>
+
+</div>
+
+
+<h4>Sufijos</h4>
+
+<p>
+Se colocan detrás del lexema.
+</p>
+
+<div class="word">
+
+<span class="lex">pan</span>
+<span class="der">ader</span>
+<span class="flex">o</span>
+
+</div>
+
+<div class="word">
+<span class="der">in</span><span class="lex">feliz</span>
+</div>
+<p><strong>in-</strong> → prefijo derivativo</p>
+
+<div class="word">
+<span class="lex">flor</span><span class="der">ista</span>
+</div>
+<p><strong>-ista</strong> → sufijo derivativo</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     3. LABORATORIO
+======================================================= -->
+
+<section id="laboratorio">
+
+<div class="section-head">
+
+<div class="section-number">
+03 · Laboratorio
+</div>
+
+<h2>🔬 Desmontemos palabras</h2>
+
+<p>
+Intenta analizarlas mentalmente antes de pulsar
+<strong>DESMONTAR</strong>.
+</p>
+
+</div>
+
+
+<div class="card word-lab">
+
+<div id="labWord" class="word-display">
+niñas
+</div>
+
+<button class="action"
+onclick="desmontar()">
+
+🔨 DESMONTAR
+
+</button>
+
+<button class="action orange"
+onclick="otraPalabra()">
+
+🔄 OTRA PALABRA
+
+</button>
+
+
+<div id="labAnalysis" class="analysis"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     4. FORMACIÓN DE PALABRAS
+======================================================= -->
+
+<section id="formacion">
+
+<div class="section-head">
+
+<div class="section-number">
+04 · Construimos
+</div>
+
+<h2>¿Cómo se forman las palabras?</h2>
+
+<p>
+Vamos a distinguir cuatro posibilidades fundamentales.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<!-- SIMPLE -->
+
+<div class="card process-card">
+
+<div class="process-number">1</div>
+
+<h3>Palabras simples</h3>
+
+<p>
+Tienen un solo lexema y
+<strong>no contienen morfemas derivativos</strong>.
+</p>
+
+<p>
+Pueden llevar morfemas flexivos.
+</p>
+
+<div class="formula">
+LEXEMA + posibles FLEXIVOS
+</div>
+
+<div class="word">
+
+<span class="lex">niñ</span>
+<span class="flex">a</span>
+<span class="flex">s</span>
+
+</div>
+
+<button class="action"
+onclick="reveal('simple')">
+
+Ver más ejemplos
+
+</button>
+
+<div id="simple" class="reveal">
+
+sol · casas · mesas · niños
+
+</div>
+
+</div>
+
+
+
+<!-- DERIVACIÓN -->
+
+<div class="card process-card">
+
+<div class="process-number">2</div>
+
+<h3>Derivación</h3>
+
+<p>
+Se añaden morfemas derivativos
+a un lexema.
+</p>
+
+<div class="formula">
+AFIJO + LEXEMA
+<br>
+o
+<br>
+LEXEMA + AFIJO
+</div>
+
+<div class="word">
+
+<span class="der">des</span>
+<span class="lex">leal</span>
+
+</div>
+
+<div class="word">
+
+<span class="lex">flor</span>
+<span class="der">ista</span>
+
+</div>
+
+<button class="action"
+onclick="reveal('derivadas')">
+
+Ver más ejemplos
+
+</button>
+
+<div id="derivadas" class="reveal">
+
+panadero · imposible · librería · prehistoria
+
+</div>
+
+</div>
+
+
+
+<!-- COMPOSICIÓN -->
+
+<div class="card process-card">
+
+<div class="process-number">3</div>
+
+<h3>Composición</h3>
+
+<p>
+Se combinan
+<strong>dos o más lexemas</strong>.
+</p>
+
+<div class="formula">
+LEXEMA + LEXEMA
+</div>
+
+<div class="word">
+
+<span class="lex">saca</span>
++
+<span class="lex">puntas</span>
+
+</div>
+
+<p>
+<strong>Compuestos ortográficos:</strong><br>
+sacapuntas · lavavajillas · abrelatas
+</p>
+
+<p>
+<strong>Compuestos sintagmáticos:</strong><br>
+hombre rana · sofá cama
+</p>
+
+<button class="action"
+onclick="reveal('compuestas')">
+
+Ver ejemplos
+
+</button>
+
+<div id="compuestas" class="reveal">
+
+pararrayos · limpiaparabrisas · baloncesto · bocacalle
+
+</div>
+
+</div>
+
+
+
+<!-- PARASÍNTESIS -->
+
+<div class="card process-card">
+
+<div class="process-number">4</div>
+
+<h3>Parasíntesis</h3>
+
+<p>
+El prefijo y el sufijo se incorporan
+<strong>simultáneamente</strong> al lexema.
+</p>
+
+<div class="formula">
+PREFIJO + LEXEMA + SUFIJO
+</div>
+
+<div class="word">
+
+<span class="der">en</span>
+<span class="lex">roj</span>
+<span class="der">ecer</span>
+
+</div>
+
+<button class="action"
+onclick="reveal('parasinteticas')">
+
+Ver más ejemplos
+
+</button>
+
+<div id="parasinteticas" class="reveal">
+
+entristecer · empobrecer · adelgazar
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     05. FAMILIA LÉXICA
+======================================================= -->
+<section id="familia">
+<div class="section-head"><div class="section-number">05 · Palabras emparentadas</div><h2>🌳 La familia léxica</h2><p>Una <strong>familia léxica</strong> es el conjunto de palabras que comparten el mismo lexema o raíz y, por tanto, una parte de su significado.</p></div>
+<div class="grid">
+<div class="card"><h3>Ejemplo: PAN</h3><div class="word"><span class="lex">pan</span></div><p><strong>pan</strong> · panadero · panadería · empanar · panecillo</p><div class="idea">💡 No basta con que las palabras se parezcan: deben compartir <strong>lexema y significado relacionado</strong>.</div></div>
+<div class="card"><h3>Ejemplo: FLOR</h3><div class="word"><span class="lex">flor</span></div><p><strong>flor</strong> · florero · florista · florecer · floral</p><p>El lexema común permite reconocer que todas pertenecen a la misma familia.</p></div>
+</div>
+<div class="practice-box"><h3>🎯 Practica: ¿cuál NO pertenece a la familia de «mar»?</h3><div class="mini-options"><button class="option" onclick="miniQuiz(this,false,'familiaFb','marino sí pertenece: mar + -ino.')">marino</button><button class="option" onclick="miniQuiz(this,false,'familiaFb','marea está relacionada con mar y pertenece a su familia léxica.')">marea</button><button class="option" onclick="miniQuiz(this,true,'familiaFb','¡Exacto! Martillo se parece al comienzo, pero no comparte el lexema ni el significado de mar.')">martillo</button><button class="option" onclick="miniQuiz(this,false,'familiaFb','submarino contiene el lexema mar.')">submarino</button></div><div id="familiaFb" class="mini-feedback"></div></div>
+</section>
+
+<!-- ======================================================
+     06. SUFIJOS APRECIATIVOS
+======================================================= -->
+<section id="apreciativos">
+<div class="section-head"><div class="section-number">06 · Matices</div><h2>🔎 Sufijos apreciativos</h2><p>Son sufijos que añaden una valoración de <strong>tamaño, intensidad o actitud del hablante</strong> sin cambiar necesariamente la clase de palabra.</p></div>
+<div class="grid">
+<div class="card der-box"><h3>🤏 Diminutivos</h3><p>Expresan tamaño pequeño y, según el contexto, afecto.</p><div class="word"><span class="lex">cas</span><span class="der">ita</span></div><p>casa → <strong>casita</strong></p></div>
+<div class="card der-box"><h3>🐘 Aumentativos</h3><p>Expresan tamaño grande o intensidad.</p><div class="word"><span class="lex">coch</span><span class="der">azo</span></div><p>coche → <strong>cochazo</strong></p></div>
+<div class="card der-box"><h3>🌶️ Despectivos</h3><p>Añaden una valoración negativa o de desprecio.</p><div class="word"><span class="lex">puebl</span><span class="der">ucho</span></div><p>pueblo → <strong>pueblucho</strong></p></div>
+</div>
+<div class="practice-box"><h3>🎯 Practica: «perrazo» contiene un sufijo...</h3><div class="mini-options"><button class="option" onclick="miniQuiz(this,false,'aprecFb','No: un diminutivo sería, por ejemplo, perrito.')">diminutivo</button><button class="option" onclick="miniQuiz(this,true,'aprecFb','¡Correcto! -azo funciona aquí como sufijo aumentativo.')">aumentativo</button><button class="option" onclick="miniQuiz(this,false,'aprecFb','No en este ejemplo: -azo aporta valor aumentativo.')">despectivo</button></div><div id="aprecFb" class="mini-feedback"></div></div>
+</section>
+
+<!-- ======================================================
+     PARASÍNTESIS
+======================================================= -->
+
+<section id="parasintesis">
+
+<div class="section-head">
+
+<div class="section-number">
+07 · El truco
+</div>
+
+<h2>🕵️ ¿Cómo descubro una palabra parasintética?</h2>
+
+</div>
+
+
+<div class="card parasynthesis">
+
+<h3>Probemos con ENROJECER</h3>
+
+
+<div class="word">
+
+<span class="der">en-</span>
+
++
+
+<span class="lex">roj</span>
+
++
+
+<span class="der">-ecer</span>
+
+</div>
+
+
+<p>
+Quitamos primero una de las piezas.
+</p>
+
+
+<div class="test">
+
+<div class="test-item">
+
+<strong>¿Existe «rojecer»?</strong>
+
+<p class="no">
+❌ NO
+</p>
+
+</div>
+
+
+<div class="test-item">
+
+<strong>¿Existe «enrojo» como base de este verbo?</strong>
+
+<p class="no">
+❌ NO
+</p>
+
+</div>
+
+
+<div class="test-item">
+
+<strong>¿Existe «enrojecer»?</strong>
+
+<p class="yes">
+✅ SÍ
+</p>
+
+</div>
+
+</div>
+
+
+<div class="idea">
+
+💡 El prefijo y el sufijo han tenido que añadirse
+<strong>a la vez</strong>.
+
+Por eso hablamos de <strong>parasíntesis</strong>.
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     JUEGO CLASIFICADOR
+======================================================= -->
+
+<section id="juego">
+
+<div class="section-head">
+
+<div class="section-number">
+08 · Ahora tú
+</div>
+
+<h2>🎮 La máquina clasificadora</h2>
+
+<p>
+Decide cómo se ha formado cada palabra.
+La máquina llevará tu puntuación.
+</p>
+
+</div>
+
+
+<div class="game">
+
+<div class="score">
+
+Puntos:
+<span id="score">0</span>
+
+</div>
+
+<p>Clasifica esta palabra:</p>
+
+<div id="gameWord" class="game-word">
+sacapuntas
+</div>
+
+
+<div class="options">
+
+<button class="option"
+onclick="responder('simple')">
+Simple
+</button>
+
+<button class="option"
+onclick="responder('derivada')">
+Derivada
+</button>
+
+<button class="option"
+onclick="responder('compuesta')">
+Compuesta
+</button>
+
+<button class="option"
+onclick="responder('parasintetica')">
+Parasintética
+</button>
+
+</div>
+
+
+<div id="feedback" class="feedback"></div>
+
+
+<button id="nextButton"
+class="action green"
+onclick="siguiente()"
+style="display:none">
+Siguiente palabra →
+</button>
+<button class="action reset-btn" onclick="reiniciarJuego()">↺ PONER A CERO</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     RETO DE ANÁLISIS
+======================================================= -->
+
+<section id="analisisReto">
+
+<div class="section-head">
+
+<div class="section-number">
+09 · Nivel lingüista
+</div>
+
+<h2>🧠 Analiza antes de mirar</h2>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<h3>PALABRA 1</h3>
+
+<div class="word-display">
+panadero
+</div>
+
+<p>
+1. Sepárala en morfemas.<br>
+2. Localiza el lexema.<br>
+3. Clasifica los morfemas.<br>
+4. Indica cómo se ha formado.
+</p>
+
+<button class="action"
+onclick="reveal('solPanadero')">
+
+Comprobar
+
+</button>
+
+<div id="solPanadero" class="reveal">
+
+<div class="word">
+
+<span class="lex">pan</span>
+<span class="der">ader</span>
+<span class="flex">o</span>
+
+</div>
+
+<strong>Palabra derivada por sufijación.</strong>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>PALABRA 2</h3>
+
+<div class="word-display">
+desordenados
+</div>
+
+<p>
+Busca el lexema, los morfemas derivativos
+y los morfemas flexivos.
+</p>
+
+<button class="action"
+onclick="reveal('solDesordenados')">
+
+Comprobar
+
+</button>
+
+<div id="solDesordenados" class="reveal">
+
+<div class="word">
+
+<span class="der">des</span>
+<span class="lex">orden</span>
+<span class="der">ado</span>
+<span class="flex">s</span>
+
+</div>
+
+Contiene derivación y flexión.
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>PALABRA 3</h3>
+
+<div class="word-display">
+enrojecer
+</div>
+
+<p>
+¿Derivación o parasíntesis?
+Justifica tu respuesta.
+</p>
+
+<button class="action"
+onclick="reveal('solEnrojecer')">
+
+Comprobar
+
+</button>
+
+<div id="solEnrojecer" class="reveal">
+
+<div class="word">
+
+<span class="der">en</span>
+<span class="lex">roj</span>
+<span class="der">ecer</span>
+
+</div>
+
+<strong>Parasíntesis.</strong>
+
+El prefijo y el sufijo se incorporan simultáneamente.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     QUIZ FINAL
+======================================================= -->
+
+<section id="reto">
+
+<div class="section-head">
+
+<div class="section-number">
+10 · Misión final
+</div>
+
+<h2>🏆 ¿Has aprendido a desmontar palabras?</h2>
+
+<p>
+Responde las cinco preguntas y descubre tu resultado.
+</p>
+
+</div>
+
+
+<div id="quiz">
+
+
+<div class="quiz-question" data-answer="b" data-explanation="El lexema contiene el significado básico de la palabra.">
+
+<h3>1. ¿Qué parte contiene el significado básico?</h3>
+
+<button class="quiz-option" data-value="a">
+El morfema flexivo
+</button>
+
+<button class="quiz-option" data-value="b">
+El lexema
+</button>
+
+<button class="quiz-option" data-value="c">
+La desinencia
+</button>
+
+</div>
+
+
+
+<div class="quiz-question" data-answer="a" data-explanation="En niñas, -s es un morfema flexivo de número plural.">
+
+<h3>2. En «niñas», la -s indica...</h3>
+
+<button class="quiz-option" data-value="a">
+Número
+</button>
+
+<button class="quiz-option" data-value="b">
+Género
+</button>
+
+<button class="quiz-option" data-value="c">
+Derivación
+</button>
+
+</div>
+
+
+
+<div class="quiz-question" data-answer="c" data-explanation="Sacapuntas combina dos lexemas: saca + puntas.">
+
+<h3>3. «Sacapuntas» es...</h3>
+
+<button class="quiz-option" data-value="a">
+Simple
+</button>
+
+<button class="quiz-option" data-value="b">
+Derivada
+</button>
+
+<button class="quiz-option" data-value="c">
+Compuesta
+</button>
+
+</div>
+
+
+
+<div class="quiz-question" data-answer="b" data-explanation="Panadero se forma por derivación: pan + el sufijo -adero.">
+
+<h3>4. ¿Qué procedimiento aparece en «panadero»?</h3>
+
+<button class="quiz-option" data-value="a">
+Composición
+</button>
+
+<button class="quiz-option" data-value="b">
+Derivación
+</button>
+
+<button class="quiz-option" data-value="c">
+Flexión
+</button>
+
+</div>
+
+
+
+<div class="quiz-question" data-answer="c" data-explanation="Enrojecer es parasintética: en- + roj- + -ecer se incorporan conjuntamente.">
+
+<h3>5. ¿Cuál es parasintética?</h3>
+
+<button class="quiz-option" data-value="a">
+Florista
+</button>
+
+<button class="quiz-option" data-value="b">
+Sacapuntas
+</button>
+
+<button class="quiz-option" data-value="c">
+Enrojecer
+</button>
+
+</div>
+
+
+</div>
+
+
+<div style="text-align:center">
+
+<button class="hero-btn"
+onclick="corregirQuiz()">
+
+✅ CORREGIR RETO
+
+</button>
+
+</div>
+
+
+<div id="quizResult" class="result"></div>
+
+</section>
+
+
+
+<!-- ======================================================
+     CIERRE
+======================================================= -->
+
+<section class="card challenge">
+
+<h2>🎤 Ticket de salida</h2>
+
+<p>
+Antes de terminar, intenta explicar con tus propias palabras:
+</p>
+
+<p>
+
+<strong>
+¿Cuál es la diferencia entre flexión, derivación,
+composición y parasíntesis?
+</strong>
+
+</p>
+
+<textarea
+placeholder="Escribe aquí tu explicación...">
+</textarea>
+
+<button class="hero-btn"
+onclick="reveal('modeloFinal')">
+
+Ver una posible respuesta
+
+</button>
+
+<div id="modeloFinal" class="solution">
+
+<strong>Flexión:</strong>
+añade información gramatical sin crear una palabra nueva.
+
+<br><br>
+
+<strong>Derivación:</strong>
+crea una palabra nueva añadiendo morfemas derivativos.
+
+<br><br>
+
+<strong>Composición:</strong>
+forma una palabra mediante la unión de dos o más lexemas.
+
+<br><br>
+
+<strong>Parasíntesis:</strong>
+puede formar una palabra mediante la incorporación simultánea
+de un prefijo y un sufijo al lexema.
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<strong>LABORATORIO DE PALABRAS</strong>
+
+<br>
+
+Lengua Castellana y Literatura · 2.º ESO
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   REINICIO Y MINI EJERCICIOS
+========================================================= */
+
+function reiniciarJuego(){
+  juegoActual = 0;
+  puntos = 0;
+  respondida = false;
+
+  document.getElementById("score").textContent = "0";
+  document.getElementById("gameWord").textContent = palabrasJuego[0].palabra;
+
+  const fb = document.getElementById("feedback");
+  fb.innerHTML = "";
+  fb.className = "feedback";
+
+  document.getElementById("nextButton").style.display = "none";
+}
+
+function miniQuiz(boton, correcta, feedbackId, explicacion){
+  const caja = document.getElementById(feedbackId);
+  const grupo = boton.parentElement;
+
+  grupo.querySelectorAll(".option").forEach(b => {
+    b.classList.remove("mini-correct", "mini-wrong");
+  });
+
+  if(correcta){
+    boton.classList.add("mini-correct");
+    caja.innerHTML = "✅ " + explicacion;
+    caja.className = "mini-feedback correct";
+  } else {
+    boton.classList.add("mini-wrong");
+    caja.innerHTML = "❌ " + explicacion;
+    caja.className = "mini-feedback incorrect";
+  }
+}
+
+/* =========================================================
+   MOSTRAR / OCULTAR
+========================================================= */
+
+function reveal(id){
+
+  const elemento =
+  document.getElementById(id);
+
+  if(
+    elemento.style.display === "block"
+  ){
+
+    elemento.style.display = "none";
+
+  }else{
+
+    elemento.style.display = "block";
+
+  }
+
+}
+
+
+/* =========================================================
+   LABORATORIO DE PALABRAS
+========================================================= */
+
+const laboratorio = [
+
+{
+palabra:"niñas",
+
+analisis:`
+
+<div class="word">
+
+<span class="lex">niñ</span>
+<span class="flex">a</span>
+<span class="flex">s</span>
+
+</div>
+
+<strong>niñ-</strong> → lexema<br>
+
+<strong>-a</strong> → morfema flexivo de género<br>
+
+<strong>-s</strong> → morfema flexivo de número
+
+`
+},
+
+{
+palabra:"desleales",
+
+analisis:`
+
+<div class="word">
+
+<span class="der">des</span>
+<span class="lex">leal</span>
+<span class="flex">es</span>
+
+</div>
+
+<strong>des-</strong> → prefijo derivativo<br>
+
+<strong>leal</strong> → lexema<br>
+
+<strong>-es</strong> → morfema flexivo de número
+
+`
+},
+
+{
+palabra:"panadero",
+
+analisis:`
+
+<div class="word">
+
+<span class="lex">pan</span>
+<span class="der">ader</span>
+<span class="flex">o</span>
+
+</div>
+
+<strong>pan</strong> → lexema<br>
+
+<strong>-ader-</strong> → morfema derivativo (sufijo)<br>
+<strong>-o</strong> → morfema flexivo de género<br><br>
+
+➡️ Palabra derivada.
+
+`
+},
+
+{
+palabra:"sacapuntas",
+
+analisis:`
+
+<div class="word">
+
+<span class="lex">saca</span>
++
+<span class="lex">puntas</span>
+
+</div>
+
+Dos lexemas.
+
+<br><br>
+
+➡️ Palabra compuesta.
+
+`
+},
+
+{
+palabra:"enrojecer",
+
+analisis:`
+
+<div class="word">
+
+<span class="der">en</span>
+<span class="lex">roj</span>
+<span class="der">ecer</span>
+
+</div>
+
+Prefijo + lexema + sufijo.
+
+<br><br>
+
+➡️ Palabra parasintética.
+
+`
+}
+
+];
+
+let indiceLab = 0;
+
+
+function desmontar(){
+
+  const caja =
+  document.getElementById("labAnalysis");
+
+  caja.innerHTML =
+  laboratorio[indiceLab].analisis;
+
+  caja.style.display =
+  "block";
+
+}
+
+
+function otraPalabra(){
+
+  indiceLab++;
+
+  if(
+    indiceLab >= laboratorio.length
+  ){
+
+    indiceLab = 0;
+
+  }
+
+  document.getElementById("labWord")
+  .textContent =
+  laboratorio[indiceLab].palabra;
+
+  document.getElementById("labAnalysis")
+  .style.display =
+  "none";
+
+}
+
+
+
+/* =========================================================
+   JUEGO DE CLASIFICACIÓN
+========================================================= */
+
+const palabrasJuego = [
+
+{
+palabra:"sacapuntas",
+tipo:"compuesta",
+exp:"saca + puntas → composición. Es una palabra compuesta."
+},
+
+{
+palabra:"mesa",
+tipo:"simple",
+exp:"Tiene un solo lexema y ningún morfema derivativo."
+},
+
+{
+palabra:"florista",
+tipo:"derivada",
+exp:"flor + -ista → derivación por sufijación."
+},
+
+{
+palabra:"imposible",
+tipo:"derivada",
+exp:"im- + posible → derivación por prefijación."
+},
+
+{
+palabra:"abrelatas",
+tipo:"compuesta",
+exp:"abre + latas → combinación de dos lexemas."
+},
+
+{
+palabra:"lavavajillas",
+tipo:"compuesta",
+exp:"lava + vajillas → composición."
+},
+
+{
+palabra:"sacacorchos",
+tipo:"compuesta",
+exp:"saca + corchos → composición. Es una palabra compuesta."
+},
+
+{
+palabra:"enrojecer",
+tipo:"parasintetica",
+exp:"en- + roj- + -ecer → incorporación simultánea de prefijo y sufijo."
+},
+
+{
+palabra:"entristecer",
+tipo:"parasintetica",
+exp:"en- + triste + -ecer → parasíntesis."
+},
+
+{
+palabra:"panadero",
+tipo:"derivada",
+exp:"pan + -ader- + -o → derivación por sufijación; -o es morfema flexivo de género."
+}
+
+];
+
+
+let juegoActual = 0;
+let puntos = 0;
+let respondida = false;
+
+
+function responder(tipo){
+
+  if(respondida) return;
+
+  respondida = true;
+
+  const actual =
+  palabrasJuego[juegoActual];
+
+  const feedback =
+  document.getElementById("feedback");
+
+
+  if(
+    tipo === actual.tipo
+  ){
+
+    puntos++;
+
+    feedback.innerHTML =
+    "✅ ¡Correcto! " +
+    actual.exp;
+
+    feedback.className =
+    "feedback correct";
+
+  }else{
+
+    feedback.innerHTML =
+    "❌ No exactamente. " +
+    actual.exp;
+
+    feedback.className =
+    "feedback incorrect";
+
+  }
+
+
+  document.getElementById("score")
+  .textContent =
+  puntos;
+
+
+  document.getElementById("nextButton")
+  .style.display =
+  "inline-block";
+
+}
+
+
+function siguiente(){
+
+  juegoActual++;
+
+  if(
+    juegoActual >= palabrasJuego.length
+  ){
+
+    juegoActual = 0;
+
+  }
+
+  respondida = false;
+
+
+  document.getElementById("gameWord")
+  .textContent =
+  palabrasJuego[juegoActual].palabra;
+
+
+  document.getElementById("feedback")
+  .innerHTML =
+  "";
+
+
+  document.getElementById("nextButton")
+  .style.display =
+  "none";
+
+}
+
+
+
+/* =========================================================
+   QUIZ FINAL
+========================================================= */
+
+document
+.querySelectorAll(".quiz-option")
+.forEach(
+  boton => {
+
+    boton.addEventListener(
+      "click",
+      function(){
+
+        const pregunta =
+        this.closest(".quiz-question");
+
+
+        pregunta
+        .querySelectorAll(".quiz-option")
+        .forEach(
+          b =>
+          b.classList.remove("selected")
+        );
+
+
+        this.classList.add("selected");
+
+      }
+    );
+
+  }
+);
+
+
+function corregirQuiz(){
+  const preguntas=document.querySelectorAll(".quiz-question");
+  let aciertos=0;
+  preguntas.forEach((pregunta, i)=>{
+    const correcta=pregunta.dataset.answer;
+    const seleccionada=pregunta.querySelector(".quiz-option.selected");
+    const botones=pregunta.querySelectorAll(".quiz-option");
+    botones.forEach(b=>{
+      b.classList.remove("correct-answer","wrong-answer");
+      if(b.dataset.value===correcta) b.classList.add("correct-answer");
+    });
+    let texto;
+    if(seleccionada && seleccionada.dataset.value===correcta){
+      aciertos++; texto="✅ Correcto. "+pregunta.dataset.explanation;
+    }else if(seleccionada){
+      seleccionada.classList.add("wrong-answer");
+      texto="❌ Esta no es correcta. "+pregunta.dataset.explanation;
+    }else{
+      texto="⚠️ No has respondido esta pregunta. "+pregunta.dataset.explanation;
+    }
+    let exp=pregunta.querySelector(".quiz-explanation");
+    if(!exp){exp=document.createElement("div"); exp.className="quiz-explanation"; pregunta.appendChild(exp);}
+    exp.innerHTML=texto;
+  });
+  const resultado=document.getElementById("quizResult");
+  let mensaje=aciertos===5?"🏆 ¡Laboratorio superado! Ya puedes desmontar palabras.":aciertos>=3?"🔬 Buen trabajo. Revisa en rojo las respuestas que necesitan otra vuelta.":"🧩 Hay varias piezas que revisar. Mira el feedback de cada pregunta y vuelve a intentarlo.";
+  resultado.innerHTML="<strong>"+aciertos+" / "+preguntas.length+"</strong><br>"+mensaje;
+  resultado.style.display="block";
+  resultado.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+</script>
+
+</body>
+</html>
