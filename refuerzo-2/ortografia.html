@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Laboratorio de Ortografía | Refuerzo 2.º ESO</title>
+
+<style>
+:root{
+    --fondo:#f6f3ed;
+    --papel:#ffffff;
+    --texto:#24313a;
+    --verde:#557567;
+    --verde-claro:#e7efeb;
+    --ocre:#d5a44d;
+    --rojo:#c95d5d;
+    --sombra:0 10px 30px rgba(0,0,0,.09);
+    --radio:18px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#425f54,#668779);
+    color:white;
+    text-align:center;
+    padding:55px 20px 45px;
+}
+
+header h1{
+    margin:0;
+    font-size:clamp(2rem,5vw,3.8rem);
+    line-height:1.05;
+}
+
+header p{
+    max-width:750px;
+    margin:18px auto 0;
+    font-size:1.15rem;
+}
+
+.insignia{
+    display:inline-block;
+    background:#fff;
+    color:#425f54;
+    padding:7px 15px;
+    border-radius:30px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+nav{
+    background:white;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    padding:12px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    text-align:center;
+}
+
+nav a{
+    display:inline-block;
+    text-decoration:none;
+    color:var(--texto);
+    font-weight:bold;
+    padding:9px 13px;
+    border-radius:10px;
+}
+
+nav a:hover{
+    background:var(--verde-claro);
+}
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:35px 18px 80px;
+}
+
+section{
+    scroll-margin-top:90px;
+    margin-bottom:55px;
+}
+
+h2{
+    font-size:clamp(1.8rem,4vw,2.5rem);
+    margin-bottom:8px;
+}
+
+.intro{
+    font-size:1.08rem;
+    max-width:800px;
+}
+
+/* MENÚ */
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:18px;
+    margin:30px 0;
+}
+
+.menu a{
+    background:white;
+    border-radius:var(--radio);
+    padding:25px 20px;
+    text-decoration:none;
+    color:var(--texto);
+    box-shadow:var(--sombra);
+    transition:.2s;
+    border-top:6px solid var(--verde);
+}
+
+.menu a:hover{
+    transform:translateY(-5px);
+}
+
+.letra{
+    font-size:2.6rem;
+    font-weight:bold;
+    color:var(--verde);
+}
+
+/* TARJETAS NORMALES */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+    margin-top:22px;
+    align-items:start;
+}
+
+/* CUATRO TARJETAS = 2 x 2 */
+
+.grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+    margin-top:22px;
+    align-items:start;
+}
+
+.grid .card,
+.grid-2 .card{
+    height:auto;
+    align-self:start;
+}
+
+.card{
+    background:var(--papel);
+    padding:22px;
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+}
+
+.card h3{
+    margin-top:0;
+    color:var(--verde);
+}
+
+.regla{
+    border-left:5px solid var(--ocre);
+}
+
+.ejemplo{
+    background:#fff8e8;
+    border-radius:12px;
+    padding:12px 15px;
+    margin-top:12px;
+}
+
+.truco{
+    background:var(--verde-claro);
+    border-radius:12px;
+    padding:14px;
+    margin-top:14px;
+}
+
+/* ACTIVIDADES */
+
+.actividad{
+    background:white;
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    padding:25px;
+    margin-top:25px;
+}
+
+.actividad h3{
+    margin-top:0;
+}
+
+.pregunta{
+    background:#f7f8f8;
+    padding:15px;
+    border-radius:12px;
+    margin:12px 0;
+}
+
+select,
+input{
+    font-size:1rem;
+    padding:8px;
+    border:1px solid #bbc4c0;
+    border-radius:8px;
+    max-width:100%;
+}
+
+button{
+    border:0;
+    background:var(--verde);
+    color:white;
+    padding:11px 18px;
+    border-radius:10px;
+    font-weight:bold;
+    font-size:1rem;
+    cursor:pointer;
+    margin:8px 5px 0 0;
+}
+
+button:hover{
+    opacity:.88;
+}
+
+button.secundario{
+    background:#727b80;
+}
+
+.feedback{
+    font-weight:bold;
+    margin-top:12px;
+    min-height:24px;
+}
+
+.bien{
+    color:#28764d;
+}
+
+.mal{
+    color:var(--rojo);
+}
+
+/* RETO */
+
+.reto{
+    background:linear-gradient(135deg,#24313a,#40545d);
+    color:white;
+    padding:30px;
+    border-radius:var(--radio);
+}
+
+.reto .pregunta{
+    background:rgba(255,255,255,.1);
+}
+
+.marcador{
+    font-size:1.4rem;
+    font-weight:bold;
+    background:var(--ocre);
+    color:#2c2c2c;
+    padding:12px 18px;
+    border-radius:12px;
+    display:inline-block;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    padding:30px 15px;
+    background:#263832;
+    color:white;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* MÓVIL */
+
+@media(max-width:700px){
+    .grid,
+    .grid-2{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+    header{
+        padding:40px 15px 35px;
+    }
+
+    nav{
+        position:static;
+    }
+
+    nav a{
+        padding:7px;
+        font-size:.9rem;
+    }
+
+    .actividad{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="insignia">Refuerzo de Lengua · 2.º ESO</div>
+
+<h1>🕵️ Laboratorio de Ortografía</h1>
+
+<p>
+Cuatro sospechosas habituales:
+<strong>B/V, G/J, LL/Y y H.</strong>
+Tu misión es evitar que las faltas de ortografía
+se apoderen del planeta.
+</p>
+</header>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#bv">B / V</a>
+<a href="#gj">G / J</a>
+<a href="#lly">LL / Y</a>
+<a href="#h">H</a>
+<a href="#reto">Reto final</a>
+</nav>
+
+<main>
+
+<!-- INICIO -->
+
+<section id="inicio">
+
+<h2>🚨 Ortografía en peligro de extinción</h2>
+
+<p class="intro">
+Escribir rápido no significa escribir de cualquier manera.
+En un mensaje a un amigo puedes poner
+<strong>«k ase»</strong> si te empeñas…
+pero en un examen quizá no sea tu mejor estrategia.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>💬 Chat</h3>
+<p>— Profe, <strong>aber</strong> si mañana no hay examen.</p>
+<p>La profesora acaba de perder tres años de esperanza de vida.</p>
+</div>
+
+<div class="card">
+<h3>📝 Examen</h3>
+<p>— <strong>A ver</strong> si mañana no hay examen.</p>
+<p>Mucho mejor. La profesora vuelve a respirar.</p>
+</div>
+
+<div class="card">
+<h3>🧠 Idea importante</h3>
+<p>
+La ortografía permite que quien nos lee entienda
+exactamente lo que queremos decir.
+</p>
+</div>
+
+</div>
+
+<div class="menu">
+
+<a href="#bv">
+<div class="letra">B/V</div>
+<strong>La batalla eterna</strong>
+<p>¿Vaca o baca? Depende de lo que lleves encima del coche.</p>
+</a>
+
+<a href="#gj">
+<div class="letra">G/J</div>
+<strong>Gente, jirafas y garajes</strong>
+<p>Dos letras capaces de montar un buen lío.</p>
+</a>
+
+<a href="#lly">
+<div class="letra">LL/Y</div>
+<strong>¿Halla, haya o aya?</strong>
+<p>No, no son tres formas de escribir lo mismo.</p>
+</a>
+
+<a href="#h">
+<div class="letra">H</div>
+<strong>La letra fantasma</strong>
+<p>No suena. Pero está ahí observándote.</p>
+</a>
+
+</div>
+</section>
+
+
+<!-- B / V -->
+
+<section id="bv">
+
+<h2>🔵 B y V</h2>
+
+<p class="intro">
+Suenan prácticamente igual en español,
+pero escribirlas al azar no es todavía una regla ortográfica.
+</p>
+
+<div class="grid-2">
+
+<div class="card regla">
+<h3>Se escribe B</h3>
+<p>Después de <strong>m</strong>.</p>
+<div class="ejemplo">
+también · cambio · sombra · bombilla
+</div>
+</div>
+
+<div class="card regla">
+<h3>Terminaciones -aba</h3>
+<p>
+El pretérito imperfecto de los verbos de la primera conjugación
+se escribe con <strong>b</strong>.
+</p>
+<div class="ejemplo">
+cantaba · bailábamos · estudiabas
+</div>
+</div>
+
+<div class="card regla">
+<h3>Verbos acabados en -bir</h3>
+<p>
+Normalmente se escriben con <strong>b</strong>.
+</p>
+<div class="ejemplo">
+escribir · recibir · subir
+</div>
+<div class="truco">
+⚠️ Excepciones: <strong>vivir, servir y hervir.</strong>
+</div>
+</div>
+
+<div class="card regla">
+<h3>Se escribe V</h3>
+<p>
+Después de <strong>n</strong> aparecen muchas palabras con v.
+</p>
+<div class="ejemplo">
+enviar · invierno · inventar · envolver
+</div>
+</div>
+
+</div>
+
+<div class="actividad" id="act-bv">
+
+<h3>🎯 Desactiva la bomba B/V</h3>
+<p>Selecciona la letra correcta.</p>
+
+<div class="pregunta">
+1. La __aca está comiendo hierba.
+<select data-r="v">
+<option value="">—</option>
+<option value="b">B</option>
+<option value="v">V</option>
+</select>
+</div>
+
+<div class="pregunta">
+2. Ayer yo canta__a en la ducha.
+<select data-r="b">
+<option value="">—</option>
+<option value="b">B</option>
+<option value="v">V</option>
+</select>
+</div>
+
+<div class="pregunta">
+3. Voy a escri__ir un mensaje.
+<select data-r="b">
+<option value="">—</option>
+<option value="b">B</option>
+<option value="v">V</option>
+</select>
+</div>
+
+<div class="pregunta">
+4. En in__ierno hace frío.
+<select data-r="v">
+<option value="">—</option>
+<option value="b">B</option>
+<option value="v">V</option>
+</select>
+</div>
+
+<button onclick="corregir('act-bv')">Comprobar</button>
+<button class="secundario" onclick="reiniciar('act-bv')">Reiniciar</button>
+
+<div class="feedback"></div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<h3>🐄 Vaca / baca</h3>
+<p><strong>vaca</strong> → animal.</p>
+<p><strong>baca</strong> → estructura que se coloca sobre un vehículo.</p>
+
+<div class="ejemplo">
+😂 Si escribes «llevo una <strong>vaca</strong> en el coche»,
+esperamos sinceramente que quieras decir que transportas un animal.
+</div>
+</div>
+
+</section>
+
+
+<!-- G / J -->
+
+<section id="gj">
+
+<h2>🟠 G y J</h2>
+
+<p class="intro">
+La G y la J comparten algunos sonidos.
+Por eso necesitan reglas… y un poco de entrenamiento.
+</p>
+
+<div class="grid-2">
+
+<div class="card regla">
+<h3>GER / GIR</h3>
+<p>
+Muchos verbos terminados en <strong>-ger</strong> y
+<strong>-gir</strong> se escriben con g.
+</p>
+<div class="ejemplo">
+proteger · escoger · dirigir
+</div>
+<div class="truco">
+⚠️ Excepciones: <strong>tejer</strong> y <strong>crujir</strong>.
+</div>
+</div>
+
+<div class="card regla">
+<h3>-GIO / -GIA</h3>
+<p>Muchas palabras con estas terminaciones se escriben con g.</p>
+<div class="ejemplo">
+colegio · refugio · magia
+</div>
+</div>
+
+<div class="card regla">
+<h3>-JERÍA</h3>
+<p>
+Muchas palabras terminadas en <strong>-jería</strong> llevan j.
+</p>
+<div class="ejemplo">
+relojería · cerrajería · mensajería
+</div>
+</div>
+
+<div class="card regla">
+<h3>GUE / GUI / GÜE / GÜI</h3>
+
+<p>
+En <strong>gue/gui</strong> la u normalmente no suena.
+</p>
+
+<div class="ejemplo">
+guerra · guitarra
+</div>
+
+<p>
+Con diéresis, la <strong>ü</strong> sí suena.
+</p>
+
+<div class="ejemplo">
+pingüino · cigüeña · vergüenza
+</div>
+
+</div>
+
+</div>
+
+<div class="actividad" id="act-gj">
+
+<h3>🦒 ¿G o J?</h3>
+
+<div class="pregunta">
+1. El relo__ero arregló mi reloj.
+<select data-r="j">
+<option value="">—</option>
+<option value="g">G</option>
+<option value="j">J</option>
+</select>
+</div>
+
+<div class="pregunta">
+2. Tenemos que prote__er el planeta.
+<select data-r="g">
+<option value="">—</option>
+<option value="g">G</option>
+<option value="j">J</option>
+</select>
+</div>
+
+<div class="pregunta">
+3. La __irafa mide casi cinco metros.
+<select data-r="j">
+<option value="">—</option>
+<option value="g">G</option>
+<option value="j">J</option>
+</select>
+</div>
+
+<div class="pregunta">
+4. Me da ver__üenza cantar delante de todos.
+<select data-r="g">
+<option value="">—</option>
+<option value="g">G</option>
+<option value="j">J</option>
+</select>
+</div>
+
+<button onclick="corregir('act-gj')">Comprobar</button>
+<button class="secundario" onclick="reiniciar('act-gj')">Reiniciar</button>
+
+<div class="feedback"></div>
+</div>
+
+</section>
+
+
+<!-- LL / Y -->
+
+<section id="lly">
+
+<h2>🟣 LL e Y</h2>
+
+<div class="grid">
+
+<div class="card regla">
+<h3>Palabras terminadas en -illo / -illa</h3>
+<p>Se escriben con <strong>ll</strong>.</p>
+<div class="ejemplo">
+tornillo · bolsillo · silla · ventanilla
+</div>
+</div>
+
+<div class="card regla">
+<h3>La Y al final</h3>
+<p>
+Algunas palabras terminadas en sonido /i/
+se escriben con <strong>y</strong>.
+</p>
+<div class="ejemplo">
+hoy · rey · ley · muy
+</div>
+</div>
+
+<div class="card">
+<h3>🤯 Haya / halla</h3>
+
+<p><strong>haya</strong> → del verbo haber o un árbol.</p>
+<p><strong>halla</strong> → del verbo hallar, encontrar.</p>
+
+<div class="ejemplo">
+Espero que <strong>haya</strong> pizza.<br>
+El detective <strong>halla</strong> una pista.
+</div>
+</div>
+
+</div>
+
+<div class="actividad" id="act-lly">
+
+<h3>🔍 LL o Y</h3>
+
+<div class="pregunta">
+1. El detective ha__ó una pista.
+<select data-r="ll">
+<option value="">—</option>
+<option value="ll">LL</option>
+<option value="y">Y</option>
+</select>
+</div>
+
+<div class="pregunta">
+2. El re__ vive en un palacio.
+<select data-r="y">
+<option value="">—</option>
+<option value="ll">LL</option>
+<option value="y">Y</option>
+</select>
+</div>
+
+<div class="pregunta">
+3. Tengo un torn__o.
+<select data-r="ill">
+<option value="">—</option>
+<option value="ill">ILL</option>
+<option value="iy">IY</option>
+</select>
+</div>
+
+<button onclick="corregir('act-lly')">Comprobar</button>
+<button class="secundario" onclick="reiniciar('act-lly')">Reiniciar</button>
+
+<div class="feedback"></div>
+</div>
+
+</section>
+
+
+<!-- H -->
+
+<section id="h">
+
+<h2>👻 La H: la letra fantasma</h2>
+
+<p class="intro">
+No suena, pero puede cambiar completamente una palabra.
+</p>
+
+<div class="grid-2">
+
+<div class="card regla">
+<h3>HIE- / HUE-</h3>
+<p>
+Muchas palabras que comienzan por <strong>hie-</strong> y
+<strong>hue-</strong> se escriben con h.
+</p>
+<div class="ejemplo">
+hielo · hierba · huevo · huella
+</div>
+</div>
+
+<div class="card regla">
+<h3>Formas de haber</h3>
+
+<div class="ejemplo">
+he · has · ha · hemos · han
+</div>
+
+<div class="truco">
+<strong>He comido</strong> lleva H.<br>
+<strong>¡Eh, tú!</strong> es otra cosa.
+</div>
+</div>
+
+<div class="card">
+<h3>😈 A ver / haber</h3>
+
+<p><strong>a ver</strong> → mirar, comprobar.</p>
+<p><strong>haber</strong> → verbo.</p>
+
+<div class="ejemplo">
+<strong>A ver</strong> qué has hecho.<br>
+Debe de <strong>haber</strong> una explicación.
+</div>
+</div>
+
+<div class="card">
+<h3>😱 Hay / ahí / ay</h3>
+
+<p><strong>hay</strong> → existe.</p>
+<p><strong>ahí</strong> → lugar.</p>
+<p><strong>ay</strong> → dolor, sorpresa… drama.</p>
+
+<div class="ejemplo">
+<strong>Hay</strong> un examen.<br>
+Está <strong>ahí</strong> encima.<br>
+<strong>¡Ay!</strong> No he estudiado.
+</div>
+
+</div>
+
+</div>
+
+<div class="actividad" id="act-h">
+
+<h3>👻 Caza la H fantasma</h3>
+
+<div class="pregunta">
+1. __ay un examen mañana.
+<select data-r="hay">
+<option value="">Selecciona</option>
+<option value="hay">Hay</option>
+<option value="ay">Ay</option>
+<option value="ahi">Ahí</option>
+</select>
+</div>
+
+<div class="pregunta">
+2. ¡__! Me he dado con la mesa.
+<select data-r="ay">
+<option value="">Selecciona</option>
+<option value="hay">Hay</option>
+<option value="ay">Ay</option>
+<option value="ahi">Ahí</option>
+</select>
+</div>
+
+<div class="pregunta">
+3. El libro está __.
+<select data-r="ahi">
+<option value="">Selecciona</option>
+<option value="hay">Hay</option>
+<option value="ay">Ay</option>
+<option value="ahi">Ahí</option>
+</select>
+</div>
+
+<button onclick="corregir('act-h')">Comprobar</button>
+<button class="secundario" onclick="reiniciar('act-h')">Reiniciar</button>
+
+<div class="feedback"></div>
+</div>
+
+</section>
+
+
+<!-- RETO FINAL -->
+
+<section id="reto">
+
+<div class="reto" id="act-reto">
+
+<h2>🏆 Reto final</h2>
+
+<p>
+Has llegado hasta aquí. Ahora no hay B/V, G/J, LL/Y o H por separado.
+Aquí vienen todas juntas.
+</p>
+
+<div class="pregunta">
+1. Ayer __ailábamos en clase.
+<select data-r="b">
+<option value="">—</option>
+<option value="b">B</option>
+<option value="v">V</option>
+</select>
+</div>
+
+<div class="pregunta">
+2. El mensa__ero llamó a la puerta.
+<select data-r="j">
+<option value="">—</option>
+<option value="g">G</option>
+<option value="j">J</option>
+</select>
+</div>
+
+<div class="pregunta">
+3. Espero que __aya terminado.
+<select data-r="h">
+<option value="">—</option>
+<option value="h">H</option>
+<option value="sin">Sin H</option>
+</select>
+</div>
+
+<div class="pregunta">
+4. ¡__! Se me olvidó el cuaderno.
+<select data-r="ay">
+<option value="">—</option>
+<option value="hay">Hay</option>
+<option value="ay">Ay</option>
+<option value="ahi">Ahí</option>
+</select>
+</div>
+
+<div class="pregunta">
+5. El ping__ino vive en zonas frías.
+<select data-r="ü">
+<option value="">—</option>
+<option value="u">U</option>
+<option value="ü">Ü</option>
+</select>
+</div>
+
+<button onclick="retoFinal()">Terminar reto</button>
+<button class="secundario" onclick="reiniciar('act-reto')">
+Volver a empezar
+</button>
+
+<div class="feedback"></div>
+<div id="marcador"></div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<strong>Laboratorio de Ortografía</strong><br>
+Refuerzo de Lengua · 2.º ESO
+</footer>
+
+<script>
+
+function corregir(id){
+
+    const actividad = document.getElementById(id);
+    const respuestas = actividad.querySelectorAll("[data-r]");
+
+    let aciertos = 0;
+    let contestadas = 0;
+
+    respuestas.forEach(elemento => {
+
+        if(elemento.value !== ""){
+            contestadas++;
+        }
+
+        if(elemento.value === elemento.dataset.r){
+            aciertos++;
+            elemento.style.border = "2px solid #28764d";
+        }else{
+            elemento.style.border = "2px solid #c95d5d";
+        }
+
+    });
+
+    const feedback = actividad.querySelector(".feedback");
+
+    if(contestadas < respuestas.length){
+
+        feedback.className = "feedback mal";
+        feedback.textContent =
+        "👀 Te falta alguna respuesta. No huyas todavía.";
+
+        return;
+    }
+
+    if(aciertos === respuestas.length){
+
+        feedback.className = "feedback bien";
+        feedback.textContent =
+        "🎉 ¡Perfecto! Ni una falta ha sobrevivido.";
+
+    }else if(aciertos >= respuestas.length/2){
+
+        feedback.className = "feedback bien";
+        feedback.textContent =
+        "👏 " + aciertos + " de " + respuestas.length +
+        ". Vas bien. Revisa las que se han escapado.";
+
+    }else{
+
+        feedback.className = "feedback mal";
+        feedback.textContent =
+        "🧐 " + aciertos + " de " + respuestas.length +
+        ". Necesitamos otra ronda.";
+    }
+}
+
+
+function reiniciar(id){
+
+    const actividad = document.getElementById(id);
+
+    actividad.querySelectorAll("[data-r]").forEach(elemento => {
+        elemento.value = "";
+        elemento.style.border = "";
+    });
+
+    const feedback = actividad.querySelector(".feedback");
+
+    if(feedback){
+        feedback.textContent = "";
+        feedback.className = "feedback";
+    }
+
+    if(id === "act-reto"){
+        document.getElementById("marcador").innerHTML = "";
+    }
+}
+
+
+function retoFinal(){
+
+    const actividad = document.getElementById("act-reto");
+    const respuestas = actividad.querySelectorAll("[data-r]");
+
+    let aciertos = 0;
+    let contestadas = 0;
+
+    respuestas.forEach(elemento => {
+
+        if(elemento.value !== ""){
+            contestadas++;
+        }
+
+        if(elemento.value === elemento.dataset.r){
+            aciertos++;
+            elemento.style.border = "2px solid #65c18c";
+        }else{
+            elemento.style.border = "2px solid #ff7676";
+        }
+
+    });
+
+    const feedback = actividad.querySelector(".feedback");
+    const marcador = document.getElementById("marcador");
+
+    if(contestadas < respuestas.length){
+
+        feedback.textContent =
+        "⚠️ Contesta todas las preguntas antes de terminar.";
+
+        return;
+    }
+
+    const nota = Math.round((aciertos/respuestas.length)*10);
+
+    marcador.innerHTML =
+    '<div class="marcador">Puntuación: ' +
+    nota +
+    ' / 10</div>';
+
+    if(nota === 10){
+
+        feedback.textContent =
+        "🏆 Nivel leyenda. La ortografía puede dormir tranquila.";
+
+    }else if(nota >= 7){
+
+        feedback.textContent =
+        "😎 Muy bien. Las faltas empiezan a tenerte miedo.";
+
+    }else if(nota >= 5){
+
+        feedback.textContent =
+        "👍 Misión cumplida… por poco. Repasa las reglas.";
+
+    }else{
+
+        feedback.textContent =
+        "🔁 Necesitamos otra misión. Repasa y vuelve a intentarlo.";
+    }
+}
+
+</script>
+
+</body>
+</html>
