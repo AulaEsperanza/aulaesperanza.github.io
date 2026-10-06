@@ -1,14 +1,239 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Refuerzo 2.º ESO | Aula Esperanza</title><style>
-:root{--cream:#f6f3ed;--ink:#171b18;--olive:#4d5b48;--gold:#b48b37;--terra:#9d6255;--line:#d9d3c8}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-header{padding:28px 5vw;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.brand{font-weight:900;letter-spacing:.16em;font-size:1.35rem}.brand small{display:block;font-size:.58rem;letter-spacing:.35em;font-weight:500;margin-top:5px}
-main{max-width:1250px;margin:auto;padding:64px 5vw 80px}.eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;color:var(--olive)}
-h1{font-size:clamp(2.8rem,7vw,6.2rem);line-height:.95;margin:16px 0 24px;max-width:950px}.lead{font-size:1.15rem;max-width:720px;line-height:1.7;color:#4b514c}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}.card{min-height:310px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;color:white;text-decoration:none;transition:.2s}
-.card:hover{transform:translateY(-5px)}.olive{background:var(--olive)}.gold{background:var(--gold)}.terra{background:var(--terra)}
-.num{letter-spacing:.2em;opacity:.8}.card h2{font-family:Georgia,serif;font-size:2rem;margin:16px 0 10px}.card p{line-height:1.5}.enter{font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-.back{display:inline-block;margin-bottom:28px;color:var(--olive);font-weight:800;text-decoration:none}.resource{display:block;background:white;border:1px solid var(--line);padding:24px;margin:14px 0;text-decoration:none;color:var(--ink)}
-.resource:hover{border-color:var(--olive)}.resource strong{font-size:1.2rem}footer{background:#3f4b3d;color:white;padding:28px 5vw;letter-spacing:.16em;font-size:.78rem}
-@media(max-width:800px){.cards{grid-template-columns:1fr}h1{font-size:3.2rem}}
-</style></head><body><header><div class="brand">AULA ESPERANZA<small>REFUERZO 2.º ESO</small></div></header><main><a class="back" href="../">← Volver al inicio</a><div class="eyebrow">Materiales de apoyo</div><h1>Refuerzo 2.º ESO</h1><p class="lead">Aquí iremos incorporando las actividades y recursos de este grupo.</p><div class="resource"><strong>Próximamente</strong><br>La sección ya está preparada para recibir nuevos materiales.</div></main><footer>AULA ESPERANZA · REFUERZO 2.º ESO</footer></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Refuerzo 2.º ESO | Aula Esperanza</title>
+
+<style>
+:root{
+    --cream:#f6f3ed;
+    --ink:#171b18;
+    --olive:#4d5b48;
+    --gold:#b48b37;
+    --terra:#9d6255;
+    --line:#d9d3c8;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+    padding:28px 5vw;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    font-weight:900;
+    letter-spacing:.16em;
+    font-size:1.35rem;
+}
+
+.brand small{
+    display:block;
+    font-size:.58rem;
+    letter-spacing:.35em;
+    font-weight:500;
+    margin-top:5px;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:64px 5vw 80px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:28px;
+    color:var(--olive);
+    font-weight:800;
+    text-decoration:none;
+}
+
+.eyebrow{
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    color:var(--olive);
+}
+
+h1{
+    font-size:clamp(2.8rem,7vw,6.2rem);
+    line-height:.95;
+    margin:16px 0 24px;
+    max-width:950px;
+}
+
+.lead{
+    font-size:1.15rem;
+    max-width:720px;
+    line-height:1.7;
+    color:#4b514c;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+    margin-top:50px;
+}
+
+.card{
+    min-height:290px;
+    padding:34px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:white;
+    text-decoration:none;
+    border-radius:4px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.olive{
+    background:var(--olive);
+}
+
+.gold{
+    background:var(--gold);
+}
+
+.terra{
+    background:var(--terra);
+}
+
+.num{
+    letter-spacing:.2em;
+    opacity:.8;
+}
+
+.card h2{
+    font-family:Georgia,serif;
+    font-size:2rem;
+    margin:16px 0 10px;
+}
+
+.card p{
+    line-height:1.6;
+    font-size:1.05rem;
+}
+
+.enter{
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+}
+
+.proximamente{
+    opacity:.78;
+    cursor:default;
+}
+
+footer{
+    background:#3f4b3d;
+    color:white;
+    padding:28px 5vw;
+    letter-spacing:.16em;
+    font-size:.78rem;
+}
+
+@media(max-width:800px){
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:3.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        AULA ESPERANZA
+        <small>REFUERZO 2.º ESO</small>
+    </div>
+</header>
+
+<main>
+
+<a class="back" href="../">← Volver al inicio</a>
+
+<div class="eyebrow">Materiales de apoyo</div>
+
+<h1>Refuerzo 2.º ESO</h1>
+
+<p class="lead">
+Aquí encontrarás las actividades y recursos que iremos trabajando
+en clase. Entra en cada bloque para repasar, practicar y comprobar
+lo que has aprendido.
+</p>
+
+<div class="cards">
+
+    <a class="card olive" href="ortografia.html">
+        <div>
+            <span class="num">01</span>
+            <h2>🕵️ Laboratorio de Ortografía</h2>
+            <p>
+                B/V · G/J · LL/Y · H.<br>
+                Reglas, ejemplos, actividades interactivas
+                y un reto final.
+            </p>
+        </div>
+        <span class="enter">Entrar →</span>
+    </a>
+
+    <div class="card gold proximamente">
+        <div>
+            <span class="num">02</span>
+            <h2>✍️ Acentuación</h2>
+            <p>
+                Reglas generales, monosílabos, diptongos,
+                triptongos e hiatos.
+            </p>
+        </div>
+        <span class="enter">Próximamente</span>
+    </div>
+
+    <div class="card terra proximamente">
+        <div>
+            <span class="num">03</span>
+            <h2>🧠 Léxico y semántica</h2>
+            <p>
+                Palabras, significados y relaciones léxicas.
+            </p>
+        </div>
+        <span class="enter">Próximamente</span>
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+AULA ESPERANZA · REFUERZO DE LENGUA · 2.º ESO
+</footer>
+
+</body>
+</html>
