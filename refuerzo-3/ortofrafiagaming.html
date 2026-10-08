@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>La liga de las palabras · 3.º ESO</title>
+<style>
+:root{--bg:#f5f1e8;--ink:#183c37;--accent:#df592f;--green:#176653;--line:#d8dfd4}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 system-ui,sans-serif}header{background:var(--ink);color:#fff;padding:24px 5%;display:flex;justify-content:space-between;gap:20px;align-items:center}header small{color:#d7e8a0;letter-spacing:2px;text-transform:uppercase}h1{font-size:clamp(26px,4vw,44px);margin:0;letter-spacing:-1px}h2{font-size:30px;margin:0 0 18px}h3{margin:0 0 10px}main{max-width:1240px;margin:auto;padding:28px 24px}.intro{font-size:22px;max-width:850px}.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}.card{background:#fffef9;border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:24px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-weight:650;margin:12px 0 6px}input,select,textarea{font:inherit;color:var(--ink);background:white;border:1px solid #94aaa0;border-radius:10px;padding:10px;width:100%}textarea{min-height:100px}button{font:inherit;font-weight:650;background:var(--green);color:white;border:0;border-radius:12px;padding:12px 18px;cursor:pointer}button:disabled{opacity:.5;cursor:default}button:hover:not(:disabled){filter:brightness(.93)}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.secondary{background:#e7edde;color:var(--ink)}.orange{background:var(--accent)}.tiny{font-size:14px;padding:8px 12px}.muted{font-size:15px;color:#596c64}.checks,.controls,.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.checks label{background:#e7eddf;border-radius:90px;padding:8px 12px;margin:0;font-size:16px}.checks input{width:auto;margin-right:5px}.badge{font-size:14px;font-weight:750;background:#e7eddf;border-radius:90px;padding:6px 12px;display:inline-block}.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:0 0 22px}.team{background:white;border:2px solid var(--line);border-radius:14px;padding:14px}.team.active{border-color:var(--accent);box-shadow:0 0 0 3px #df592f20}.score{font-size:30px;font-weight:850;display:block}.gamehead{display:flex;justify-content:space-between;align-items:center;gap:20px}.clock{width:88px;height:88px;border-radius:50%;background:var(--ink);color:white;display:grid;place-items:center;flex-shrink:0;font-size:38px;font-weight:800;font-variant-numeric:tabular-nums}.clock.urgent{background:var(--accent)}.progress{height:8px;background:#dde2d5;border-radius:8px;overflow:hidden;margin:20px 0}.progress div{height:100%;background:var(--accent)}.question{font-size:clamp(26px,3vw,39px);line-height:1.35;white-space:pre-line;margin:25px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{background:#edf0e6;color:var(--ink);text-align:left;font-size:23px;border:2px solid transparent;min-height:76px;display:flex;gap:14px;align-items:center}.letter{padding:4px 10px;background:white;border-radius:8px;font-size:16px}.answer.wrong{border-color:#b94125;background:#f7dfd3}.answer.correct{border-color:var(--green);background:#dcf0de}.feedback{background:#e9f0e0;border-radius:14px;padding:20px;margin:20px 0}.feedback p{font-size:20px}.controls{margin-top:20px}.status{min-height:30px;font-weight:700;color:var(--accent)}details{border-top:1px solid var(--line);padding:16px 0}summary{font-weight:750;cursor:pointer}table{border-collapse:collapse;width:100%}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}.reviewitem{padding:16px 0;border-bottom:1px solid var(--line)}a{color:var(--green)}[hidden]{display:none!important}.footer{font-size:14px;color:#596c64;margin-top:25px}@media(max-width:760px){main{padding:18px 12px}.grid,.fields,.answers{grid-template-columns:1fr}.card{padding:20px}.question{font-size:27px}.answer{font-size:21px}header{padding:18px}.clock{width:72px;height:72px;font-size:30px}}@media print{header,button,#setup,#game,#results,.footer{display:none!important}#study{display:block!important}details>*{display:block!important}body{background:white;font-size:12pt}.card{border:0}}
+
+
+/* Academia anime · cel shading, paneles manga y controles táctiles */
+:root{--bg:#11112c;--ink:#202244;--accent:#8354ee;--green:#5835ac;--line:#dad8ee;--yellow:#f7e779;--mint:#73edce}
+body{background-color:var(--bg);background-image:radial-gradient(circle at 12% 12%,#7843c831,transparent 35%),radial-gradient(circle at 95% 40%,#24b8a220,transparent 32%),radial-gradient(#b2a2ee30 1px,transparent 1px);background-size:auto,auto,26px 26px}
+header{background:#111129e8;border-bottom:1px solid #9a85e340;padding:18px 5%;position:relative;z-index:1}header small{color:var(--mint);font-size:11px;letter-spacing:2px}header h1{font-size:25px;letter-spacing:-.7px}header .secondary{background:#242345;border:1px solid #b9a6ef65;color:#f4edff;box-shadow:none}
+main{max-width:1300px;padding-top:28px}
+.hero{position:relative;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;overflow:hidden;background:linear-gradient(125deg,#37306d,#282653 65%,#214855);border:1px solid #ae96ff80;border-radius:28px;color:#fff;min-height:330px;margin-bottom:30px;padding:35px 40px;isolation:isolate;box-shadow:0 14px 50px #02021635}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 12deg at 88% 65%,transparent 0deg 9deg,#aab1ff0c 9deg 11deg);z-index:-1}
+.hero-copy{position:relative;z-index:2;max-width:660px}.hero-tag{display:inline-flex;gap:10px;align-items:center;color:var(--mint);font-size:12px;font-weight:850;letter-spacing:2px;text-transform:uppercase}.hero-tag:before{content:"";width:8px;height:8px;background:var(--mint);border-radius:50%;box-shadow:0 0 14px var(--mint)}
+.hero h2{font-size:clamp(35px,4.5vw,64px);font-weight:950;line-height:1.06;letter-spacing:-2px;margin:20px 0 16px}.hero h2 em{color:var(--yellow);font-style:normal}.hero p{font-size:18px;color:#e1dcf7;max-width:520px}.hero-metrics{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}.hero-metrics span{padding:7px 13px;background:#100f2d75;border:1px solid #aea1eb44;border-radius:8px;font-size:13px;font-weight:750}.anime-art{width:100%;max-width:470px;height:310px;overflow:visible;filter:drop-shadow(0 10px 20px #08071b55);justify-self:center}.hero-stamp{position:absolute;right:24px;top:20px;color:var(--ink);background:var(--mint);padding:5px 12px;border:2px solid #14142c;font-weight:900;font-size:12px;transform:rotate(6deg);box-shadow:3px 3px 0 #14142c}
+.intro{color:#ddd7ef;font-size:19px;margin:0 0 25px}.intro strong{color:var(--yellow)}
+.card{border:2px solid #24213f;border-radius:19px;background:#fbfaff;box-shadow:7px 7px 0 #07071c55;padding:26px;position:relative;overflow:hidden}
+h2{letter-spacing:-.8px;font-weight:900}h3{font-weight:850}.grid{grid-template-columns:1.5fr 1fr;gap:26px}.fields{gap:16px}
+label{font-size:15px;color:#3d3a5d;font-weight:800;letter-spacing:.1px}
+input,select,textarea{background:white;border:2px solid #d4d0e5;border-radius:10px;min-height:48px;box-shadow:inset 0 2px 0 #21174204;font-size:16px}textarea{line-height:1.6}
+button{background:var(--accent);border:2px solid #282244;border-radius:10px;box-shadow:3px 3px 0 #282244;color:white;min-height:48px;font-size:16px;transition:transform .14s,box-shadow .14s,background .14s}
+button:hover:not(:disabled){filter:none;transform:translate(-1px,-2px);box-shadow:4px 5px 0 #282244;background:#7145d6}button:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 #282244}button:disabled{opacity:.5;box-shadow:none}.secondary{background:#ebe6fa;color:#362858}.secondary:hover:not(:disabled){background:#ddd1f9}.orange{background:#ed7d66;color:#2e203c}.orange:hover:not(:disabled){background:#f0937e}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #00aa8c;outline-offset:4px}
+#start{width:100%;background:var(--yellow);color:#24213f;font-size:19px;font-weight:900;min-height:58px}#start:hover{background:#fff1a6}
+.checks{gap:9px}.checks label{position:relative;padding:9px 13px;border:2px solid #ddd4ee;border-radius:10px;background:white;font-size:14px;cursor:pointer;display:flex;align-items:center}.checks label:has(input:checked){background:#e9ddff;border-color:#9c79d7;color:#442378}.checks input{width:17px;height:17px;min-height:0;accent-color:#7643c5;box-shadow:none}
+.badge{background:#efe8ff;color:#5c3692;border:1px solid #d7c7ef;border-radius:6px;padding:6px 10px;font-size:12px;letter-spacing:.3px;font-weight:850}
+#setup aside .card:first-child{background:#efeaff}#setup aside .card:last-child{background:#fcf2ce}#setup aside p{font-size:16px}.muted{color:#655f7a;font-size:14px}.status{color:#91412f;font-size:17px}
+.teams{gap:12px}.team{border:2px solid #363151;background:#24243e;color:white;box-shadow:3px 3px 0 #08081a;border-radius:12px;padding:17px;position:relative;overflow:hidden;min-width:0;overflow-wrap:anywhere}.team:before{content:"";display:block;width:30px;height:5px;background:var(--team-color,#b394ff);border-radius:10px;margin-bottom:9px}
+.team:nth-child(6n+1){--team-color:#b394ff}.team:nth-child(6n+2){--team-color:#7ce8cd}.team:nth-child(6n+3){--team-color:#f2d777}.team:nth-child(6n+4){--team-color:#ff9aba}.team:nth-child(6n+5){--team-color:#87c7ff}.team:nth-child(6n){--team-color:#ffae7f}
+.team.active{border-color:var(--team-color);box-shadow:0 0 0 2px #ffffff0c,0 0 25px #aa76fe22}.team.active:after{content:"TU TURNO";position:absolute;right:8px;top:8px;color:var(--team-color);font-size:9px;font-weight:800}.team strong{display:block;padding-top:5px;font-size:16px}.team .score{font-size:29px;color:var(--team-color);letter-spacing:-1px}.team .muted{color:#c1bad6;font-size:11px;display:block}
+#game .card{border-top:8px solid var(--accent);background:#fffdf9}.gamehead{align-items:flex-start}.gamehead p{font-size:18px;font-weight:850}.clock{background:var(--yellow);color:#29213e;border:3px solid #29213e;border-radius:16px;box-shadow:4px 4px 0 #29213e;transform:rotate(3deg);font-size:35px}.clock.urgent{background:#ff947a;color:#29213e;animation:urgent 1s ease-in-out infinite}
+.progress{height:11px;background:#ede7f6;border:1px solid #d9cdee}.progress div{background:linear-gradient(90deg,#9862eb,#6cd7c2)}
+.question{font-size:clamp(25px,3vw,40px);font-weight:850;letter-spacing:-.8px;margin:20px 0 24px}.answers{gap:16px}.answer{background:#f0ebfa;font-size:22px;border:2px solid #b5a5d0;box-shadow:3px 3px 0 #d8cfe5;border-radius:12px;min-height:84px;font-weight:750;color:#302444;overflow-wrap:anywhere}.answer:hover:not(:disabled){background:#e2d5f6;box-shadow:4px 5px 0 #b5a5d0}.answer:disabled{opacity:1;color:#54476a;box-shadow:3px 3px 0 #d8cfe5}
+.letter{background:white;border:1px solid #c8bada;color:#694593;min-width:34px;text-align:center;font-size:15px;border-radius:6px;flex-shrink:0}.answer.correct,.answer.correct:disabled{background:#d4f6e8;border-color:#258363;color:#164737;box-shadow:3px 3px 0 #258363}.answer.wrong,.answer.wrong:disabled{background:#ffe3dd;border-color:#c56349;color:#713f31;box-shadow:3px 3px 0 #c56349}
+.feedback{background:#e1f7ed;border:2px solid #70b19b;border-radius:14px}.feedback strong{font-size:21px;color:#225c47}.feedback p{font-size:18px}.controls{gap:12px}
+#gamestudy{color:#eee5ff;background:#29243f;border-color:#6b5b92;box-shadow:3px 3px 0 #08081b}
+details{border-color:#dfd6ec}summary{color:#563583;min-height:44px;padding:8px 0}details p{font-size:16px}table th{color:#6e428d;background:#f1e9fb}table td{font-weight:700}.reviewitem .badge{margin-bottom:4px}.footer{color:#bcb3d5;font-size:13px}
+#results .card:first-child{border-top:8px solid var(--yellow)}#resulttitle{font-size:clamp(27px,4vw,42px)}#study .card{border-top:8px solid var(--mint)}
+@keyframes urgent{50%{box-shadow:4px 4px 0 #29213e,0 0 0 5px #ef947433}}
+@media(min-width:1550px){main{max-width:1440px}body{font-size:20px}.answer{font-size:25px}.hero h2{font-size:68px}}
+@media(max-width:950px){.hero{padding:30px;grid-template-columns:1.15fr .85fr}.anime-art{height:270px}.hero h2{font-size:45px}.hero p{font-size:17px}.grid{grid-template-columns:1.2fr 1fr}.card{padding:22px}}
+@media(max-width:760px){main{padding:18px 14px}header{padding:16px 18px}header h1{font-size:20px}header small{font-size:9px;letter-spacing:1px}header button{max-width:118px;font-size:12px;padding:7px;min-height:42px}.hero{grid-template-columns:1fr;padding:28px 24px 0;gap:5px;min-height:0;border-radius:19px;margin-bottom:22px}.hero h2{font-size:43px;max-width:400px;letter-spacing:-1.5px;margin-top:18px}.hero p{font-size:16px}.hero-tag{font-size:10px}.hero-metrics{gap:7px;margin-top:16px}.hero-metrics span{font-size:11px;padding:6px 9px}.anime-art{height:220px;max-width:340px;justify-self:end;margin-top:0;margin-bottom:-7px}.hero-stamp{top:auto;bottom:175px;right:18px;font-size:10px}.intro{font-size:17px}.grid,.fields{grid-template-columns:1fr}.card{padding:21px;border-radius:15px;box-shadow:4px 4px 0 #07071c55}.answers{grid-template-columns:1fr;gap:12px}.question{font-size:26px;letter-spacing:-.4px}.answer{font-size:20px;min-height:66px}.teams{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.team{padding:12px}.team .score{font-size:24px}.team strong{font-size:14px}.clock{width:66px;height:66px;font-size:28px;box-shadow:3px 3px 0 #29213e}.gamehead p{font-size:15px}.badge{font-size:10px;padding:5px 7px}.controls button{flex:1 1 135px}h2{font-size:26px}.feedback p{font-size:16px}.checks label{flex:1 0 75px;justify-content:center}.fields{gap:5px}.hero-copy{min-width:0}}
+@media(max-width:360px){.hero h2{font-size:36px}.hero{padding:24px 18px 0}.card{padding:16px}.question{font-size:23px}.answer{font-size:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{body{color:#111;background:white;background-image:none}.hero{display:none!important}.card{box-shadow:none;background:white;border:0}#study details>*{display:block!important}summary{color:#111}.muted{color:#333}}
+
+</style></head><body>
+<header><div><small>Lengua y Literatura · 3.º ESO</small><h1>La liga de las palabras</h1></div><button id="fullscreen" class="secondary tiny">Pantalla completa</button></header>
+<main>
+<section id="animehero" class="hero" aria-label="Presentación de la academia">
+<div class="hero-copy"><span class="hero-tag">Academia de ortografía · Nivel 3.º ESO</span><h2>Tu palabra.<br>Tu equipo.<br><em>Tu desafío.</em></h2><p>Entrena tu mirada, domina las reglas y demuestra que puedes explicar cada respuesta.</p><div class="hero-metrics"><span>166 desafíos</span><span>5 territorios</span><span>3 dificultades</span></div></div>
+<span class="hero-stamp">¡MISIÓN ACEPTADA!</span>
+<svg class="anime-art" viewBox="0 0 500 370" role="img" aria-label="Dos estudiantes de estilo anime con un cuaderno y un lápiz, preparados para el concurso">
+<defs><linearGradient id="halo" x2="1" y2="1"><stop stop-color="#a489ff"/><stop offset="1" stop-color="#62e2c6"/></linearGradient><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#fff" opacity=".18"/></pattern></defs>
+<path d="M75 63L390 35 474 277 146 350 38 203Z" fill="url(#halo)" opacity=".22" stroke="#b59ef5" stroke-width="2"/>
+<circle cx="277" cy="175" r="142" fill="url(#dots)"/>
+<g fill="none" stroke="#ede4ff" stroke-width="3" opacity=".55"><path d="M33 120l44 16M50 88l29 21M436 112l34-19M449 146l39-9M75 277l-30 20"/></g>
+<g fill="#f8e77d" stroke="#15152e" stroke-width="2"><path d="M406 49l6 16 17 6-17 6-6 17-6-17-17-6 17-6z"/><path d="M54 222l5 11 11 5-11 5-5 11-5-11-11-5 11-5z"/></g>
+<!-- Estudiante con chaqueta violeta -->
+<path d="M109 192Q74 145 93 91Q109 45 160 46Q215 43 232 98L222 224Z" fill="#1c1c38" stroke="#111226" stroke-width="4"/>
+<path d="M128 196Q95 205 88 240L70 355H239L230 245Q214 201 185 194Z" fill="#8651d3" stroke="#15152e" stroke-width="4"/>
+<path d="M110 238L105 355H87L97 236Z" fill="#593391"/><path d="M170 218L194 355H131L145 217Z" fill="#f5f3ff" stroke="#1b1832" stroke-width="3"/>
+<path d="M126 197l31 27-24 28-20-31M188 196l-31 28 29 29 18-32" fill="#b389ee" stroke="#1b1832" stroke-width="3"/>
+<path d="M150 177v31l10 14 15-13v-33" fill="#f4b99f" stroke="#1b1832" stroke-width="3"/>
+<ellipse cx="160" cy="127" rx="53" ry="63" fill="#ffd4bb" stroke="#15152e" stroke-width="3"/>
+<path d="M110 120Q107 76 146 64Q199 49 213 115L194 99 194 122 167 80 154 105 149 82 116 131Z" fill="#28213e" stroke="#15152e" stroke-width="3"/>
+<path d="M195 105l13 67-19 31 2-57" fill="#29213e"/>
+<path d="M119 126q13-9 25 0M169 125q14-10 25 0" fill="none" stroke="#2a203a" stroke-width="4"/>
+<path d="M122 132q11-7 20 0v11q-11 12-20 0zM172 132q11-7 19 0v11q-10 12-19 0z" fill="#fff" stroke="#241c37" stroke-width="2"/>
+<ellipse cx="134" cy="138" rx="6" ry="10" fill="#8560d5"/><ellipse cx="182" cy="138" rx="6" ry="10" fill="#8560d5"/><circle cx="135" cy="135" r="3" fill="white"/><circle cx="183" cy="135" r="3" fill="white"/>
+<path d="M156 144l-3 7 7 1M146 169q13 10 25-2" fill="none" stroke="#995c57" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M118 154l16 3M183 156l14-3" stroke="#e99896" stroke-width="5" opacity=".65"/>
+<path d="M125 269l70 23 2 39-76-29-23-35" fill="#8f5bdd" stroke="#17172e" stroke-width="3"/>
+<!-- Cuaderno -->
+<g transform="rotate(12 184 287)"><rect x="154" y="237" width="83" height="103" rx="6" fill="#f9e17e" stroke="#17172e" stroke-width="4"/><path d="M166 238v102" stroke="#bd964b" stroke-width="3"/><path d="M180 266h42M180 282h42M180 298h27" stroke="#5c436e" stroke-width="3"/><rect x="175" y="313" width="45" height="13" rx="3" fill="#fff6ca"/></g>
+<path d="M155 299q-9-16-18-9l-1 16q3 13 23 13l18-4q8-4 1-9z" fill="#ffd4bb" stroke="#17172e" stroke-width="3"/>
+<!-- Estudiante con chaqueta menta -->
+<path d="M300 193Q267 204 258 241L244 355H410L402 244Q390 209 357 194Z" fill="#75d9c4" stroke="#15152e" stroke-width="4"/>
+<path d="M382 233l17 122h-22l-8-119" fill="#3b9a91"/>
+<path d="M310 208l13 16 14-15 17 146h-62z" fill="#f5f3ff" stroke="#1b1832" stroke-width="3"/>
+<path d="M302 194l22 29-27 27-16-34M349 194l-25 29 29 24 16-29" fill="#b4f0df" stroke="#1b1832" stroke-width="3"/>
+<path d="M315 174v31l10 17 16-17v-29" fill="#e7a47d" stroke="#1b1832" stroke-width="3"/>
+<ellipse cx="327" cy="125" rx="51" ry="64" fill="#f1bd91" stroke="#15152e" stroke-width="3"/>
+<path d="M275 126l-9-32 18 2-4-24 29 4 7-30 22 23 25-14 2 23 29 1-15 26 8 25-23-17-3 15-22-33-15 17-7-13-27 39Z" fill="#394861" stroke="#15152e" stroke-width="4"/>
+<path d="M294 126q12-8 23-1M340 125q13-8 23 1" stroke="#24304b" stroke-width="4" fill="none"/>
+<path d="M295 133q11-7 19 0v11q-10 12-19 0zM343 133q11-7 19 0v11q-10 12-19 0z" fill="#fff" stroke="#24304b" stroke-width="2"/>
+<ellipse cx="305" cy="139" rx="6" ry="10" fill="#1b928b"/><ellipse cx="353" cy="139" rx="6" ry="10" fill="#1b928b"/><circle cx="306" cy="136" r="3" fill="#fff"/><circle cx="354" cy="136" r="3" fill="#fff"/>
+<path d="M325 146l-3 7 7 1M313 168q13 14 27-1" fill="none" stroke="#985c49" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M293 154l17 3M351 157l16-3" stroke="#d98a78" stroke-width="5" opacity=".5"/>
+<path d="M366 243l36-52 23 12-33 73q-7 14-23 6l-24-13" fill="#75d9c4" stroke="#17172e" stroke-width="4"/>
+<!-- Lápiz protagonista -->
+<g transform="rotate(23 427 170)"><path d="M420 101h17v129l-8 20-9-20z" fill="#f9e17e" stroke="#17172e" stroke-width="3"/><path d="M420 218h17l-8 32z" fill="#eac3a2" stroke="#17172e" stroke-width="2"/><path d="M426 243l3 7 3-7" fill="#17172e"/><path d="M428 110v104" stroke="#b08a47" stroke-width="2"/><rect x="419" y="91" width="19" height="18" rx="4" fill="#ef8eae" stroke="#17172e" stroke-width="3"/></g>
+<path d="M401 197q-7-13 2-21l6-2 8 11 4-3q10 0 10 11l-9 16-13-3z" fill="#f1bd91" stroke="#17172e" stroke-width="3"/>
+<g transform="rotate(-9 267 52)"><rect x="219" y="20" width="95" height="45" rx="9" fill="#fffaf4" stroke="#17172e" stroke-width="3"/><path d="M240 63l10 14 4-14" fill="#fffaf4" stroke="#17172e" stroke-width="3"/><text x="266" y="49" text-anchor="middle" fill="#573788" font-family="system-ui,sans-serif" font-size="18" font-weight="900">¡A POR +3!</text></g>
+</svg></section><section id="setup"><p class="intro">Elegir es el primer paso. <strong>Explicar por qué</strong> es lo que marca la diferencia.</p><div class="grid"><div class="card"><h2>Prepara el desafío</h2><div class="fields"><div><label for="mode">Cómo jugamos</label><select id="mode"><option value="teams">Concurso por equipos</option><option value="practice">Práctica individual</option></select></div><div><label for="level">Dificultad</label><select id="level"><option value="mixed">Mixta · progresiva</option><option value="1">Entrenamiento</option><option value="2">Reto</option><option value="3">Experto</option></select></div><div><label for="rounds">Número de preguntas</label><select id="rounds"><option>12</option><option selected>20</option><option>30</option><option>40</option></select></div><div><label for="seconds">Tiempo por turno</label><select id="seconds"><option value="0">Sin reloj</option><option value="20">20 segundos</option><option selected value="30">30 segundos</option><option value="45">45 segundos</option><option value="60">60 segundos</option></select></div></div><label>Contenidos</label><div id="categories" class="checks"></div><label for="teamnames">De 2 a 6 equipos · uno por línea</label><textarea id="teamnames">Los filólogos
+Los detectives
+Los correctores
+Los lexicógrafos</textarea><label for="students">Alumnado · opcional · un nombre por línea</label><textarea id="students" placeholder="Añade nombres para repartirlos de forma equilibrada y alternar portavoces."></textarea><p class="muted">Los nombres se usan solo en esta página; no se envían a ningún servidor. En cada partida se reparten al azar.</p><p id="setupstatus" class="status" role="status"></p><button id="start">Comenzar concurso →</button><p id="bankcount" class="muted"></p></div><aside><div class="card"><span class="badge">Más razonamiento, menos azar</span><h3 style="margin-top:20px">Reglas del concurso</h3><p>1. El equipo delibera y responde su portavoz. Los portavoces cambian en cada turno.</p><p>2. Acierto: <strong>+2 puntos</strong>. Explicación correcta: <strong>+1 extra</strong>, concedido por la profesora.</p><p>3. Fallo o tiempo agotado: un rebote al siguiente equipo por <strong>+1 punto</strong>. Sin penalizaciones.</p><p>4. Al final, repasamos los errores con su explicación.</p><p class="muted">El tiempo empieza al pulsar «Activar turno». Puede pausarse. Todos pueden escribir su respuesta en papel antes de que conteste el portavoz.</p></div><div class="card"><h3>Propuesta para una clase</h3><p>8 min de repaso · 25 min de concurso · 10 min de corrección · 5 min para escribir dos reglas con ejemplos.</p><button id="showstudy" class="secondary">Abrir el repaso</button></div></aside></div></section>
+<section id="game" hidden><div id="scoreboard" class="teams"></div><div class="card"><div class="gamehead"><div><span id="categorybadge" class="badge"></span> <span id="levelbadge" class="badge"></span><p id="turnlabel"></p></div><div id="clock" class="clock" aria-label="Segundos restantes"></div></div><div class="progress"><div id="progressbar"></div></div><p id="roundlabel" class="muted"></p><h2 id="question" class="question"></h2><p id="gamestatus" class="status" role="status" aria-live="polite"></p><div id="answers" class="answers"></div><div id="feedback" class="feedback" hidden aria-live="polite"></div><div class="controls"><button id="activate">Activar turno</button><button id="pause" class="secondary">Pausar</button><button id="rebound" class="orange" hidden>Dar rebote</button><button id="solution" class="secondary" hidden>Mostrar solución</button><button id="bonus" hidden>+1 por explicar</button><button id="next" hidden>Siguiente pregunta →</button><button id="finish" class="secondary">Terminar partida</button></div></div><button id="gamestudy" class="secondary tiny">Consultar reglas (pausa el reloj)</button></section>
+<section id="results" hidden><div class="card"><span class="badge">Fin del desafío</span><h2 id="resulttitle" style="margin-top:18px"></h2><div id="rank"></div><p id="stats"></p><div class="controls"><button id="retry">Repetir los errores</button><button id="newgame" class="secondary">Nueva partida</button></div></div><div class="card"><h3>Aprender del error</h3><div id="review"></div></div></section>
+<section id="study" hidden><div class="card"><div class="row"><h2 style="margin:0">El taller de las reglas</h2><button id="closestudy" class="secondary tiny">Cerrar repaso</button><button id="print" class="secondary tiny">Imprimir repaso</button></div><p class="muted">Acentuación, diptongos, triptongos, hiatos y puntuación quedan para una segunda entrega. Aquí trabajamos letras y diccionarios.</p><div id="rules"></div><details><summary>Diccionario: leer un artículo</summary><p><b>Entrada:</b> palabra o expresión que encabeza el artículo. <b>Etimología:</b> origen de la palabra. <b>Información gramatical:</b> categoría, género y otras características. <b>Acepciones:</b> distintos significados, normalmente numerados. <b>Ejemplos:</b> muestran usos en contexto. <b>Locuciones:</b> grupos estables de palabras que funcionan como una unidad.</p><p>Un diccionario <b>etimológico</b> estudia el origen y la historia de las palabras; uno <b>de dudas</b> resuelve problemas de uso; uno <b>combinatorio</b> muestra con qué palabras se combina habitualmente una voz: «cometer un error».</p><p>El número de acepciones depende del diccionario y de su edición. No memorizamos que «cristal» tenga siempre ocho.</p></details><details><summary>Homófonos y parónimos</summary><p><b>Homófonos:</b> igual pronunciación, distinta escritura y significado: vaca/baca. <b>Parónimos:</b> palabras semejantes, pero no idénticas: actitud/aptitud.</p><p>Calló/cayó son homófonas para los hablantes yeístas. Esa pronunciación es válida. «Ahí» no es homófono de «hay/ay»: cambia la sílaba tónica.</p></details><details><summary>Fuentes de consulta</summary><p>Preguntas y ejemplos didácticos originales. Consulta las orientaciones de la RAE cuando una palabra no encaja en una regla general.</p><p><a href="https://www.rae.es/diccionario-estudiante/docs/ortografia.pdf" target="_blank" rel="noopener">RAE · Orientaciones ortográficas</a> · <a href="https://www.rae.es/dpd/" target="_blank" rel="noopener">Diccionario panhispánico de dudas</a> · <a href="https://www.rae.es/dpd/ye%C3%ADsmo" target="_blank" rel="noopener">Yeísmo</a></p></details></div></section>
+<p class="footer">HTML autónomo · Funciona sin conexión. Las consultas a las fuentes requieren internet. Teclas 1–4 para responder durante un turno activo.</p></main><script>
+'use strict';
+const BANK=[],CATS=['B / V','G / J','LL / Y','H','Diccionario'];
+function q(cat,level,prompt,answer,other,why){BANK.push({id:BANK.length,cat,level,prompt,answer,options:[answer,...other],why});}
+function rows(cat,data){data.trim().split('\n').forEach(line=>{const [l,p,a,o,w]=line.split('|');q(cat,+l,p,a,o.split(';'),w)});}
+rows('B / V',`
+1|De pequeña, yo ___ al colegio andando.|iba|iva;hiba|El imperfecto de ir se escribe con B.
+1|Nosotros ___ cuentos por las tardes.|inventábamos|inventávamos;imbentábamos|El imperfecto de inventar, verbo en -ar, termina en -ábamos.
+2|Ayer ___ una conversación con Clara.|tuve|tube;tuvé|Tuve es pretérito perfecto simple de tener y lleva V.
+2|Si yo ___ más tiempo, repasaría.|tuviera|tubiera;tuvierá|Tuviera es imperfecto de subjuntivo de tener y lleva V.
+2|El martes ___ en la biblioteca.|estuve|estube;estuvé|Estuve es pretérito perfecto simple de estar.
+2|Antes ___ en otra clase.|estaba|estava;hestaba|El imperfecto de estar acaba en -aba: lleva B.
+3|Ayer ___ cinco kilómetros.|anduve|andube;andé|El pretérito perfecto simple de andar es anduve.
+3|Si ella ___ más, conocería el barrio.|anduviera|andubiera;andara|Anduviera es imperfecto de subjuntivo de andar.
+2|La ___ de los personajes cambia.|movilidad|mobilidad;movilidaz|Movilidad lleva V y es excepción a la pauta de -bilidad.
+1|Su ___ facilita el trabajo del grupo.|amabilidad|amavilidad;hamabilidad|La terminación -bilidad lleva normalmente B.
+2|¿Qué terminación explica la B de vagabundo?|-bundo|-undo;-vundo|La terminación es -bundo, no simplemente -undo.
+2|¿Qué infinitivo es una excepción habitual a la regla de -bir?|hervir|recibir;escribir|Hervir, servir y vivir se escriben con V.
+1|El profesor va a ___ las hojas.|distribuir|distrivuir;distribuír|Los verbos en -buir llevan B.
+1|Tengo que ___ el trabajo.|enviar|enbiar;embiar|Enviar contiene el grupo NV.
+2|Debes ___ el peligro.|advertir|adbertir;adwertir|Advertir contiene DV.
+1|¿Cuál está bien escrita?|blanco|vlanco;blanqo|El grupo BL se escribe con B.
+1|¿Cuál está bien escrita?|cambio|camvio;canbio|Cambio contiene el grupo MB.
+1|El abrigo es muy ___.|suave|suabe;suavé|Suave es un adjetivo terminado en -ave.
+2|¿Qué es deportivo en «un equipo deportivo»?|Adjetivo|Adverbio;Preposición|Deportivo modifica a equipo: es un adjetivo en -ivo.
+2|Imperativo de ir: «___ a la biblioteca».|Ve|Be;Vé|Ve es el imperativo de ir para tú y lleva V.
+2|Quiero que ___ al taller.|vayamos|bayamos;vallamos|Vayamos es presente de subjuntivo de ir.
+3|¿Qué palabra rompe la pauta de muchos adjetivos en -ave?|árabe|suave;grave|Árabe se escribe con B; las pautas tienen excepciones.
+3|¿Qué serie está bien escrita?|estaba · estuve · estuviera|estava · estuve · estuviera;estaba · estube · estubiera|El imperfecto mantiene B; estuve y estuviera llevan V.
+3|¿Qué infinitivo está bien escrito?|servir|serbir;servír|Servir es una excepción habitual a los verbos en -bir.
+`);
+const BV=[
+['vaca','baca','La ___ pastaba junto al río.','Coloca la maleta en la ___ del coche.','Vaca: animal. Baca: soporte sobre el techo de un vehículo.'],
+['votar','botar','Mañana podremos ___ al delegado.','En baloncesto hay que ___ el balón.','Votar: emitir un voto. Botar: hacer que algo rebote, entre otros sentidos.'],
+['bacilo','vacilo','Un ___ es una bacteria con forma de bastón.','Yo ___ entre esas dos opciones.','Bacilo: tipo de bacteria. Vacilo: forma de vacilar.'],
+['cabo','cavo','El barco rodeó el ___ de la costa.','Yo ___ un hoyo para plantar un árbol.','Cabo: punta de tierra que entra en el mar, entre otros sentidos. Cavo: forma de cavar.'],
+['varón','barón','En el documento consta que es ___.','El personaje recibió el título de ___.','Varón: persona de sexo masculino. Barón: título nobiliario.'],
+['combino','convino','Yo ___ dos colores en el dibujo.','El grupo ___ en aplazar la reunión.','Combino: de combinar. Convino: de convenir, aquí «acordó».'],
+['basto','vasto','El tejido es áspero y ___.','Se extendía ante nosotros un ___ territorio.','Basto: tosco. Vasto: muy extenso.'],
+['grabar','gravar','Vamos a ___ un vídeo.','La medida pretende ___ esas operaciones con un impuesto.','Grabar: registrar imágenes o sonidos, entre otros sentidos. Gravar: imponer una carga o tributo.'],
+['vaya','baya','Espero que ella ___ al concierto.','El fruto del arbusto es una ___.','Vaya: de ir. Baya: tipo de fruto carnoso.'],
+['hierba','hierva','La ___ del jardín está alta.','Espera a que el agua ___.','Hierba: planta de tallo herbáceo. Hierva: de hervir.'],
+['bello','vello','El paisaje es ___.','Tiene ___ fino en los brazos.','Bello: hermoso. Vello: pelo corto y fino.'],
+['revelar','rebelar','No debes ___ el secreto.','El personaje se va a ___ contra la autoridad.','Revelar: descubrir algo oculto. Rebelarse: oponerse a la autoridad.'],
+['bienes','vienes','La familia repartió sus ___.','¿A qué hora ___ a clase?','Bienes: posesiones. Vienes: de venir.'],
+['sabia','savia','La investigadora es muy ___.','La ___ circula por la planta.','Sabia: que tiene sabiduría. Savia: líquido que circula por los vasos de las plantas.'],
+['tuvo','tubo','Ayer ___ una buena idea.','El fontanero cambió el ___.','Tuvo: de tener. Tubo: pieza hueca y alargada.']
+];
+function pairs(cat,list,extra=''){list.forEach(([a,b,p,r,w])=>{q(cat,2,p,a,[b],w+extra);q(cat,2,r,b,[a],w+extra)});}
+pairs('B / V',BV);
+rows('G / J',`
+1|¿Qué infinitivo está bien escrito?|recoger|recojer;rrecoger|Recoger es un verbo en -ger y lleva G.
+2|Yo ___ las hojas.|recojo|recogo;recogio|Ante O usa J para conservar el sonido de recoger.
+2|Quiero que ella ___ el grupo.|dirija|diriga;dirijja|Dirigir cambia G por J ante A para conservar el sonido.
+1|¿Cuál es una excepción habitual a -ger?|tejer|proteger;escoger|Tejer lleva J.
+1|El suelo empezó a ___.|crujir|crugir;crujjir|Crujir lleva J, excepción habitual a -gir.
+1|La ciencia que estudia la Tierra es la ___.|geología|jeología;geolojía|Geo- y -logía se escriben con G.
+1|La ciencia que estudia los seres vivos es la ___.|biología|biolojía;viología|El elemento -logía se escribe con G.
+2|El ___ de la historia sorprendió a todos.|origen|orijen;orígen|Origen se escribe con G.
+1|Es un asunto ___.|urgente|urjente;hurgente|Urgente se escribe con G.
+2|El virus es ___.|contagioso|contajioso;contagiioso|Contagioso lleva G y pertenece a la familia de contagio.
+1|Hay que admirar el ___.|paisaje|paisage;paissage|La terminación -aje lleva J.
+2|Plantamos un ___ de geranio.|esqueje|esquege;esceje|La terminación -eje lleva J.
+1|Llevé el reloj a la ___.|relojería|relogería;relojerría|La terminación -jería lleva J.
+2|¿Qué infinitivo está bien escrito?|cojear|cogear;cojjer|Los verbos en -jear se escriben con J.
+2|El equipaje es muy ___.|ligero|lijero;liguerro|Ligero es una excepción a la pauta de -jero en palabras llanas.
+1|Ayer yo ___ la verdad.|dije|dige;dijé|Dije, del verbo decir, se escribe con J.
+2|Si ella lo ___, todos lo sabrían.|dijera|digera;dijiera|Dijera es imperfecto de subjuntivo de decir.
+2|Yo ___ los libros ayer.|traje|trage;traí|Traje es pretérito perfecto simple de traer.
+3|Ojalá él ___ su cuaderno.|trajese|tragese;traiese|Trajese es imperfecto de subjuntivo de traer.
+2|Ayer yo ___ el coche.|conduje|conduge;conducí|Conduje, de conducir, lleva J.
+3|Si ella ___ con cuidado, no habría problemas.|condujera|condugera;conduciera|Condujera es imperfecto de subjuntivo de conducir.
+3|La prueba nos ___ a pensar otra cosa.|indujo|indugo;indució|Indujo es pretérito perfecto simple de inducir.
+3|¿Qué serie es completamente correcta?|proteger · protejo · proteja|proteger · protego · protega;protejer · protejo · proteja|G ante E y J ante O y A conservan el mismo sonido.
+2|No ___ hoy con esa lana.|tejas|tegas;tejjas|Tejas, de tejer, conserva la J.
+3|¿Qué forma corresponde al pretérito de producir?|produjeron|produgeron;producieron|Produjeron lleva J y termina en -jeron.
+3|¿Por qué se escribe «dirijo» con J?|Para conservar el sonido ante O|Porque todos los verbos cambian a J;Porque dirigir lleva J en el infinitivo|Con G ante O se obtendría otro sonido.
+`);
+rows('LL / Y',`
+1|¿Qué palabra está bien escrita?|anillo|aniyo;hanillo|Anillo termina en -illo y lleva LL.
+1|El ___ cruzó el desierto.|camello|cameyo;camelllo|Camello se escribe con LL.
+1|La ___ estaba vacía.|calle|caye;calle con una sola L|Calle, vía urbana, lleva LL.
+2|El ___ impulsa aire.|fuelle|fueye;fuele|Fuelle lleva LL.
+2|La paloma emite un ___.|arrullo|arruyo;arullo|Arrullo es un sonido suave y monótono, como el de algunas aves.
+2|El verbo que significa producir abolladuras es ___.|abollar|aboyar;abolar|Abollar se escribe con LL.
+1|El coche frenó para no ___ a nadie.|atropellar|atropeyar;atropelar|Atropellar es un verbo terminado en -ellar.
+2|Podía ___ entre la multitud.|escabullirse|escabuyirse;escabulirse|Escabullir se escribe con LL, como otros verbos en -ullir.
+3|La ___ describe el carácter y las costumbres de una persona.|etopeya|etopella;etopeia|Etopeya lleva Y; es una descripción de rasgos del carácter.
+3|En la sociedad tradicional, quien pertenecía a la plebe era ___.|plebeyo|plebello;plebeio|Plebeyo se escribe con Y.
+2|Ayer ella ___ el relato.|leyó|lelló;leió|Leyó es pretérito perfecto simple de leer.
+2|Él no ___ esa historia.|creyó|crelló;creió|Creyó es pretérito perfecto simple de creer.
+3|La familia ___ aquella casa durante años.|poseyó|poselló;poseió|Poseyó es una forma de poseer y lleva Y.
+2|Nadie ___ el ruido.|oyó|olló;oió|Oyó es pretérito perfecto simple de oír.
+2|Espero que ___ tiempo suficiente.|haya|halla;aya|Haya es una forma de haber.
+2|El ladrón ___ por el callejón.|huyó|hulló;huió|Huyó es pretérito perfecto simple de huir.
+2|¿Cuál está bien escrita?|yendo|llendo;iendo|El gerundio de ir es yendo.
+3|¿Cuál es la forma correcta de leer?|leí|leyí;lellí|Leí lleva I: no todas las formas de leer llevan Y.
+2|¿Qué es LL en el español actual?|Un dígrafo|Una letra independiente del abecedario;Una vocal|LL combina dos letras para representar un sonido.
+3|¿Cómo se llaman calló/cayó para un hablante yeísta?|Homófonos|Antónimos;Palabras de la misma familia|Se pronuncian igual, pero su escritura y significado difieren.
+`);
+pairs('LL / Y',[
+['calló','cayó','El grupo ___ para escuchar.','El vaso se ___ de la mesa.','Calló: de callar. Cayó: de caer.'],
+['rallo','rayo','Yo ___ el queso sobre la pasta.','Un ___ iluminó el cielo.','Rallo: de rallar. Rayo: descarga eléctrica, entre otros sentidos.'],
+['valla','vaya','Saltó la ___ del jardín.','Quiero que ella ___ al museo.','Valla: cerca o barrera. Vaya: de ir.'],
+['halla','haya','El detective ___ una pista.','Espero que ___ alguna pista.','Halla: de hallar, encontrar. Haya: de haber en esta oración.'],
+['arroyo','arrollo','Un ___ cruzaba el bosque.','En ese videojuego yo ___ todos los obstáculos.','Arroyo: corriente de agua. Arrollo: de arrollar.']
+],' Son homófonos para hablantes yeístas.');
+rows('H',`
+1|Ayer yo ___ el ejercicio.|hice|ice;hize|Hice es una forma de hacer y lleva H.
+1|Allí ___ muchas personas.|había|abía;havía|Había es una forma de haber y lleva H y B.
+1|¿Qué palabra está bien escrita?|hielo|ielo;yelo|Hielo lleva H al comienzo.
+1|¿Qué palabra está bien escrita?|huir|uir;hullir|Huir lleva H inicial.
+1|¿Qué palabra está bien escrita?|humano|umano;humanno|Humano lleva H en la secuencia hum- seguida de vocal.
+2|¿Qué palabra NO lleva H?|ermita|hormiga;hospital|Ermita no lleva H: no escribimos hermita.
+1|¿Qué palabra está bien escrita?|horno|orno;horrno|Horno se escribe con H.
+2|¿Qué significa hecto- en hectómetro?|Cien|Seis;Mil|Un hectómetro equivale a cien metros.
+2|¿Qué significa hexa- en hexágono?|Seis|Siete;Cien|Un hexágono tiene seis lados.
+2|¿Qué significa hepta- en heptasílabo?|Siete|Seis;Mitad|Un verso heptasílabo tiene siete sílabas métricas.
+2|¿Qué significa hemi- en hemisferio?|Mitad|Sangre;Agua|Hemi- expresa mitad.
+1|¿Qué elemento se relaciona con el agua?|hidro-|hemo-;hepta-|Hidro- se relaciona con el agua.
+2|¿Qué elemento se relaciona con la sangre?|hemo-|hemi-;hecto-|Hemo-, hema- y hemato- se relacionan con la sangre.
+2|¿Qué indica hiper- en hipersensible?|Exceso o grado superior|Mitad;Seis|Hiper- puede expresar un grado superior al habitual.
+2|¿Qué indica hipo- en hipotermia?|Por debajo de lo normal|Por encima de lo normal;Igualdad|Hipotermia indica una temperatura corporal inferior a la normal.
+3|¿Por qué «ahí» NO es homófono de «ay»?|Porque cambia la sílaba tónica|Porque la H siempre suena;Porque tiene otro significado|Ahí tiene dos sílabas y acento final; ay tiene una sola sílaba.
+3|¿Cuál de estas palabras no lleva H intercalada?|exuberante|exhibir;exhalar|Exuberante no lleva H. Exhibir y exhalar sí la llevan.
+`);
+pairs('H',[
+['a','ha','Voy ___ clase.','Ella ___ terminado la tarea.','A: preposición. Ha: forma de haber usada con un participio.'],
+['hay','ay','En la mochila ___ un libro.','¡___, qué susto!','Hay: de haber. Ay: interjección. Ahí indica lugar y no suena igual.'],
+['azar','azahar','El resultado depende del ___.','El ___ perfuma el naranjo.','Azar: casualidad. Azahar: flor blanca de ciertos cítricos.'],
+['deshecho','desecho','El castillo de arena ha quedado ___.','Deposita ese ___ en el contenedor.','Deshecho: participio de deshacer. Desecho: residuo, entre otros sentidos.'],
+['echo','hecho','Yo ___ la carta al buzón.','Ya he ___ la tarea.','Echo: de echar. Hecho: participio de hacer, entre otros sentidos.'],
+['errar','herrar','Es humano ___ al responder.','El herrador va a ___ al caballo.','Errar: equivocarse. Herrar: poner herraduras, entre otros sentidos.'],
+['ojear','hojear','Voy a ___ el informe para hacerme una idea general.','Voy a ___ el libro, pasando sus páginas.','Ojear: mirar rápidamente. Hojear: pasar las hojas.'],
+['hola','ola','Entró y dijo: «___».','Una ___ golpeó la roca.','Hola: saludo. Ola: onda en la superficie del agua.'],
+['onda','honda','La piedra produjo una ___ en el agua.','La piscina es muy ___: tiene mucha profundidad.','Onda: perturbación que se propaga. Honda: profunda; también puede ser un arma.'],
+['hora','ora','¿Qué ___ es?','El personaje ___ en la capilla.','Hora: unidad o momento del tiempo. Ora: de orar.']
+]);
+rows('Diccionario',`
+1|¿Qué es la entrada de un diccionario?|La palabra que encabeza un artículo|La primera acepción de cualquier palabra;El origen de una palabra|La entrada identifica la palabra o expresión tratada.
+1|¿Qué información ofrece la etimología?|El origen de la palabra|Solo su categoría gramatical;Su frecuencia exacta de uso|La etimología explica la procedencia de una palabra.
+1|¿Qué son las acepciones?|Los distintos significados de una palabra|Las letras de la entrada;Las frases que siempre contienen un error|Una palabra puede tener varios significados o acepciones.
+1|En un diccionario, «adj.» indica…|Adjetivo|Adverbio;Artículo|Adj. es la abreviatura de adjetivo.
+2|En un diccionario, «m.» puede indicar…|Género masculino|Modo imperativo;Palabra monosílaba|La abreviatura m. marca el género masculino.
+1|¿Para qué sirven los ejemplos de uso?|Para mostrar la palabra en contexto|Para sustituir todas las definiciones;Para indicar siempre su origen|Los ejemplos ayudan a entender cómo se usa una palabra.
+2|¿Qué es una locución?|Un grupo estable de palabras que funciona como una unidad|Cualquier lista de palabras;Un sinónimo de etimología|Una locución funciona como una unidad, como de repente.
+2|¿Qué diccionario consultarías para conocer el origen de almohada?|Etimológico|Combinatorio;De antónimos|Un diccionario etimológico estudia el origen y la historia de las palabras.
+2|¿Qué diccionario ayuda a resolver una duda sobre una conjugación?|De dudas|Etimológico;De rimas|Los diccionarios de dudas resuelven problemas de uso, también gramaticales.
+2|¿Dónde buscarías con qué verbos se combina error?|En un diccionario combinatorio|Solo en un diccionario de rimas;En una lista de abreviaturas|Un diccionario combinatorio muestra combinaciones habituales: cometer un error.
+2|«Se rompió el cristal de la ventana». Aquí cristal designa…|Una pieza de vidrio|Un estado de ánimo;Una locución verbal|El contexto selecciona el sentido referido al vidrio de la ventana.
+3|«Mirar con el mismo cristal». ¿Puede cristal adquirir un sentido figurado?|Sí: una perspectiva o criterio|No: toda palabra tiene un único sentido;Solo si se escribe con mayúscula|Cristal puede aludir figuradamente a la perspectiva desde la que se juzga.
+3|El libro recoge ocho acepciones de cristal. ¿Todos los diccionarios deben recoger ocho?|No, depende de la obra y la edición|Sí, el número nunca cambia;Sí, toda palabra tiene ocho|Los diccionarios pueden seleccionar y organizar los sentidos de forma distinta.
+2|¿Qué pareja es un ejemplo claro de parónimos?|actitud / aptitud|vaca / baca;tuvo / tubo|Actitud y aptitud se parecen, pero su pronunciación y su significado difieren.
+2|¿Qué pareja es homófona en el español general?|vaca / baca|actitud / aptitud;ahí / ay|Vaca y baca se pronuncian igual, pero tienen distinta escritura y significado.
+3|¿Qué hace el contexto cuando una palabra tiene varias acepciones?|Ayuda a elegir el significado pertinente|Elimina la etimología;Hace que todas signifiquen lo mismo|El sentido pertinente depende de la oración y de la situación.
+2|¿Qué información es gramatical?|Sustantivo femenino|Procede del latín;Se usa para cortar madera|Sustantivo femenino indica categoría y género; el origen es etimología.
+3|¿Cuál es una locución adverbial?|de repente|libro rojo;yo leo|De repente es una combinación estable que funciona como un adverbio.
+3|¿Para qué sirve un diccionario combinatorio?|Para buscar combinaciones habituales entre palabras|Para contar sílabas métricas;Para buscar solo palabras que riman|No es un diccionario de rimas: ayuda a construir combinaciones naturales.
+`);
+const RULES={
+'B / V':[
+['Imperfecto con B','En verbos en -ar: -aba, -abas, -ábamos, -abais, -aban. También iba, ibas, íbamos, ibais, iban.'],
+['Grupos y terminaciones','B en MB, BL y BR: cambio, blanco, brazo. -bundo/-bunda y -bilidad llevan B; movilidad y civilidad son excepciones.'],
+['Verbos en -bir y -buir','Escribir, recibir y distribuir llevan B. Excepciones habituales de -bir: hervir, servir y vivir.'],
+['Formas con V','Tuve, estuve, anduve; tuviera, estuviese, anduviera. Atención: estaba mantiene B. Ir: voy, vaya, ve, vayamos. Los infinitivos mover, valer, ver, vender, vivir, venir, viajar y volar llevan V, pero no todas sus formas la conservan.'],
+['Grupos y adjetivos','NV/DV: enviar, advertir. Adjetivos como octavo, nueva, deportivo, suave y leve llevan V. No son adverbios. Hay excepciones: árabe.']],
+'G / J':[
+['Infinitivos y cambios','Verbos habituales en -ger/-gir: recoger, dirigir. Excepciones habituales: tejer, crujir. Ante A/O: recojo, dirija, para mantener el sonido.'],
+['Familias con G','Geo- y -logía: geografía, biología. Observa también origen, urgente y contagioso.'],
+['Terminaciones con J','-aje, -eje, -jería y -jear: paisaje, esqueje, relojería, cojear. En palabras llanas, -jero/-jera suelen llevar J; ligero/ligera son excepciones.'],
+['Formas verbales','Dije/dijera, traje/trajese, conduje/condujera, indujo y produjeron llevan J.']],
+'LL / Y':[
+['Con LL','-illo/-illa: anillo, silla. Verbos habituales en -ellar, -illar, -ullar y -ullir: atropellar, chillar, mascullar, escabullir. También llamar, llevar, llenar, llegar, llorar y llover.'],
+['Con Y','Vaya, haya, cayó, leyó, creyó, poseyó, oyó, huyó. No significa que todas las formas de esos verbos lleven Y: leí lleva I.'],
+['El significado manda','Calló: guardó silencio; cayó: se precipitó. Rallo: desmenuzo con un rallador; rayo: descarga eléctrica, entre otros sentidos. Halla: encuentra; haya: puede ser de haber o un árbol.']],
+'H':[
+['Familias verbales','Las formas de haber, hablar, habitar, hacer y hallar llevan H: había, hablaron, habitó, hice, halló.'],
+['Palabras frecuentes','Hielo, hierba, hueco, huir, humano, hormiga, horno y hospital llevan H. Ermita y exuberante no la llevan.'],
+['Elementos griegos','Hecto-: cien; hexa-: seis; hepta-: siete; hemi-: mitad; hidro-: agua; hiper-: exceso; hipo-: inferioridad o insuficiencia; hema-/hemato-/hemo-: sangre.'],
+['H que cambia el significado','Ha: haber; a: preposición. Hay: haber; ahí: lugar; ay: exclamación. Hecho: hacer; echo: echar. Ojear: mirar rápidamente; hojear: pasar hojas.']]
+};
+const $=id=>document.getElementById(id);
+function el(tag,text,cls){const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e;}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+let S=null,tick=null,deadline=0,remaining=0,phase='idle';
+function stopClock(){clearInterval(tick);tick=null}
+function clock(){$('clock').textContent=S.seconds===0?'∞':Math.max(0,Math.ceil(remaining/1000));$('clock').classList.toggle('urgent',S.seconds>0&&remaining<=10000)}
+function runClock(){if(S.seconds===0)return;deadline=Date.now()+remaining;tick=setInterval(()=>{remaining=Math.max(0,deadline-Date.now());clock();if(remaining<=0){stopClock();fail('Tiempo agotado.',true)}},150)}
+function pauseClock(){if(phase!=='active')return;if(tick)remaining=Math.max(0,deadline-Date.now());stopClock();phase='paused';renderPhase();clock()}
+function names(value){return value.split(/\n/).map(x=>x.trim()).filter(Boolean)}
+function configure(override){
+stopClock();const mode=$('mode').value,tn=mode==='practice'?['Práctica']:names($('teamnames').value);if(mode==='teams'&&(tn.length<2||tn.length>6)){$('setupstatus').textContent='Escribe entre 2 y 6 equipos.';return}
+const cats=[...document.querySelectorAll('#categories input:checked')].map(x=>x.value),level=$('level').value;
+let pool=override||BANK.filter(x=>cats.includes(x.cat)&&(level==='mixed'||x.level===+level));if(!pool.length){$('setupstatus').textContent='Selecciona algún contenido con preguntas disponibles.';return}
+const count=override?pool.length:Math.min(+$('rounds').value,pool.length);let queue=shuffle(pool).slice(0,count);if(level==='mixed'&&!override)queue.sort((a,b)=>a.level-b.level);
+const teams=tn.map(name=>({name,score:0,members:[],turns:0}));if(mode==='teams')shuffle(names($('students').value)).forEach((n,i)=>teams[i%teams.length].members.push(n));
+S={teams,queue,index:0,current:0,primary:0,rebounding:false,seconds:+$('seconds').value,mode,history:[],done:0,firstRight:0,bonus:false,lastWinner:null,attempts:[]};
+$('animehero').hidden=true;$('setup').hidden=true;$('results').hidden=true;$('study').hidden=true;$('game').hidden=false;$('setupstatus').textContent='';load()}
+function scoreboard(){$('scoreboard').replaceChildren();S.teams.forEach((t,i)=>{const d=el('div','','team'+(i===S.current?' active':''));d.append(el('strong',t.name),el('span',t.score+' puntos','score'));if(t.members.length)d.append(el('small',t.members.join(', '),'muted'));$('scoreboard').append(d)})}
+function setSpeaker(){const t=S.teams[S.current],sp=t.members.length?t.members[t.turns%t.members.length]:'';$('turnlabel').textContent=(S.rebounding?'Rebote · ':'Turno · ')+t.name+(sp?' · Responde: '+sp:'')}
+function load(){stopClock();phase='ready';S.current=S.index%S.teams.length;S.primary=S.current;S.rebounding=false;S.bonus=false;S.lastWinner=null;S.attempts=[];S.q=S.queue[S.index];S.opts=shuffle(S.q.options);remaining=S.seconds*1000;
+$('categorybadge').textContent=S.q.cat;$('levelbadge').textContent=['','Entrenamiento','Reto','Experto'][S.q.level];$('question').textContent=S.q.prompt;$('roundlabel').textContent='Pregunta '+(S.index+1)+' de '+S.queue.length;$('progressbar').style.width=S.index/S.queue.length*100+'%';$('feedback').hidden=true;$('feedback').replaceChildren();$('answers').replaceChildren();$('bonus').textContent='+1 por explicar';
+S.opts.forEach((o,i)=>{const b=el('button','','answer');b.append(el('span','ABCD'[i],'letter'),el('span',o));b.onclick=()=>answer(o);$('answers').append(b)});setSpeaker();scoreboard();clock();renderPhase()}
+function renderPhase(){const live=phase==='active';[...$('answers').children].forEach(b=>b.disabled=!live);$('activate').hidden=!['ready','paused'].includes(phase);$('activate').textContent=phase==='paused'?'Reanudar turno':'Activar turno';$('pause').disabled=!live;$('pause').hidden=['ended','failed'].includes(phase);$('rebound').hidden=!(phase==='failed'&&!S.rebounding&&S.mode==='teams');$('solution').hidden=phase!=='failed';$('bonus').hidden=!(phase==='ended'&&S.lastWinner!==null&&!S.rebounding);$('bonus').disabled=S.bonus;$('next').hidden=phase!=='ended';$('gamestatus').textContent=phase==='ready'?'Leed la pregunta. La profesora activa el turno.':phase==='paused'?'Reloj pausado.':live?(S.rebounding?'Un rebote: +1 si acertáis.':'Elegid y preparad vuestra explicación.'):phase==='failed'?'Podéis dar un rebote o mostrar la solución.':''}
+function activate(){if(!['ready','paused'].includes(phase))return;phase='active';runClock();renderPhase()}
+function answer(o){if(phase!=='active')return;stopClock();S.teams[S.current].turns++;S.attempts.push({team:S.current,choice:o,correct:o===S.q.answer});if(o===S.q.answer){S.teams[S.current].score+=S.rebounding?1:2;S.lastWinner=S.current;if(!S.rebounding)S.firstRight++;endQuestion()}else{[...$('answers').children].forEach((b,i)=>{if(S.opts[i]===o)b.classList.add('wrong')});fail('Respuesta incorrecta.',false)}}
+function fail(msg,count){stopClock();if(count){S.teams[S.current].turns++;S.attempts.push({team:S.current,choice:'Tiempo agotado',correct:false})}if(S.rebounding||S.mode==='practice')endQuestion();else{phase='failed';renderPhase();$('gamestatus').textContent=msg+' Hay un rebote disponible.'}}
+function rebound(){if(phase!=='failed'||S.rebounding||S.mode!=='teams')return;S.rebounding=true;S.current=(S.primary+1)%S.teams.length;remaining=S.seconds*1000;phase='ready';setSpeaker();scoreboard();clock();renderPhase()}
+function endQuestion(){stopClock();phase='ended';S.done++;S.history.push({q:S.q,attempts:[...S.attempts],missed:S.attempts.some(a=>!a.correct),winner:S.lastWinner});[...$('answers').children].forEach((b,i)=>{if(S.opts[i]===S.q.answer)b.classList.add('correct')});$('feedback').replaceChildren(el('strong','Solución: '+S.q.answer),el('p',S.q.why),el('p',S.lastWinner===null?'Esta pregunta se queda para el repaso.':S.rebounding?'Rebote acertado: +1 punto.':'Acierto: +2 puntos. Explica la regla o la diferencia de significado para ganar un punto extra.'));$('feedback').hidden=false;scoreboard();renderPhase()}
+function bonus(){if(phase!=='ended'||S.bonus||S.lastWinner===null||S.rebounding)return;S.teams[S.lastWinner].score++;S.bonus=true;$('bonus').textContent='Explicación premiada';scoreboard();renderPhase()}
+function next(){if(phase!=='ended')return;if(++S.index>=S.queue.length)finish();else load()}
+function finish(){stopClock();phase='idle';$('game').hidden=true;$('study').hidden=true;$('results').hidden=false;const rank=[...S.teams].sort((a,b)=>b.score-a.score),w=rank.filter(t=>t.score===rank[0].score);$('resulttitle').textContent=S.mode==='practice'?'Práctica terminada':w.length>1?'Empate: '+w.map(t=>t.name).join(' · '):'Gana '+w[0].name;
+const table=el('table'),head=el('tr');['Equipo','Puntos'].forEach(t=>head.append(el('th',t)));table.append(head);rank.forEach(t=>{const tr=el('tr');tr.append(el('td',t.name),el('td',String(t.score)));table.append(tr)});$('rank').replaceChildren(table);$('stats').textContent=S.done+' preguntas completadas · '+S.firstRight+' acertadas al primer intento.';
+const missed=S.history.filter(h=>h.missed);$('review').replaceChildren();$('retry').disabled=!missed.length;missed.forEach(h=>{const d=el('div','','reviewitem');d.append(el('span',h.q.cat,'badge'),el('p',h.q.prompt),el('strong','Respuesta: '+h.q.answer),el('p',h.q.why));$('review').append(d)});if(!missed.length)$('review').append(el('p',S.done?'No hubo errores en las preguntas completadas. Explicad dos reglas sin mirar.':'Todavía no habéis completado ninguna pregunta.'))}
+function study(){if(S&&phase==='active')pauseClock();$('study').hidden=false;$('study').scrollIntoView({behavior:'smooth',block:'start'})}
+CATS.forEach(c=>{const label=el('label'),inp=document.createElement('input');inp.type='checkbox';inp.checked=true;inp.value=c;label.append(inp,document.createTextNode(c));$('categories').append(label)});
+Object.entries(RULES).forEach(([cat,items])=>{const d=el('details');d.append(el('summary',cat));items.forEach(([h,t])=>{const p=el('p');p.append(el('b',h+' · '),document.createTextNode(t));d.append(p)});$('rules').append(d)});
+$('bankcount').textContent=BANK.length+' preguntas con solución explicada. Sin repeticiones dentro de cada partida.';
+$('start').onclick=()=>configure();$('activate').onclick=activate;$('pause').onclick=pauseClock;$('rebound').onclick=rebound;$('solution').onclick=()=>{if(phase==='failed')endQuestion()};$('bonus').onclick=bonus;$('next').onclick=next;$('finish').onclick=finish;
+$('showstudy').onclick=study;$('gamestudy').onclick=study;$('closestudy').onclick=()=>{$('study').hidden=true;if(!$('game').hidden)$('game').scrollIntoView({behavior:'smooth'})};$('print').onclick=()=>{document.querySelectorAll('#study details').forEach(d=>d.open=true);window.print()};
+$('newgame').onclick=()=>{$('animehero').hidden=false;$('results').hidden=true;$('setup').hidden=false;$('study').hidden=true;S=null;$('setup').scrollIntoView({behavior:'smooth'})};
+$('retry').onclick=()=>{const misses=S.history.filter(h=>h.missed).map(h=>h.q);if(misses.length)configure(misses)};
+$('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(e){$('fullscreen').textContent='Usa el zoom del navegador'}};
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&S&&phase==='active')pauseClock()});
+document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(S&&phase==='active'&&/^[1-4]$/.test(e.key)){const o=S.opts[Number(e.key)-1];if(o!==undefined)answer(o)}});
+</script></body></html>
