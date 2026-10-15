@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Misiones de escritura · 2.º C</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --ink: #14213d;
+  --blue: #1858d5;
+  --red: #e63746;
+  --yellow: #ffdc49;
+  --paper: #fffdf7;
+  --muted: #58647b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #eef1f7;
+  color: var(--ink);
+  font-family: "Nunito", system-ui, sans-serif;
+  line-height: 1.6;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+a { color: var(--blue); }
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 4px solid var(--red);
+  outline-offset: 5px;
+}
+.topbar {
+  background: var(--ink);
+  color: white;
+  padding: 16px max(20px, calc((100vw - 1180px)/2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.brand { font-weight: 900; letter-spacing: .04em; }
+.topbar small { opacity: .8; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.tools button {
+  background: #ffffff13;
+  color: white;
+  border: 1px solid #ffffff50;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.wrap { max-width: 1180px; margin: auto; padding: 32px 20px 60px; }
+.eyebrow {
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: .16em;
+  font-weight: 900;
+}
+.page-title { margin: 8px 0; font-size: clamp(2rem, 5vw, 3rem); }
+.subtitle { color: var(--muted); margin: 0 0 26px; }
+.tabs { display: flex; gap: 14px; margin-bottom: 28px; }
+.tab {
+  flex: 1;
+  text-align: left;
+  padding: 17px 20px;
+  background: white;
+  border: 2px solid #d4dae5;
+  border-radius: 14px;
+  color: var(--ink);
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+.tab[aria-selected="true"] {
+  border-color: var(--ink);
+  background: var(--yellow);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.tab b { display: block; font-size: 1rem; }
+.tab small { color: #46516a; }
+.number {
+  font-family: "Bangers", Impact, sans-serif;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+[hidden] { display: none !important; }
+
+.hero {
+  background: var(--blue);
+  color: white;
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  padding: 42px;
+  min-height: 340px;
+  box-shadow: 7px 7px 0 var(--ink);
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(#ffffff32 1px, transparent 1.5px);
+  background-size: 9px 9px;
+  z-index: -1;
+}
+.hero-copy { position: relative; max-width: 65%; z-index: 2; }
+.hero h2 {
+  font-family: "Bangers", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: .035em;
+  font-size: clamp(3.1rem, 7vw, 5.6rem);
+  line-height: .98;
+  margin: 18px 0;
+  text-shadow: 3px 4px 0 var(--ink);
+}
+.hero p { max-width: 520px; font-size: 1.1rem; }
+.label {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 5px 12px;
+  font-weight: 900;
+  transform: rotate(-2deg);
+}
+.emblem {
+  position: absolute;
+  width: 220px;
+  height: 245px;
+  right: 35px;
+  top: 45px;
+  display: grid;
+  place-items: center;
+  background: var(--red);
+  clip-path: polygon(20% 0,80% 0,100% 30%,50% 100%,0 30%);
+  transform: rotate(9deg);
+  filter: drop-shadow(6px 8px 0 #14213d);
+}
+.emblem span {
+  color: var(--yellow);
+  font: 150px/1 "Bangers", Impact, sans-serif;
+  transform: rotate(-9deg);
+}
+.cape {
+  position: absolute;
+  right: -110px;
+  bottom: -70px;
+  width: 400px;
+  height: 290px;
+  background: #b8213a;
+  transform: rotate(-25deg);
+  border-radius: 60% 0 0 0;
+  z-index: -1;
+}
+.skyline {
+  position: absolute;
+  height: 75px;
+  inset: auto 0 0;
+  opacity: .3;
+  background: var(--ink);
+  clip-path: polygon(
+    0 70%,4% 70%,4% 35%,8% 35%,8% 60%,14% 60%,
+    14% 15%,18% 15%,18% 50%,25% 50%,25% 30%,31% 30%,
+    31% 75%,39% 75%,39% 20%,44% 20%,44% 55%,51% 55%,
+    51% 0,56% 0,56% 45%,64% 45%,64% 25%,70% 25%,
+    70% 65%,77% 65%,77% 10%,83% 10%,83% 50%,
+    90% 50%,90% 30%,96% 30%,96% 65%,100% 65%,
+    100% 100%,0 100%
+  );
+}
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0; }
+.chip {
+  background: white;
+  border: 1px solid #d7deea;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: .9rem;
+  font-weight: 800;
+}
+.intro {
+  padding: 22px 26px;
+  background: white;
+  border-left: 6px solid var(--red);
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 26px;
+}
+.intro p { margin: 5px 0; }
+.grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.card {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 #14213d;
+}
+.card-head { padding: 20px 22px; background: var(--yellow); }
+.card:nth-child(2) .card-head { background: #dce9ff; }
+.card:nth-child(3) .card-head { background: #ffe0e4; }
+.card h3 {
+  font-family: "Bangers", Impact, sans-serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  letter-spacing: .03em;
+  margin: 0;
+}
+.card-body { padding: 20px 22px; }
+.card-body p:first-child { margin-top: 0; }
+.card ul { padding-left: 20px; }
+.card li { margin: 8px 0; }
+.mini {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 900;
+}
+.example {
+  background: #f1f5fc;
+  padding: 16px;
+  border-radius: 10px;
+  border-left: 4px solid var(--blue);
+  font-size: .95rem;
+}
+.section-title { margin: 40px 0 18px; font-size: 1.6rem; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.sheet {
+  padding: 24px;
+  border: 2px dashed #a9b5ca;
+  border-radius: 14px;
+  background: white;
+}
+.sheet h3 { margin-top: 0; }
+.checklist {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+}
+.checklist label { display: block; padding: 8px 0; }
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--blue);
+  vertical-align: middle;
+  margin-right: 8px;
+}
+details {
+  background: white;
+  border: 1px solid #cbd3e2;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 25px;
+}
+summary { cursor: pointer; font-weight: 900; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+th,td { border: 1px solid #cbd3e2; text-align: left; padding: 12px; vertical-align: top; }
+th { background: var(--ink); color: white; }
+.note { color: var(--muted); font-size: .9rem; }
+.letter-hero { background: #235951; }
+.letter-symbol {
+  position: absolute;
+  right: 45px;
+  top: 80px;
+  font-size: 110px;
+  transform: rotate(-10deg);
+}
+footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 30px; }
+.print-guide { display: none; }
+
+body.project .wrap { max-width: 1450px; font-size: 23px; }
+body.project .grid { grid-template-columns: 1fr; }
+body.project .hero-copy { max-width: 70%; }
+
+@media(max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+  .two { grid-template-columns: 1fr; }
+  .hero { padding: 28px; }
+  .hero-copy { max-width: 100%; }
+  .emblem, .letter-symbol { display: none; }
+  .tabs { flex-direction: column; }
+}
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: white; font: 10pt/1.35 Arial,sans-serif; color: black; }
+  .topbar,.wrap,footer { display: none !important; }
+  .print-guide { display: block; }
+  .print-guide h1 { font-size: 20pt; margin: 0 0 8px; }
+  .print-guide h2 { font-size: 12pt; margin: 14px 0 5px; }
+  .print-guide p { margin: 7px 0; }
+  body.print-doc .print-guide { display: none; }
+  body.print-doc .wrap { display: block !important; padding: 0; }
+  body.print-doc .wrap > * { display: none !important; }
+  body.print-doc #heroes { display: block !important; }
+  body.print-doc #heroes > * { display: none !important; }
+  body.print-doc #docente { display: block !important; border: 0; margin: 0; padding: 0; }
+  body.print-doc #docente > * { display: block; }
+  body.print-doc summary { display: none !important; }
+  body.print-doc .scroll { overflow: visible; }
+  table { font-size: 8pt; }
+  th { color: black; background: #eee; }
+  th,td { padding: 6px; }
+  tr { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <div class="brand">AULA ESPERANZA</div>
+    <small>Lengua Castellana y Literatura · 2.º C</small>
+  </div>
+  <div class="tools">
+    <button id="projection" aria-pressed="false" onclick="projection()">
+      Modo proyección
+    </button>
+    <button onclick="printGuide()">Imprimir guía A4</button>
+    <button onclick="printTeacher()">Imprimir ficha docente</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">Primer trimestre · Nuestro taller de escritura</div>
+  <h1 class="page-title">Situaciones de aprendizaje</h1>
+  <p class="subtitle">Ideas que se convierten en palabras. Palabras que cuentan algo tuyo.</p>
+
+  <div class="tabs" role="tablist" aria-label="Actividades">
+    <button class="tab" id="tab-carta" role="tab"
+      aria-selected="true" aria-controls="carta"
+      onclick="showActivity('carta')">
+      <span class="number">01</span>
+      <span><b>Carta a mi yo del futuro</b><small>Una cápsula del tiempo</small></span>
+    </button>
+    <button class="tab" id="tab-heroes" role="tab"
+      aria-selected="false" aria-controls="heroes"
+      onclick="showActivity('heroes')">
+      <span class="number">02</span>
+      <span><b>Entre capas y palabras</b><small>Mi identidad secreta</small></span>
+    </button>
+  </div>
+
+  <section id="carta" role="tabpanel" aria-labelledby="tab-carta">
+    <div class="hero letter-hero">
+      <div class="hero-copy">
+        <span class="label">MISIÓN 01 · CÁPSULA DEL TIEMPO</span>
+        <h2>Hola, yo<br>del futuro.</h2>
+        <p>Un mensaje para la persona que serás al terminar este curso.
+          Lo escribes hoy. Lo vuelves a descubrir en junio de 2027.</p>
+      </div>
+      <div class="letter-symbol" aria-hidden="true">✉</div>
+    </div>
+    <div class="chips">
+      <span class="chip">Carta personal</span>
+      <span class="chip">Un A3 por persona</span>
+      <span class="chip">Abrir en junio de 2027</span>
+    </div>
+    <div class="intro">
+      <p><strong>Actividad ya realizada.</strong> La profesora custodia las cartas
+        hasta final de curso. Aquí conservamos la propuesta, no el contenido personal.</p>
+    </div>
+    <div class="two">
+      <article class="sheet">
+        <h3>Piensa en tu presente</h3>
+        <p>¿Cómo eres ahora? ¿Qué te ilusiona? ¿Qué te preocupa?
+          ¿Qué quieres aprender y qué te gustaría conservar?</p>
+        <p>Elige un reto concreto para este curso y piensa cómo sabrás que lo has conseguido.</p>
+      </article>
+      <article class="sheet">
+        <h3>Escribe a tu futuro</h3>
+        <p>Hazle tres preguntas a tu yo de junio, escribe una predicción
+          y déjale un consejo o un mensaje.</p>
+        <p>Transforma tus ideas en una carta con fecha, saludo, párrafos,
+          despedida y firma.</p>
+      </article>
+    </div>
+    <h2 class="section-title">Una carta que merece guardarse</h2>
+    <div class="checklist">
+      <p>Revisa la organización, los conectores, la expresión y la ortografía.
+        Dobla tu A3 y escribe por fuera tu nombre y
+        <strong>«ABRIR EN JUNIO DE 2027»</strong>.</p>
+      <p class="note">Se observa el proceso de escritura y sus aspectos lingüísticos.
+        No se califica la intimidad ni se obliga a leer la carta en público.</p>
+    </div>
+  </section>
+
+  <section id="heroes" role="tabpanel" aria-labelledby="tab-heroes" hidden>
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="label">MISIÓN 02 · TU IDENTIDAD SECRETA</span>
+        <h2>Entre capas<br>y palabras</h2>
+        <p>Hoy tú protagonizas la aventura. Elige tu superhéroe favorito
+          o inventa uno y conviértete en él para contar una misión.</p>
+      </div>
+      <div class="emblem" aria-hidden="true"><span>!</span></div>
+      <div class="cape" aria-hidden="true"></div>
+      <div class="skyline" aria-hidden="true"></div>
+    </div>
+
+    <div class="chips">
+      <span class="chip">1 A3 · 2 caras</span>
+      <span class="chip">Descripción · Narración · Diálogo</span>
+      <span class="chip">Trabajo individual</span>
+    </div>
+
+    <div class="intro">
+      <p><strong>El reto:</strong> llegas al Enrique Nieto y descubres un problema.
+        Tu poder puede ayudar, pero tiene una limitación.</p>
+      <p>Los tres textos pertenecen a <strong>la misma aventura</strong>.
+        Puedes compartir ideas con una pareja; cada persona entrega su propio trabajo.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card-head">
+          <span class="mini">01 · Diez líneas</span>
+          <h3>Así soy</h3>
+          <strong>DESCRIPCIÓN</strong>
+        </div>
+        <div class="card-body">
+          <p>Preséntate en primera persona como tu personaje.</p>
+          <ul>
+            <li>Nombre e identidad secreta.</li>
+            <li>Aspecto físico, traje y emblema.</li>
+            <li>Personalidad y forma de actuar.</li>
+            <li>Poder, limitación y miedo.</li>
+          </ul>
+          <p>Utiliza adjetivos precisos y una comparación.
+            Escribe un texto conectado, no una lista.</p>
+          <div class="example">«Mi capa es oscura como el cielo antes
+            de una tormenta. Aunque parezco invencible, me cuesta pedir ayuda».</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <span class="mini">02 · Diez líneas</span>
+          <h3>Mi misión</h3>
+          <strong>NARRACIÓN</strong>
+        </div>
+        <div class="card-body">
+          <p>Cuenta lo ocurrido en tres párrafos:</p>
+          <ul>
+            <li><strong>Planteamiento:</strong> dónde estás, cuándo sucede
+              y cómo comienza todo.</li>
+            <li><strong>Nudo:</strong> qué problema aparece y qué obstáculo
+              impide resolverlo fácilmente.</li>
+            <li><strong>Desenlace:</strong> cómo actúas y qué resultado consigues.</li>
+          </ul>
+          <p>Narra en primera persona y mantén el tiempo verbal.</p>
+          <div class="example">Conectores aliados:
+            <strong>al principio · de pronto · entonces · finalmente</strong>.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <span class="mini">03 · Diez intervenciones</span>
+          <h3>¡Tenemos que hablar!</h3>
+          <strong>DIÁLOGO</strong>
+        </div>
+        <div class="card-body">
+          <p>Desarrolla una conversación de la misión entre tu personaje y otro.</p>
+          <ul>
+            <li>Una intervención en cada línea.</li>
+            <li>Empieza cada turno con raya: <strong>—</strong></li>
+            <li>Relaciona las preguntas y respuestas.</li>
+            <li>Cuida interrogaciones y exclamaciones.</li>
+          </ul>
+          <div class="example">
+            —¿Quién ha robado las voces?<br>
+            —Una sombra que vive en la biblioteca.<br>
+            —¡Entonces debemos encontrarla!<br>
+            —Espera. Primero necesitamos un plan.
+          </div>
+          <p class="note">El ejemplo tiene cuatro turnos. Tú escribirás diez.</p>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title">Tu A3 será la portada de una aventura</h2>
+    <div class="two">
+      <article class="sheet">
+        <span class="mini">CARA A</span>
+        <h3>La portada</h3>
+        <p>Dibuja al personaje. Añade su emblema, el título de la aventura,
+          tu nombre y tu grupo.</p>
+        <p><strong>Haz primero un boceto.</strong> Termina de colorear cuando
+          hayas escrito y revisado los textos.</p>
+      </article>
+      <article class="sheet">
+        <span class="mini">CARA B</span>
+        <h3>Los tres textos</h3>
+        <p>Reserva tres bloques con título:
+          <strong>Descripción, Narración y Diálogo</strong>.</p>
+        <p>Diez renglones por bloque. En la narración,
+          distingue sus tres párrafos.</p>
+      </article>
+    </div>
+
+    <h2 class="section-title">¿Necesitas una chispa?</h2>
+    <div class="chips">
+      <span class="chip">Los libros pierden sus palabras</span>
+      <span class="chip">El timbre borra los recuerdos</span>
+      <span class="chip">Una sombra roba las voces</span>
+      <span class="chip">O inventa tu propio conflicto</span>
+    </div>
+
+    <h2 class="section-title">Antes de entregar, comprueba…</h2>
+    <div class="checklist">
+      <label><input type="checkbox"> Los tres textos forman una misma aventura.</label>
+      <label><input type="checkbox"> Describo el aspecto y la personalidad del personaje.</label>
+      <label><input type="checkbox"> Mi narración tiene planteamiento, nudo y desenlace.</label>
+      <label><input type="checkbox"> El diálogo tiene diez intervenciones con raya.</label>
+      <label><input type="checkbox"> He revisado tildes, signos y repeticiones.</label>
+      <label><input type="checkbox"> Puedo explicar una mejora: «Cambié… porque…».</label>
+    </div>
+
+    <details id="docente">
+      <summary>Zona docente · planificación, competencias y evaluación</summary>
+      <h2>Entre capas y palabras: mi identidad secreta</h2>
+      <p><strong>Curso:</strong> 2.º ESO · Unidad 1 · Primer trimestre.<br>
+        <strong>Producto:</strong> A3 individual con ilustración y tres secuencias textuales.<br>
+        <strong>Objetivo:</strong> distinguir descripción, narración y diálogo
+        y utilizarlos de forma coherente en una creación propia.</p>
+
+      <h3>Desarrollo orientativo · 55 minutos</h3>
+      <p>Modelo y explicación: 5 min · Planificación: 5 min ·
+        Descripción: 10 min · Narración: 12 min · Diálogo: 10 min ·
+        Boceto: 8 min · Revisión y recogida: 5 min.</p>
+      <p><strong>Previsión realista:</strong> el acabado artístico y la versión
+        definitiva pueden requerir una segunda sesión. La escritura tiene prioridad.</p>
+
+      <h3>Modelo original para leer y transformar</h3>
+      <div class="example">
+        <p>Soy Brisa, una heroína de guantes plateados y mirada inquieta.
+          Mi capa susurra como las hojas secas. Puedo devolver palabras
+          a los libros, pero solo si alguien las recuerda.</p>
+        <p>Aquella mañana entré en la biblioteca del instituto.
+          Todas las páginas estaban en blanco. Intenté usar mi poder,
+          pero estaba sola. Entonces llegó una alumna que recordaba un cuento.
+          Lo reconstruimos juntas y las letras regresaron.</p>
+        <p>—¿Recuerdas cómo empezaba?<br>
+          —Sí. Había una vez una niña que no quería rendirse.</p>
+      </div>
+      <p>Antes de escribir, localizar las tres secuencias, la comparación,
+        el conflicto y la solución. Cada estudiante transforma el modelo
+        con otro personaje y otra misión.</p>
+
+      <h3>Competencias y criterios</h3>
+      <p class="note">Referencia: Orden EFP/754/2022, anexo II,
+        Lengua Castellana y Literatura, segundo curso.
+        Las formulaciones siguientes son síntesis didácticas.</p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr><th>Competencia</th><th>Criterio</th><th>Evidencia</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CE5 · Producción escrita</td>
+              <td>5.1 · Planificar, redactar y revisar textos coherentes y adecuados.</td>
+              <td>Plan inicial, organización del A3 y conexión de los tres textos.</td>
+            </tr>
+            <tr>
+              <td>CE5 · Mejora de la expresión</td>
+              <td>5.2 · Enriquecer léxico, estilo y corrección.</td>
+              <td>Adjetivos, conectores, tiempos verbales y puntuación.</td>
+            </tr>
+            <tr>
+              <td>CE8 · Creación literaria</td>
+              <td>8.3 · Crear textos literarios a partir de modelos leídos
+                e integrar otros lenguajes artísticos.</td>
+              <td>Aventura propia que transforma el modelo y se relaciona con la imagen.</td>
+            </tr>
+            <tr>
+              <td>CE9 · Reflexión lingüística</td>
+              <td>9.1 · Revisar textos y explicar mejoras con metalenguaje.</td>
+              <td>Lista de revisión y justificación de una corrección.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Competencias clave:</strong> CCL, por la producción y revisión;
+        CCEC, por la creación literaria y visual; CPSAA,
+        por la planificación y autoevaluación.</p>
+      <p><strong>Saberes:</strong> secuencias descriptivas, narrativas y dialogadas;
+        coherencia y cohesión; adjetivación; conectores temporales;
+        tiempos verbales; estilo directo; puntuación y revisión.</p>
+
+      <h3>Rúbrica · propuesta sobre 10 puntos</h3>
+      <p>Asignar un nivel de 0 a 3 en cada fila.
+        <strong>Puntos = peso × nivel ÷ 3.</strong>
+        Sumar y redondear al final. Los pesos son una propuesta
+        ajustable a la programación del departamento.</p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimensión / peso</th>
+              <th>3 · Consolidado</th>
+              <th>2 · Adecuado</th>
+              <th>1 · En proceso</th>
+              <th>0 · Sin evidencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Descripción · 2<br>5.1 / 5.2</td>
+              <td>Diez líneas desarrolladas; aspecto, personalidad,
+                poder y límite; léxico preciso y comparación.</td>
+              <td>Descripción clara con algún rasgo o recurso poco desarrollado.</td>
+              <td>Descripción escasa, en forma de lista o confundida con acciones.</td>
+              <td>No hay descripción evaluable.</td>
+            </tr>
+            <tr>
+              <td>Narración · 2<br>5.1 / 8.3</td>
+              <td>Diez líneas; tres partes claras; obstáculo,
+                solución y conexiones coherentes.</td>
+              <td>Historia comprensible con alguna parte poco desarrollada.</td>
+              <td>Hechos desconectados o conflicto y resolución confusos.</td>
+              <td>No hay narración evaluable.</td>
+            </tr>
+            <tr>
+              <td>Diálogo · 2<br>5.1 / 5.2</td>
+              <td>Diez turnos relacionados; escena útil para la historia;
+                rayas y signos adecuados.</td>
+              <td>Conversación coherente con algún fallo de extensión o puntuación.</td>
+              <td>Turnos poco conectados o formato confuso de forma reiterada.</td>
+              <td>No hay diálogo evaluable.</td>
+            </tr>
+            <tr>
+              <td>Creación y relación imagen-texto · 1,5<br>8.3</td>
+              <td>Transformación propia del modelo; textos e imagen
+                representan el mismo personaje y aventura.</td>
+              <td>Propuesta propia con alguna contradicción entre partes.</td>
+              <td>Escasa transformación o conexiones débiles.</td>
+              <td>No se aprecia una creación conectada.</td>
+            </tr>
+            <tr>
+              <td>Corrección y léxico · 1,5<br>5.2</td>
+              <td>Expresión clara y vocabulario adecuado; errores aislados.</td>
+              <td>Errores recurrentes, pero el mensaje se comprende.</td>
+              <td>Los errores dificultan varios fragmentos.</td>
+              <td>No se obtiene un texto comprensible que permita valorar este aspecto.</td>
+            </tr>
+            <tr>
+              <td>Proceso de escritura · 1<br>5.1 / 9.1</td>
+              <td>Planifica, revisa y explica una mejora con
+                un término lingüístico adecuado.</td>
+              <td>Planifica y revisa; explicación de la mejora imprecisa.</td>
+              <td>Plan o revisión parciales, sin justificar cambios.</td>
+              <td>No hay evidencia del proceso.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>No se penaliza dos veces una misma falta de extensión.
+        Se valora la relación de la imagen con la historia,
+        <strong>no la destreza artística</strong>.</p>
+
+      <h3>Apoyos</h3>
+      <p>Banco de adjetivos y conectores, frases de inicio, pauta de renglones
+        y revisión en pareja. Ajustar extensión o soporte cuando una necesidad
+        educativa identificada lo requiera. La autoría sigue siendo individual.
+        La lectura pública es voluntaria.</p>
+      <p><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-13172"
+        target="_blank" rel="noopener">Consultar el currículo de referencia</a></p>
+    </details>
+  </section>
+</main>
+
+<section class="print-guide">
+  <p> AULA ESPERANZA · LENGUA · 2.º C</p>
+  <h1>Entre capas y palabras</h1>
+  <p><strong>Nombre:</strong> __________________________
+    <strong>Fecha:</strong> ______________</p>
+  <p><strong>Tu reto:</strong> conviértete en un superhéroe o superheroína.
+    Llegas al instituto y debes resolver un problema.
+    Tu poder tiene una limitación. Los tres textos pertenecen a la misma aventura.</p>
+
+  <h2>Tu A3 · Dos caras</h2>
+  <p><strong>Cara A:</strong> título, dibujo, emblema, nombre y grupo.<br>
+    <strong>Cara B:</strong> tres bloques titulados, con diez renglones por bloque.
+    Trabajo individual con ayuda opcional de una pareja.</p>
+
+  <h2>1. Descripción · Diez líneas</h2>
+  <p>Preséntate en primera persona: nombre, aspecto, traje, personalidad,
+    poder, limitación y miedo. Utiliza adjetivos y una comparación.
+    Escribe un texto conectado.</p>
+
+  <h2>2. Narración · Diez líneas</h2>
+  <p>Tres párrafos: <strong>planteamiento</strong> —lugar, momento e inicio—;
+    <strong>nudo</strong> —problema y obstáculo—;
+    <strong>desenlace</strong> —solución y resultado—.
+    Usa primera persona, conectores y un tiempo verbal coherente.</p>
+
+  <h2>3. Diálogo · Diez intervenciones</h2>
+  <p>Conversación de la aventura entre tu personaje y otro.
+    Una intervención por línea, comenzando con raya.</p>
+  <p>—¿Quién ha robado las voces?<br>
+    —Una sombra que vive en la biblioteca.<br>
+    —¡Debemos encontrarla!<br>
+    —Primero necesitamos un plan.</p>
+
+  <h2>Planifica</h2>
+  <p>Mi personaje y el límite de su poder: __________________________________</p>
+  <p>El problema y su solución: ___________________________________________</p>
+  <p><strong>Ideas:</strong> libros sin palabras · timbre que borra recuerdos ·
+    sombra que roba voces · otro conflicto inventado.</p>
+
+  <h2>Revisa</h2>
+  <p>□ Tres textos conectados. □ Diez líneas por bloque.<br>
+    □ Narración con tres partes. □ Diálogo con diez intervenciones.<br>
+    □ Tildes, mayúsculas y signos revisados.</p>
+  <p>Una mejora que hice y por qué: _______________________________________</p>
+  <p><strong>Primero escribe y revisa; después termina el dibujo.</strong>
+    Se valora la escritura y la relación imagen-texto, no dibujar mejor.</p>
+</section>
+
+<footer>Esperanza Buezas · Lengua Castellana y Literatura · Curso 2026–2027</footer>
+
+<script>
+function showActivity(id) {
+  ["carta", "heroes"].forEach(name => {
+    const active = name === id;
+    document.getElementById(name).hidden = !active;
+    document.getElementById("tab-" + name)
+      .setAttribute("aria-selected", String(active));
+  });
+}
+
+function projection() {
+  const active = document.body.classList.toggle("project");
+  const button = document.getElementById("projection");
+  button.setAttribute("aria-pressed", String(active));
+  button.textContent = active ? "Salir de proyección" : "Modo proyección";
+}
+
+function printGuide() {
+  document.body.classList.remove("print-doc");
+  window.print();
+}
+
+function printTeacher() {
+  showActivity("heroes");
+  document.getElementById("docente").open = true;
+  document.body.classList.add("print-doc");
+  window.print();
+}
+
+window.addEventListener("afterprint", () => {
+  document.body.classList.remove("print-doc");
+});
+
+/* Navegación accesible entre pestañas con flechas. */
+document.querySelectorAll('[role="tab"]').forEach(tab => {
+  tab.addEventListener("keydown", event => {
+    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    const next = tab.id === "tab-carta" ? "heroes" : "carta";
+    showActivity(next);
+    document.getElementById("tab-" + next).focus();
+  });
+});
+</script>
+</body>
+</html>
