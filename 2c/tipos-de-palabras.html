@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tipos de palabras · Aula de Lengua</title>
+
+<style>
+:root {
+  --fondo:#f4f7f6;
+  --papel:#fff;
+  --tinta:#203b3b;
+  --suave:#617474;
+  --principal:#11786b;
+  --claro:#e0f2eb;
+  --borde:#dce7e2;
+  --verde:#dcf5e5;
+  --coral:#ffe1d1;
+  --amarillo:#fff0bf;
+  --lavanda:#ece5ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--fondo);
+  color:var(--tinta);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7;
+}
+button{font:inherit;cursor:pointer;min-height:46px}
+button:focus-visible,summary:focus-visible{
+  outline:3px solid #ed995a;
+  outline-offset:4px;
+}
+button:disabled{cursor:default}
+.contenedor{width:min(1200px,calc(100% - 36px));margin:auto}
+.barra{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;padding:19px 0;
+}
+.marca{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo{
+  display:grid;place-items:center;width:39px;height:39px;
+  border-radius:13px;background:var(--principal);color:white;
+  font:bold 25px Georgia,serif;
+}
+.curso{color:var(--suave);font-size:.82rem}
+.hero{
+  display:grid;grid-template-columns:1.4fr 1fr;align-items:center;
+  gap:25px;padding:44px;border-radius:30px;
+  background:#193e3c;color:white;overflow:hidden;
+}
+.etiqueta{
+  display:inline-block;text-transform:uppercase;
+  letter-spacing:.12em;font-size:.7rem;font-weight:850;
+}
+.hero .etiqueta{color:#b6e7d7}
+h1{
+  margin:15px 0;font-size:clamp(2.3rem,5vw,4rem);
+  line-height:1.08;letter-spacing:-.045em;
+}
+h1 span{color:#ffc39e}
+.hero p{max-width:600px;margin:0;color:#d2e5dd}
+.hero-acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.boton{
+  border:1px solid var(--borde);border-radius:13px;
+  padding:11px 17px;background:white;color:var(--tinta);
+  font-weight:750;transition:background .2s;
+}
+.boton:hover{background:var(--claro)}
+.boton-principal{
+  background:var(--principal);border-color:var(--principal);color:white;
+}
+.boton-principal:hover{background:#0b5d53}
+.hero .boton{
+  background:#ffc39e;color:#543b2d;border-color:#ffc39e;
+}
+.hero .secundario{
+  background:#315450;color:white;border-color:#57736c;
+}
+.ilustracion{
+  display:grid;grid-template-columns:1fr 1fr;gap:13px;
+  padding:12px;transform:rotate(-5deg);
+}
+.ficha{
+  min-height:100px;padding:18px;border-radius:20px;
+  display:flex;flex-direction:column;justify-content:center;
+  box-shadow:6px 7px 0 #102e2d;
+}
+.ficha strong{font-size:1.65rem;line-height:1.2}
+.ficha small{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
+.ficha:nth-child(1){background:#ffe0c3;color:#68452d}
+.ficha:nth-child(2){background:#dbd0ff;color:#59457b}
+.ficha:nth-child(3){background:#c4ebda;color:#2b5b48}
+.ficha:nth-child(4){background:#fff0b8;color:#70602e}
+.resumen{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;flex-wrap:wrap;margin:25px 0 18px;
+}
+.resumen p{margin:0;color:var(--suave);font-size:.94rem}
+.contador{
+  border:1px solid var(--borde);border-radius:30px;
+  background:white;padding:9px 15px;font-size:.82rem;font-weight:750;
+}
+.menu{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px}
+.pestana{
+  display:flex;align-items:center;gap:13px;text-align:left;
+  border:1px solid var(--borde);border-radius:18px;
+  background:white;padding:17px;color:var(--tinta);
+}
+.pestana:hover{border-color:#92c3af;background:#eff8f3}
+.pestana[aria-pressed="true"]{
+  background:var(--principal);border-color:var(--principal);color:white;
+  box-shadow:0 7px 20px #11786b22;
+}
+.icono{
+  display:grid;place-items:center;width:40px;height:40px;
+  border-radius:12px;background:#e8f2ec;font-size:1.1rem;font-weight:800;
+}
+.pestana[aria-pressed="true"] .icono{background:#ffffff22}
+.pestana small{display:block;font-size:.63rem;opacity:.75;text-transform:uppercase;letter-spacing:.08em}
+.pestana strong{display:block;font-size:.94rem}
+.cabecera{margin-bottom:23px}
+.cabecera .etiqueta{color:var(--principal)}
+h2{
+  font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.15;
+  letter-spacing:-.035em;margin:9px 0 12px;
+}
+.descripcion{margin:0;color:var(--suave);font-size:1.05rem;max-width:850px}
+.columnas{
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:25px;align-items:start;
+}
+.esquema{
+  background:var(--claro);padding:26px;border-radius:24px;margin-bottom:18px;
+}
+.esquema .etiqueta{color:#578374;font-size:.65rem}
+.esquema h3{font-size:1.4rem;margin:10px 0 17px;line-height:1.35}
+.palabras{display:flex;flex-wrap:wrap;gap:9px}
+.palabra{
+  padding:11px 15px;border-radius:13px;background:white;
+  font-weight:800;font-size:1.1rem;text-align:center;
+}
+.palabra small{
+  display:block;font-size:.56rem;font-weight:750;
+  text-transform:uppercase;letter-spacing:.06em;color:#718577;
+}
+.palabra.destacada{background:#ffcfad}
+.esquema p{margin-bottom:0;color:#537268;font-size:.89rem}
+.teoria{display:grid;gap:11px}
+.tarjeta{
+  border:1px solid var(--borde);border-radius:17px;
+  background:white;overflow:hidden;
+}
+summary{cursor:pointer;font-weight:750;padding:17px 20px}
+.cuerpo{padding:0 20px 20px;color:var(--suave);font-size:.91rem}
+.cuerpo p{margin:0 0 12px}
+.cuerpo p:last-child{margin-bottom:0}
+.cuerpo b{color:#314d47}
+.lista{margin:0;padding-left:20px}
+.lista li{margin-bottom:8px}
+.tabla-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:10px 0}
+th,td{
+  text-align:left;padding:10px 11px;border-bottom:1px solid var(--borde);
+  vertical-align:top;
+}
+th{color:#35594f;background:#f0f7f2}
+.nota-teoria{
+  background:#fff4d8;border-left:4px solid #e4bb65;
+  border-radius:0 10px 10px 0;padding:13px;margin-top:15px;
+  color:#7b643c;font-size:.83rem;
+}
+.ejemplo{padding:23px;border-radius:20px;background:#fff0d4;margin-top:18px}
+.ejemplo h3{margin:0 0 10px}
+.ejemplo blockquote{margin:0;font:1.2rem/1.6 Georgia,serif;color:#6a5032}
+.ejemplo p{font-size:.88rem;color:#7d674a;margin-bottom:0}
+.retos{
+  position:sticky;top:20px;background:white;
+  border:1px solid var(--borde);border-top:5px solid var(--principal);
+  padding:27px;border-radius:24px;box-shadow:0 12px 35px #183e3b08;
+}
+.retos>.etiqueta{color:var(--principal)}
+.reto-cabecera{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}
+.reto-cabecera h3{margin:0;font-size:1.2rem}
+#numeroReto{font-size:.78rem;white-space:nowrap;color:var(--suave)}
+.progreso{height:7px;border-radius:10px;overflow:hidden;background:#eaf1ed;margin:20px 0}
+.progreso span{display:block;height:100%;width:0;background:var(--principal);transition:width .2s}
+.pregunta{font-size:1.13rem;font-weight:750;line-height:1.6;margin:0 0 19px}
+.opciones{display:grid;gap:10px}
+.opcion{
+  display:flex;align-items:flex-start;gap:11px;text-align:left;
+  border:1px solid var(--borde);border-radius:13px;padding:13px;
+  color:var(--tinta);background:#fcfefd;font-size:.9rem;
+}
+.opcion:hover:not(:disabled){border-color:#94c6b2;background:var(--claro)}
+.letra{
+  display:grid;place-items:center;width:28px;height:28px;flex-shrink:0;
+  border-radius:8px;background:#e3f1e9;color:#47735e;
+  font-size:.75rem;font-weight:850;
+}
+.correcta{background:var(--verde);border-color:#75b590}
+.incorrecta{background:#fff0e9;border-color:#da9d7d}
+.feedback{margin-top:17px;padding:16px;background:#e6f3ec;border-radius:14px;font-size:.89rem}
+.feedback:empty{display:none}
+.acciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+.acciones .boton{flex:1;padding:10px 12px;font-size:.78rem}
+.acciones button:disabled{opacity:.45}
+.nota{font-size:.77rem;color:var(--suave);margin-bottom:0}
+.cierre{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:20px;margin:27px 0;padding:24px;border-radius:22px;background:#e9e2f8;
+}
+.cierre h3{margin:0 0 5px}
+.cierre p{margin:0;color:#6d617b;font-size:.9rem}
+.balance{background:white;border:1px solid var(--borde);padding:28px;border-radius:24px;margin:25px 0}
+.balance[hidden]{display:none}
+.metricas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.metrica{padding:20px;border-radius:17px;background:var(--claro)}
+.metrica:nth-child(2){background:var(--lavanda)}
+.metrica:nth-child(3){background:var(--coral)}
+.metrica strong{display:block;font-size:2.3rem;line-height:1.3}
+.metrica span{font-size:.8rem}
+.lista-balance{padding:0;list-style:none}
+.lista-balance li{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:12px 0;border-bottom:1px solid var(--borde);font-size:.9rem;
+}
+footer{text-align:center;padding:15px 0 30px;color:var(--suave);font-size:.77rem}
+.proyeccion .hero,.proyeccion .barra,.proyeccion footer{display:none}
+.proyeccion .contenedor{width:min(1440px,calc(100% - 36px))}
+.proyeccion .menu{margin-top:20px}
+.proyeccion .pregunta{font-size:1.5rem}
+.proyeccion .opcion{font-size:1.1rem}
+.salir{
+  display:none;position:fixed;right:15px;bottom:15px;
+  z-index:10;box-shadow:0 4px 20px #0002;
+}
+.proyeccion .salir{display:block}
+noscript{display:block;padding:20px;background:var(--amarillo)}
+@media(max-width:950px){
+  .columnas{grid-template-columns:1fr}
+  .retos{position:static}
+  .hero{padding:32px}
+  .ilustracion{gap:9px;padding:0}
+  .ficha{padding:13px;min-height:90px}
+  .ficha strong{font-size:1.3rem}
+  .menu{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .contenedor{width:calc(100% - 28px)}
+  .barra{padding:15px 0}
+  .curso{font-size:.65rem;text-align:right}
+  .hero{grid-template-columns:1fr;padding:27px}
+  .ilustracion{display:none}
+  .hero p{font-size:.9rem}
+  .pestana{padding:13px;gap:9px}
+  .pestana strong{font-size:.85rem}
+  .icono{width:32px;height:32px;font-size:.9rem}
+  .retos,.balance,.esquema{padding:22px}
+  .cierre{display:block}
+  .cierre button{margin-top:15px;width:100%}
+  .metricas{gap:7px}
+  .metrica{padding:15px 10px}
+  .metrica strong{font-size:1.8rem}
+  .metrica span{font-size:.7rem}
+  .proyeccion .pregunta{font-size:1.2rem}
+  .proyeccion .opcion{font-size:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<noscript>
+  Abre esta página en un navegador con JavaScript activado.
+  La vista previa de archivos puede no ejecutar los retos.
+</noscript>
+
+<div class="contenedor">
+
+  <div class="barra">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">L.</span>
+      Aula de Lengua
+    </div>
+    <span class="curso">2.º ESO · Laboratorio de palabras</span>
+  </div>
+
+  <header class="hero">
+    <div>
+      <span class="etiqueta">Cuatro categorías · Treinta retos</span>
+      <h1>Las palabras tienen<br><span>su propio papel.</span></h1>
+      <p>
+        Nombrar, aportar cualidades, acompañar al nombre o referirse
+        a una realidad sin nombrarla. Descubre qué hace cada palabra.
+      </p>
+      <div class="hero-acciones">
+        <button class="boton" id="empezar">Entrar al laboratorio →</button>
+        <button class="boton secundario" id="proyectar">Modo proyección</button>
+      </div>
+    </div>
+
+    <div class="ilustracion" aria-hidden="true">
+      <div class="ficha"><strong>casa</strong><small>Sustantivo</small></div>
+      <div class="ficha"><strong>azul</strong><small>Adjetivo</small></div>
+      <div class="ficha"><strong>ella</strong><small>Pronombre</small></div>
+      <div class="ficha"><strong>esta</strong><small>Determinante en «esta casa»</small></div>
+    </div>
+  </header>
+
+  <div class="resumen">
+    <p>Observa la palabra dentro de la oración: el contexto importa.</p>
+    <span class="contador" id="contador">0 de 30 retos respondidos</span>
+  </div>
+
+  <nav class="menu" id="menu" aria-label="Categorías de palabras"></nav>
+
+  <main id="aprendizaje">
+
+    <section class="cabecera" aria-labelledby="titulo">
+      <span class="etiqueta" id="etiquetaTema"></span>
+      <h2 id="titulo"></h2>
+      <p class="descripcion" id="descripcion"></p>
+    </section>
+
+    <div class="columnas">
+
+      <section aria-label="Teoría y ejemplos">
+        <div class="esquema">
+          <span class="etiqueta">La idea en un vistazo</span>
+          <h3 id="tituloEsquema"></h3>
+          <div class="palabras" id="palabras"></div>
+          <p id="pista"></p>
+        </div>
+
+        <div class="teoria" id="teoria"></div>
+
+        <article class="ejemplo">
+          <h3>Analizamos una oración</h3>
+          <blockquote id="ejemplo"></blockquote>
+          <p id="comentario"></p>
+        </article>
+      </section>
+
+      <section class="retos" aria-labelledby="tituloRetos">
+        <span class="etiqueta">Activa lo que sabes</span>
+        <div class="reto-cabecera">
+          <h3 id="tituloRetos">Tu siguiente reto</h3>
+          <span id="numeroReto"></span>
+        </div>
+
+        <div class="progreso" aria-hidden="true">
+          <span id="barraProgreso"></span>
+        </div>
+
+        <p class="pregunta" id="pregunta"></p>
+        <div class="opciones" id="opciones"></div>
+
+        <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+
+        <div class="acciones">
+          <button class="boton" id="anterior">← Anterior</button>
+          <button class="boton" id="solucion">Ver solución</button>
+          <button class="boton boton-principal" id="siguiente">Siguiente →</button>
+        </div>
+
+        <p class="nota">
+          Responde una vez y revisa la explicación.
+          Consultar la solución no cuenta como acierto.
+        </p>
+      </section>
+
+    </div>
+
+    <section class="cierre">
+      <div>
+        <h3>No te quedes solo con la etiqueta.</h3>
+        <p>
+          Di qué palabra analizas, a qué se refiere
+          y qué pista justifica tu respuesta.
+        </p>
+      </div>
+      <button class="boton" id="verBalance">Ver mi progreso</button>
+    </section>
+
+    <section class="balance" id="balance" hidden aria-labelledby="tituloBalance">
+      <span class="etiqueta">Aprender también es revisar</span>
+      <h2 id="tituloBalance">Tu mapa de aprendizaje</h2>
+      <p class="descripcion">
+        Un balance para orientar el repaso. No es una nota oficial.
+      </p>
+
+      <div class="metricas">
+        <div class="metrica">
+          <strong id="respondidos">0</strong>
+          <span>respondidos de 30</span>
+        </div>
+        <div class="metrica">
+          <strong id="aciertos">0</strong>
+          <span>aciertos sin consultar</span>
+        </div>
+        <div class="metrica">
+          <strong id="repasar">0</strong>
+          <span>para revisar</span>
+        </div>
+      </div>
+
+      <ul class="lista-balance" id="listaBalance"></ul>
+
+      <p>
+        <b>Diario de aprendizaje:</b>
+        antes confundía… / ahora distingo… /
+        un ejemplo que lo demuestra es…
+      </p>
+
+      <button class="boton" id="reiniciar">Reiniciar los 30 retos</button>
+    </section>
+
+  </main>
+
+  <footer>
+    Aula de Lengua · Sustantivos, adjetivos, pronombres y determinantes<br>
+    Clasificación escolar con aclaraciones sobre terminología actual.<br>
+    Las respuestas duran esta sesión y se borran al recargar la página.
+  </footer>
+</div>
+
+<button class="boton salir" id="salir">Salir de proyección</button>
+
+<script>
+"use strict";
+
+/* Contenido fijo del recurso. No se recogen datos personales. */
+
+const temas = [
+  {
+    nombre:"Sustantivo",
+    icono:"Aa",
+    etiqueta:"Nombrar",
+    descripcion:
+      "Nombra personas, animales, objetos, lugares, ideas, sentimientos y otras realidades. Es el núcleo del grupo nominal.",
+    esquema:"Encuentra la palabra que nombra.",
+    palabras:[
+      ["Las","determinante",false],
+      ["casas","sustantivo",true],
+      ["blancas","adjetivo",false]
+    ],
+    pista:
+      "En «las casas blancas», casas es el núcleo. Las otras palabras aportan información sobre él.",
+    teoria:[
+      {
+        titulo:"Qué es y cómo reconocerlo",
+        html:`
+          <p>El sustantivo es el <b>núcleo del grupo nominal</b>.
+          Puede aparecer acompañado de determinantes y adjetivos:
+          <i>aquellos libros interesantes</i>.</p>
+          <p>No se reconoce solo porque designe algo que se pueda tocar:
+          <i>alegría, paciencia y libertad</i> también son sustantivos.</p>`
+      },
+      {
+        titulo:"Todas las clasificaciones básicas",
+        html:`
+          <div class="tabla-scroll">
+          <table>
+            <thead>
+              <tr><th>Clasificación</th><th>Qué distingue</th><th>Ejemplos</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>Común / propio</b></td><td>Clase de seres / identificación particular</td><td>ciudad / Melilla</td></tr>
+              <tr><td><b>Concreto / abstracto</b></td><td>Realidad perceptible / idea, cualidad o sentimiento</td><td>mesa / paciencia</td></tr>
+              <tr><td><b>Individual / colectivo</b></td><td>Un ser / un conjunto, aun en singular</td><td>oveja / rebaño</td></tr>
+              <tr><td><b>Contable / no contable</b></td><td>Unidades que se cuentan / materia o magnitud</td><td>libro / arena</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Las clasificaciones se combinan: <i>rebaño</i> es común,
+          concreto, colectivo y contable.</p>
+          <div class="nota-teoria">
+            El contexto puede cambiar la interpretación:
+            «dos aguas» puede significar dos botellas o dos raciones de agua.
+          </div>`
+      },
+      {
+        titulo:"Género: masculino y femenino",
+        html:`
+          <p>El género es una propiedad gramatical. No equivale siempre al
+          sexo y no se reconoce únicamente por la terminación:
+          <i>la mano, el día</i>.</p>
+          <ul class="lista">
+            <li><b>Con variación:</b> gato / gata; profesor / profesora.</li>
+            <li><b>Heterónimos:</b> caballo / yegua; hombre / mujer.</li>
+            <li><b>Comunes en cuanto al género:</b> el estudiante / la estudiante.</li>
+            <li><b>Epicenos:</b> la jirafa macho / la jirafa hembra.
+            El sustantivo mantiene su género.</li>
+            <li><b>Ambiguos en cuanto al género:</b> el mar / la mar,
+            con diferencias de uso.</li>
+          </ul>
+          <div class="nota-teoria">
+            «El agua fría»: <b>agua es femenino</b>.
+            El artículo adopta la forma el delante de /a/ tónica inicial
+            en este contexto. En plural: las aguas frías.
+          </div>`
+      },
+      {
+        titulo:"Número: singular y plural",
+        html:`
+          <p>El <b>singular</b> y el <b>plural</b> expresan número gramatical.</p>
+          <ul class="lista">
+            <li>Habitualmente se añade <b>-s</b> a una vocal:
+            casa / casas.</li>
+            <li>Muchos nombres terminados en consonante añaden <b>-es</b>:
+            papel / papeles.</li>
+            <li>Si terminan en <b>-z</b>, esta cambia a c:
+            luz / luces.</li>
+            <li>Algunas formas permanecen iguales:
+            el lunes / los lunes; la crisis / las crisis.</li>
+          </ul>
+          <p>Un colectivo no es necesariamente plural:
+          <i>el equipo</i> está en singular.</p>`
+      }
+    ],
+    ejemplo:"Aquellos tres rebaños cruzaron el camino.",
+    comentario:
+      "Rebaños: sustantivo común, concreto, colectivo, contable, masculino y plural. Camino también es sustantivo.",
+    retos:[
+      {
+        p:"En «Aquellas casas blancas», ¿cuál es el sustantivo?",
+        o:["Aquellas","Casas","Blancas"], c:1,
+        e:"Casas nombra la realidad y funciona como núcleo del grupo nominal."
+      },
+      {
+        p:"¿Qué pareja distingue sustantivo común y propio?",
+        o:["Ciudad / Melilla","Mesa / silla","Tristeza / alegría"], c:0,
+        e:"Ciudad nombra una clase de lugares; Melilla identifica una ciudad particular."
+      },
+      {
+        p:"«Paciencia» es un sustantivo…",
+        o:["Propio","Concreto","Abstracto"], c:2,
+        e:"Nombra una cualidad, no un objeto material."
+      },
+      {
+        p:"«Rebaño» es colectivo porque…",
+        o:["Siempre está en plural","Nombra un conjunto aun en singular","Es un nombre propio"], c:1,
+        e:"Un colectivo designa un conjunto. Rebaño está en singular; rebaños, en plural."
+      },
+      {
+        p:"¿Qué pareja distingue contable y no contable en su uso habitual?",
+        o:["Libro / arena","Mesa / silla","Melilla / Sara"], c:0,
+        e:"Libro se cuenta por unidades; arena se interpreta normalmente como materia."
+      },
+      {
+        p:"¿Qué género tiene «agua» en «el agua fría»?",
+        o:["Masculino","No tiene género","Femenino"], c:2,
+        e:"Agua es femenino. La concordancia fría lo muestra: las aguas frías."
+      },
+      {
+        p:"«El estudiante / la estudiante» es un ejemplo de…",
+        o:["Nombre epiceno","Nombre común en cuanto al género","Nombre colectivo"], c:1,
+        e:"La forma estudiante no cambia; el determinante permite distinguir el género."
+      },
+      {
+        p:"¿Cuál es el plural de «luz»?",
+        o:["Luces","Luzes","Luzs"], c:0,
+        e:"La z cambia a c ante la terminación -es: luz / luces."
+      }
+    ]
+  },
+
+  {
+    nombre:"Adjetivo",
+    icono:"✧",
+    etiqueta:"Aportar propiedades",
+    descripcion:
+      "Aporta cualidades o relaciones del sustantivo y normalmente concuerda con él en género y número.",
+    esquema:"Una palabra, más información.",
+    palabras:[
+      ["alto","positivo",false],
+      ["más alto","comparativo",true],
+      ["altísimo","superlativo",false]
+    ],
+    pista:
+      "Los grados permiten expresar la intensidad de muchas cualidades.",
+    teoria:[
+      {
+        titulo:"Calificativos y relacionales",
+        html:`
+          <p><b>Calificativos:</b> expresan cualidades:
+          <i>casa luminosa, persona amable</i>.
+          Muchos admiten grado: <i>muy luminosa</i>.</p>
+          <p><b>Relacionales:</b> vinculan el sustantivo con un ámbito o clase:
+          <i>transporte escolar, energía solar, revisión médica</i>.
+          En ese uso normalmente no admiten grado.</p>
+          <div class="nota-teoria">
+            Demostrativos y posesivos aparecen en algunos manuales antiguos
+            como «adjetivos determinativos». Aquí los distinguimos de los
+            calificativos y los estudiamos en determinantes o en la
+            aclaración sobre posesivos tónicos.
+          </div>`
+      },
+      {
+        titulo:"Concordancia y terminaciones",
+        html:`
+          <p>El adjetivo concuerda con el sustantivo:
+          <i>niño alto, niña alta, niños altos, niñas altas</i>.</p>
+          <p><b>Dos terminaciones para el género:</b> blanco / blanca.</p>
+          <p><b>Una terminación para el género:</b>
+          alegre, azul, amable.
+          Pueden variar en número: <i>alegres, azules, amables</i>.</p>
+          <p>Una sola terminación de género no significa que sea invariable
+          en todos sus rasgos.</p>`
+      },
+      {
+        titulo:"Grados del adjetivo",
+        html:`
+          <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Grado</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><b>Positivo</b></td><td>alto</td></tr>
+              <tr><td><b>Comparativo de superioridad</b></td><td>más alto que</td></tr>
+              <tr><td><b>Comparativo de igualdad</b></td><td>tan alto como</td></tr>
+              <tr><td><b>Comparativo de inferioridad</b></td><td>menos alto que</td></tr>
+              <tr><td><b>Superlativo absoluto</b></td><td>muy alto / altísimo</td></tr>
+              <tr><td><b>Superlativo relativo</b></td><td>el más alto del grupo</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Formas especiales: <i>bueno → mejor</i>;
+          <i>malo → peor</i>. Evita «más mejor» y «más peor»
+          en el uso estándar.</p>`
+      },
+      {
+        titulo:"Especificativos y explicativos",
+        html:`
+          <p><b>Especificativo:</b> selecciona un subconjunto.
+          «Los alumnos cansados descansaron»:
+          descansaron los que estaban cansados.</p>
+          <p><b>Explicativo:</b> añade una cualidad sin seleccionar un subconjunto.
+          «Los alumnos, cansados, descansaron»:
+          se presenta a todos como cansados.</p>
+          <p><b>Epíteto:</b> destaca una cualidad asociada al sustantivo,
+          con intención expresiva: <i>la blanca nieve</i>.</p>`
+      }
+    ],
+    ejemplo:"Las alumnas curiosas resolvieron un reto dificilísimo.",
+    comentario:
+      "Curiosas concuerda con alumnas. Dificilísimo es un adjetivo calificativo en grado superlativo absoluto.",
+    retos:[
+      {
+        p:"En «las ventanas blancas», blancas es…",
+        o:["Pronombre","Adjetivo","Determinante"], c:1,
+        e:"Expresa una propiedad de ventanas y concuerda con ese sustantivo."
+      },
+      {
+        p:"¿Qué adjetivo tiene una terminación para el género?",
+        o:["Alegre","Blanco","Pequeño"], c:0,
+        e:"Decimos niño alegre y niña alegre. El plural es alegres."
+      },
+      {
+        p:"«Tan rápido como» expresa un comparativo de…",
+        o:["Superioridad","Inferioridad","Igualdad"], c:2,
+        e:"La estructura tan… como establece una comparación de igualdad."
+      },
+      {
+        p:"«Altísimo» está en grado…",
+        o:["Positivo","Superlativo absoluto","Comparativo"], c:1,
+        e:"El sufijo -ísimo intensifica la cualidad sin compararla con un grupo."
+      },
+      {
+        p:"En «energía solar», solar es un adjetivo…",
+        o:["Relacional","Demostrativo","Interrogativo"], c:0,
+        e:"Clasifica la energía por su relación con el sol."
+      },
+      {
+        p:"«El más alto de la clase» expresa…",
+        o:["Positivo","Comparativo de igualdad","Superlativo relativo"], c:2,
+        e:"Destaca el grado máximo de una cualidad dentro de un conjunto."
+      },
+      {
+        p:"En «Los alumnos cansados descansaron», sin comas, cansados selecciona a los que estaban cansados. Es…",
+        o:["Un artículo","Un adjetivo especificativo","Un pronombre"], c:1,
+        e:"Restringe el grupo: se refiere a los alumnos que estaban cansados."
+      }
+    ]
+  },
+
+  {
+    nombre:"Pronombres",
+    icono:"◎",
+    etiqueta:"Referirse sin nombrar",
+    descripcion:
+      "Permiten referirse a personas o realidades sin expresarlas mediante un sustantivo en ese punto del discurso.",
+    esquema:"El contexto te dice a quién se refiere.",
+    palabras:[
+      ["Sara","nombre",false],
+      ["→","referencia",false],
+      ["ella","pronombre",true]
+    ],
+    pista:
+      "En «Sara lee. Ella subraya», ella se refiere a Sara. Pero no todos los pronombres necesitan un nombre mencionado antes.",
+    teoria:[
+      {
+        titulo:"Personales: tónicos y átonos",
+        html:`
+          <p><b>Tónicos:</b> pueden llevar acento de intensidad y aparecer
+          como sujeto o tras una preposición.</p>
+          <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Persona</th><th>Formas principales</th></tr></thead>
+            <tbody>
+              <tr><td>Primera</td><td>yo, mí, conmigo, nosotros, nosotras</td></tr>
+              <tr><td>Segunda</td><td>tú, ti, contigo, vos, vosotros, vosotras</td></tr>
+              <tr><td>Tercera</td><td>él, ella, ello, ellos, ellas, sí, consigo</td></tr>
+              <tr><td>Tratamiento</td><td>usted, ustedes: designan al interlocutor, pero concuerdan en tercera persona</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p><b>Átonos:</b> me, te, se, lo, la, le, nos, os, los, las, les.</p>
+          <p>Ejemplos: <i>Ella me llamó. Lo vi. Nos escucharon.
+          Este regalo es para ti.</i></p>
+          <div class="nota-teoria">
+            Tú y él llevan tilde cuando son pronombres.
+            Ti no lleva tilde. Vos se usa en amplias zonas de América.
+          </div>`
+      },
+      {
+        titulo:"Reflexivos y recíprocos",
+        html:`
+          <p>Son <b>usos de los pronombres personales</b>.</p>
+          <p><b>Reflexivo:</b> la acción recae en quien la realiza.
+          «Sara se peina» = Sara se peina a sí misma.</p>
+          <p><b>Recíproco:</b> varios participantes realizan la acción
+          mutuamente. «Sara y Dani se saludan» =
+          se saludan el uno al otro.</p>
+          <p>Formas frecuentes: <i>me, te, se, nos, os</i>,
+          según persona y contexto.</p>`
+      },
+      {
+        titulo:"Demostrativos",
+        html:`
+          <p>Señalan realidades según su relación con el contexto
+          y los interlocutores.</p>
+          <ul class="lista">
+            <li><b>Este, esta, estos, estas.</b></li>
+            <li><b>Ese, esa, esos, esas.</b></li>
+            <li><b>Aquel, aquella, aquellos, aquellas.</b></li>
+            <li><b>Neutros:</b> esto, eso, aquello.</li>
+          </ul>
+          <p>En el análisis escolar:
+          «Este libro es nuevo» → <b>determinante</b>.
+          «Este es nuevo» → <b>pronombre</b>.</p>
+          <div class="nota-teoria">
+            Esto, eso y aquello son siempre pronombres.
+            No acompañan a un sustantivo.
+            Como pauta general, escribe los demostrativos sin tilde.
+          </div>`
+      },
+      {
+        titulo:"Posesivos: clasificación escolar",
+        html:`
+          <p>Formas tónicas:
+          <b>mío/a/os/as, tuyo/a/os/as, suyo/a/os/as,
+          nuestro/a/os/as, vuestro/a/os/as</b>.</p>
+          <p>La clasificación escolar tradicional habla de
+          <b>pronombres posesivos</b> en «Ese libro es el mío».</p>
+          <div class="nota-teoria">
+            La gramática actual suele analizar mío como un
+            <b>adjetivo posesivo</b>, también cuando el nombre se omite.
+            En esta web se muestra la denominación escolar y su aclaración
+            para que puedas relacionarla con tu libro.
+          </div>`
+      },
+      {
+        titulo:"Numerales e indefinidos",
+        html:`
+          <p><b>Numerales cardinales:</b> expresan una cantidad exacta:
+          «Vinieron tres», «Quiero dos».</p>
+          <p><b>Indefinidos:</b> expresan una referencia o cantidad no
+          identificada con precisión.</p>
+          <ul class="lista">
+            <li>alguien, nadie, algo, nada.</li>
+            <li>alguno/a/os/as, ninguno/a, uno/a/os/as.</li>
+            <li>mucho/a/os/as, poco/a/os/as, demasiado/a/os/as.</li>
+            <li>bastante/s, varios/as, todo/a/os/as, otro/a/os/as.</li>
+          </ul>
+          <p>«Algunas alumnas llegaron» → acompaña al nombre.
+          «Algunas llegaron» → uso pronominal en el análisis escolar.</p>
+          <div class="nota-teoria">
+            La tradición incluye numerales como «el primero» entre
+            los pronombres numerales. La gramática actual suele analizar
+            los ordinales como adjetivos, incluso con nombre omitido.
+          </div>`
+      },
+      {
+        titulo:"Interrogativos y exclamativos",
+        html:`
+          <p><b>Qué, quién, quiénes, cuál, cuáles,
+          cuánto, cuánta, cuántos, cuántas</b>, cuando tienen función nominal.</p>
+          <p><b>Interrogativos:</b> «¿Quién llama?», «¿Qué quieres?»,
+          «No sé cuál elegir».</p>
+          <p><b>Exclamativos:</b> «¡Quién lo diría!»,
+          «¡Cuántos han venido!».</p>
+          <p>Llevan tilde también en interrogativas
+          y exclamativas indirectas.</p>
+          <div class="nota-teoria">
+            ¿Qué lees? → pronombre.<br>
+            ¿Qué libro lees? → determinante.<br>
+            ¿Dónde lees? → dónde es un adverbio, no un pronombre.
+          </div>`
+      },
+      {
+        titulo:"Relativos",
+        html:`
+          <p>Relacionan una oración con un antecedente
+          expreso o implícito.</p>
+          <ul class="lista">
+            <li><b>Que:</b> «La chica que vino».</li>
+            <li><b>Quien, quienes:</b> «Quien quiera puede participar».</li>
+            <li><b>El cual, la cual, los cuales, las cuales, lo cual:</b>
+            «La noticia, la cual conocíamos, se confirmó».</li>
+            <li><b>Cuanto/a/os/as:</b> «Dijo cuanto sabía».</li>
+          </ul>
+          <p>Los relativos no llevan la tilde de los interrogativos.</p>
+          <div class="nota-teoria">
+            <b>Cuyo/a/os/as es un determinante relativo</b>:
+            «La autora cuyo libro leí».
+            Donde, cuando y como, en usos relativos, son adverbios.
+          </div>`
+      }
+    ],
+    ejemplo:"Sara encontró el cuaderno. Ella lo guardó y nadie lo vio.",
+    comentario:
+      "Ella: personal tónico. Lo: personal átono. Nadie: indefinido. Los pronombres cumplen funciones distintas dentro de la oración.",
+    retos:[
+      {
+        p:"En «Ella llegó», ella es…",
+        o:["Pronombre personal tónico","Artículo","Determinante posesivo"], c:0,
+        e:"Se refiere a una persona y funciona como sujeto."
+      },
+      {
+        p:"En «La veo desde aquí», la es…",
+        o:["Artículo","Pronombre personal átono","Adjetivo"], c:1,
+        e:"No acompaña a un sustantivo: es complemento del verbo veo."
+      },
+      {
+        p:"En «Esto no funciona», esto es…",
+        o:["Determinante","Sustantivo","Pronombre demostrativo neutro"], c:2,
+        e:"Esto es un demostrativo neutro y nunca acompaña a un sustantivo como determinante."
+      },
+      {
+        p:"En la clasificación escolar tradicional, mío en «Ese libro es el mío» se denomina…",
+        o:["Pronombre posesivo","Determinante interrogativo","Pronombre relativo"], c:0,
+        e:"Tradicionalmente se llama pronombre posesivo. La gramática actual suele analizarlo como adjetivo posesivo con nombre omitido."
+      },
+      {
+        p:"¿Qué pareja contiene un numeral y un indefinido usados sin sustantivo expreso?",
+        o:["Tres libros / esa casa","Vinieron tres / llegó alguien","Mi libro / el cuaderno"], c:1,
+        e:"Tres expresa cantidad exacta; alguien se refiere a una persona no identificada."
+      },
+      {
+        p:"¿En qué oración qué es un pronombre interrogativo?",
+        o:["¿Qué libro lees?","¡Qué día tan bonito!","¿Qué lees?"], c:2,
+        e:"En ¿Qué lees?, qué tiene función nominal. En las otras acompaña a un sustantivo."
+      },
+      {
+        p:"En «La alumna que vino», que es…",
+        o:["Pronombre relativo","Pronombre exclamativo","Artículo"], c:0,
+        e:"Remite al antecedente la alumna y enlaza la oración que vino."
+      },
+      {
+        p:"En «Sara y Dani se saludan», si lo hacen mutuamente, se tiene uso…",
+        o:["Demostrativo","Recíproco","Posesivo"], c:1,
+        e:"La acción se realiza el uno al otro: es un uso recíproco de un pronombre personal."
+      }
+    ]
+  },
+
+  {
+    nombre:"Determinantes",
+    icono:"↗",
+    etiqueta:"Acompañar al nombre",
+    descripcion:
+      "Acompañan al sustantivo y ayudan a identificar su referencia o precisar su cantidad. Aquí se incluyen las agrupaciones escolares habituales.",
+    esquema:"La compañía del sustantivo importa.",
+    palabras:[
+      ["estos","demostrativo",true],
+      ["tres","numeral",true],
+      ["libros","sustantivo",false]
+    ],
+    pista:
+      "No clasifiques una palabra aislada: observa si acompaña a un sustantivo y qué información aporta.",
+    teoria:[
+      {
+        titulo:"Artículos determinados e indeterminados",
+        html:`
+          <p><b>Determinados:</b> el, la, los, las.
+          Presentan normalmente un referente identificable:
+          <i>el libro que me prestaste</i>.</p>
+          <p><b>Indeterminados:</b> un, una, unos, unas.
+          Introducen normalmente un referente no identificado:
+          <i>un libro interesante</i>.</p>
+          <p><b>Lo:</b> artículo neutro en «lo importante».
+          No acompaña a un sustantivo común.</p>
+          <p><b>Al = a + el. Del = de + el.</b></p>
+          <div class="nota-teoria">
+            «La casa» → la es artículo.<br>
+            «La veo» → la es pronombre.<br>
+            Se escribe el, sin tilde, cuando es artículo;
+            él lleva tilde cuando es pronombre.
+          </div>`
+      },
+      {
+        titulo:"Determinantes demostrativos",
+        html:`
+          <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Serie</th><th>Formas</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Este</td><td>este, esta, estos, estas</td><td>esta mesa</td></tr>
+              <tr><td>Ese</td><td>ese, esa, esos, esas</td><td>esos libros</td></tr>
+              <tr><td>Aquel</td><td>aquel, aquella, aquellos, aquellas</td><td>aquella casa</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Suelen asociarse a la cercanía o distancia, pero también pueden
+          remitir al tiempo o a información mencionada en el discurso.</p>
+          <div class="nota-teoria">
+            <b>Esto, eso y aquello no son determinantes</b>:
+            son pronombres neutros.
+          </div>`
+      },
+      {
+        titulo:"Determinantes posesivos",
+        html:`
+          <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Poseedor</th><th>Formas ante el nombre</th></tr></thead>
+            <tbody>
+              <tr><td>Primera persona singular</td><td>mi, mis</td></tr>
+              <tr><td>Segunda persona singular</td><td>tu, tus</td></tr>
+              <tr><td>Tercera persona / tratamiento</td><td>su, sus</td></tr>
+              <tr><td>Primera persona plural</td><td>nuestro, nuestra, nuestros, nuestras</td></tr>
+              <tr><td>Segunda persona plural</td><td>vuestro, vuestra, vuestros, vuestras</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Ejemplos: <i>mi clase, tus apuntes, nuestras mesas</i>.
+          La relación no siempre es de propiedad material.</p>
+          <p>Los posesivos concuerdan con lo poseído:
+          <i>nuestro libro / nuestras carpetas</i>.</p>
+          <div class="nota-teoria">
+            Su puede referirse a distintos poseedores; el contexto lo aclara.
+            Mi y tu, posesivos, se escriben sin tilde.
+          </div>`
+      },
+      {
+        titulo:"Numerales: cantidad y orden",
+        html:`
+          <p><b>Cardinales:</b> indican cantidad exacta:
+          <i>un libro, dos mesas, veinte alumnos</i>.</p>
+          <p><b>Ordinales:</b> indican orden:
+          <i>primer puesto, segunda fila, décima página</i>.</p>
+          <p>La familia de los numerales incluye también
+          <b>fraccionarios</b> (<i>media hora</i>) y
+          <b>multiplicativos</b> (<i>doble ración</i>).</p>
+          <div class="nota-teoria">
+            Los manuales escolares pueden agruparlos como determinantes
+            numerales. En la gramática actual, los ordinales y muchos
+            multiplicativos se analizan como adjetivos.
+            No todas las palabras que expresan número pertenecen
+            necesariamente a la misma categoría.
+          </div>`
+      },
+      {
+        titulo:"Cuantificadores e indefinidos",
+        html:`
+          <p>Precisan una cantidad de manera no exacta o distribuyen
+          la referencia.</p>
+          <ul class="lista">
+            <li><b>Cantidad:</b> mucho/a/os/as, poco/a/os/as,
+            bastante/s, demasiado/a/os/as, varios/as.</li>
+            <li><b>Existencia o selección:</b> algún/alguna/algunos/algunas,
+            ningún/ninguna, otro/a/os/as, cualquier/cualesquiera.</li>
+            <li><b>Totalidad:</b> todo/a/os/as, ambos/as.</li>
+            <li><b>Distribución:</b> cada, sendos/as.</li>
+          </ul>
+          <p>Ejemplos: <i>muchas preguntas, algunos días,
+          cada alumno, ambas ventanas</i>.</p>
+          <p><b>Sendos:</b> uno para cada uno.
+          «Los dos alumnos trajeron sendas carpetas»:
+          una carpeta cada uno.</p>
+          <div class="nota-teoria">
+            Numerales e indefinidos pertenecen al ámbito de la cuantificación.
+            «Determinantes cuantificadores» e «indefinidos» no siempre son
+            listas separadas en todos los manuales.
+          </div>`
+      },
+      {
+        titulo:"Interrogativos y exclamativos",
+        html:`
+          <p><b>Qué, cuánto, cuánta, cuántos, cuántas</b>,
+          cuando acompañan a un sustantivo.</p>
+          <p><b>Interrogativos:</b>
+          «¿Qué libro lees?», «¿Cuántas páginas faltan?».</p>
+          <p><b>Exclamativos:</b>
+          «¡Qué sorpresa!», «¡Cuánta alegría!».</p>
+          <p>También llevan tilde en construcciones indirectas:
+          «No sé qué libro elegir».</p>
+          <div class="nota-teoria">
+            Quién no acompaña al sustantivo como determinante:
+            en «¿Quién llama?» es pronombre.
+          </div>`
+      },
+      {
+        titulo:"Determinante relativo: cuyo",
+        html:`
+          <p>Formas: <b>cuyo, cuya, cuyos, cuyas</b>.</p>
+          <p>Relaciona un nombre con un antecedente y expresa una
+          relación posesiva: «La autora cuyo libro leí».</p>
+          <p>Concuerda con el nombre que lo sigue:
+          <i>la autora cuyo libro</i>;
+          <i>el autor cuyas novelas</i>.</p>
+          <div class="nota-teoria">
+            Cuyo es determinante relativo, no pronombre.
+            No lleva tilde.
+          </div>`
+      },
+      {
+        titulo:"La prueba del contexto",
+        html:`
+          <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Acompaña al nombre</th><th>Sin nombre expreso</th></tr></thead>
+            <tbody>
+              <tr><td>Este libro: demostrativo determinante</td><td>Este es nuevo: pronombre en el análisis escolar</td></tr>
+              <tr><td>Muchas alumnas: cuantificador ante el nombre</td><td>Muchas llegaron: uso pronominal escolar</td></tr>
+              <tr><td>¿Qué texto?: determinante interrogativo</td><td>¿Qué lees?: pronombre interrogativo</td></tr>
+              <tr><td>La carpeta: artículo</td><td>La guardé: pronombre personal</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>El significado de la palabra ayuda, pero su uso dentro de
+          la construcción es decisivo.</p>`
+      }
+    ],
+    ejemplo:"Aquellas tres alumnas trajeron sus cuadernos.",
+    comentario:
+      "Aquellas: demostrativo. Tres: numeral cardinal. Sus: posesivo. Acompañan a los sustantivos alumnas y cuadernos.",
+    retos:[
+      {
+        p:"¿Qué serie contiene artículos indeterminados?",
+        o:["El, la, los, las","Un, una, unos, unas","Mi, tu, su"], c:1,
+        e:"Un, una, unos y unas son artículos indeterminados."
+      },
+      {
+        p:"En «estos libros», estos es…",
+        o:["Determinante demostrativo","Pronombre personal","Adjetivo calificativo"], c:0,
+        e:"Acompaña al sustantivo libros y aporta una referencia demostrativa."
+      },
+      {
+        p:"En «nuestras carpetas», nuestras es…",
+        o:["Artículo","Numeral","Determinante posesivo"], c:2,
+        e:"Expresa una relación posesiva y concuerda con carpetas."
+      },
+      {
+        p:"En «tres libros y muchas dudas», tres y muchas expresan…",
+        o:["Solo cualidades","Cantidad exacta y cantidad no exacta","Tiempo y lugar"], c:1,
+        e:"Tres es numeral cardinal; muchas es un cuantificador indefinido ante el sustantivo."
+      },
+      {
+        p:"En «¿Qué película vemos?» y «¡Cuánta alegría!», qué y cuánta son…",
+        o:["Determinantes interrogativo y exclamativo","Dos pronombres personales","Dos sustantivos"], c:0,
+        e:"Acompañan a película y alegría. Llevan tilde por su valor interrogativo o exclamativo."
+      },
+      {
+        p:"¿Cuál nunca acompaña a un sustantivo como determinante?",
+        o:["Esta","Aquellos","Esto"], c:2,
+        e:"Esto es un pronombre demostrativo neutro."
+      },
+      {
+        p:"En «La autora cuyo libro leí», cuyo es…",
+        o:["Pronombre interrogativo","Determinante relativo","Artículo indeterminado"], c:1,
+        e:"Acompaña a libro, concuerda con él y expresa una relación posesiva con la autora."
+      }
+    ]
+  }
+];
+
+/* ESTADO */
+
+let temaActual = 0;
+let retoActual = 0;
+const respuestas = {};
+const $ = id => document.getElementById(id);
+
+function clave() {
+  return temaActual + "-" + retoActual;
+}
+
+function totalRetos() {
+  return temas.reduce((suma, tema) => suma + tema.retos.length, 0);
+}
+
+/* MENÚ */
+
+function dibujarMenu() {
+  $("menu").innerHTML = "";
+
+  temas.forEach((tema, indice) => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "pestana";
+    boton.setAttribute("aria-pressed", String(indice === temaActual));
+
+    const icono = document.createElement("span");
+    icono.className = "icono";
+    icono.textContent = tema.icono;
+    icono.setAttribute("aria-hidden", "true");
+
+    const texto = document.createElement("span");
+
+    const pequeno = document.createElement("small");
+    pequeno.textContent = tema.etiqueta;
+
+    const nombre = document.createElement("strong");
+    nombre.textContent = tema.nombre;
+
+    texto.append(pequeno, nombre);
+    boton.append(icono, texto);
+    boton.addEventListener("click", () => seleccionarTema(indice));
+
+    $("menu").appendChild(boton);
+  });
+}
+
+function seleccionarTema(indice) {
+  temaActual = indice;
+  retoActual = 0;
+  dibujarMenu();
+  dibujarTema();
+}
+
+/* TEORÍA */
+
+function dibujarTema() {
+  const tema = temas[temaActual];
+
+  $("etiquetaTema").textContent = "Categoría " + (temaActual + 1) + " de 4";
+  $("titulo").textContent = tema.nombre;
+  $("descripcion").textContent = tema.descripcion;
+  $("tituloEsquema").textContent = tema.esquema;
+  $("pista").textContent = tema.pista;
+  $("palabras").innerHTML = "";
+
+  tema.palabras.forEach(datos => {
+    const elemento = document.createElement("div");
+    elemento.className = "palabra" + (datos[2] ? " destacada" : "");
+
+    const palabra = document.createElement("span");
+    palabra.textContent = datos[0];
+
+    const clase = document.createElement("small");
+    clase.textContent = datos[1];
+
+    elemento.append(palabra, clase);
+    $("palabras").appendChild(elemento);
+  });
+
+  $("teoria").innerHTML = "";
+
+  tema.teoria.forEach((apartado, indice) => {
+    const articulo = document.createElement("article");
+    articulo.className = "tarjeta";
+
+    const detalles = document.createElement("details");
+    detalles.open = indice === 0;
+
+    const resumen = document.createElement("summary");
+    resumen.textContent = apartado.titulo;
+
+    const cuerpo = document.createElement("div");
+    cuerpo.className = "cuerpo";
+
+    // HTML didáctico fijo definido dentro de este archivo.
+    cuerpo.innerHTML = apartado.html;
+
+    detalles.append(resumen, cuerpo);
+    articulo.appendChild(detalles);
+    $("teoria").appendChild(articulo);
+  });
+
+  $("ejemplo").textContent = tema.ejemplo;
+  $("comentario").textContent = tema.comentario;
+
+  dibujarReto();
+}
+
+/* RETOS */
+
+function dibujarReto() {
+  const tema = temas[temaActual];
+  const reto = tema.retos[retoActual];
+  const registro = respuestas[clave()];
+
+  $("numeroReto").textContent =
+    (retoActual + 1) + " de " + tema.retos.length;
+
+  const completados = tema.retos.filter((_, indice) =>
+    respuestas[temaActual + "-" + indice] !== undefined
+  ).length;
+
+  $("barraProgreso").style.width =
+    (completados / tema.retos.length * 100) + "%";
+
+  $("pregunta").textContent = reto.p;
+  $("opciones").innerHTML = "";
+  $("feedback").textContent = "";
+
+  reto.o.forEach((opcion, indice) => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "opcion";
+
+    const letra = document.createElement("span");
+    letra.className = "letra";
+    letra.textContent = String.fromCharCode(65 + indice);
+    letra.setAttribute("aria-hidden", "true");
+
+    const texto = document.createElement("span");
+    texto.textContent = opcion;
+
+    if (registro !== undefined) {
+      boton.disabled = true;
+
+      if (indice === reto.c) {
+        boton.classList.add("correcta");
+        texto.textContent += " · ✓ Correcta";
+      } else if (registro.elegida === indice) {
+        boton.classList.add("incorrecta");
+        texto.textContent += " · Tu respuesta";
+      }
+    }
+
+    boton.append(letra, texto);
+    boton.addEventListener("click", () => responder(indice));
+    $("opciones").appendChild(boton);
+  });
+
+  if (registro !== undefined) {
+    let inicio;
+
+    if (registro.consultada) {
+      inicio = "Solución consultada. ";
+    } else if (registro.acierto) {
+      inicio = "¡Correcto! ";
+    } else {
+      inicio = "Vamos a revisarlo. ";
+    }
+
+    $("feedback").textContent = inicio + reto.e;
+  }
+
+  $("anterior").disabled = retoActual === 0;
+  $("solucion").disabled = registro !== undefined;
+
+  $("siguiente").textContent =
+    retoActual === tema.retos.length - 1
+      ? (temaActual === temas.length - 1 ? "Ver balance →" : "Otro tema →")
+      : "Siguiente →";
+
+  actualizarContador();
+}
+
+function responder(indice) {
+  const id = clave();
+  if (respuestas[id] !== undefined) return;
+
+  const reto = temas[temaActual].retos[retoActual];
+
+  respuestas[id] = {
+    elegida: indice,
+    acierto: indice === reto.c,
+    consultada: false
+  };
+
+  dibujarReto();
+  if (!$("balance").hidden) dibujarBalance();
+}
+
+function consultarSolucion() {
+  const id = clave();
+  if (respuestas[id] !== undefined) return;
+
+  respuestas[id] = {
+    elegida: null,
+    acierto: false,
+    consultada: true
+  };
+
+  dibujarReto();
+  if (!$("balance").hidden) dibujarBalance();
+}
+
+function actualizarContador() {
+  $("contador").textContent =
+    Object.keys(respuestas).length + " de " +
+    totalRetos() + " retos respondidos";
+}
+
+/* BALANCE */
+
+function dibujarBalance() {
+  const registros = Object.values(respuestas);
+  const aciertos = registros.filter(r => r.acierto).length;
+
+  $("respondidos").textContent = registros.length;
+  $("aciertos").textContent = aciertos;
+  $("repasar").textContent = registros.length - aciertos;
+  $("listaBalance").innerHTML = "";
+
+  temas.forEach((tema, indiceTema) => {
+    let completados = 0;
+    let correctos = 0;
+
+    tema.retos.forEach((_, indiceReto) => {
+      const registro = respuestas[indiceTema + "-" + indiceReto];
+
+      if (registro !== undefined) {
+        completados++;
+        if (registro.acierto) correctos++;
+      }
+    });
+
+    const fila = document.createElement("li");
+    const nombre = document.createElement("strong");
+    const datos = document.createElement("span");
+
+    nombre.textContent = tema.nombre;
+    datos.textContent =
+      completados + "/" + tema.retos.length +
+      " respondidos · " + correctos + " aciertos";
+
+    fila.append(nombre, datos);
+    $("listaBalance").appendChild(fila);
+  });
+}
+
+function mostrarBalance() {
+  dibujarBalance();
+  $("balance").hidden = false;
+  $("balance").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* CONTROLES */
+
+$("anterior").addEventListener("click", () => {
+  if (retoActual > 0) {
+    retoActual--;
+    dibujarReto();
+  }
+});
+
+$("siguiente").addEventListener("click", () => {
+  const tema = temas[temaActual];
+
+  if (retoActual < tema.retos.length - 1) {
+    retoActual++;
+    dibujarReto();
+  } else if (temaActual < temas.length - 1) {
+    seleccionarTema(temaActual + 1);
+    $("aprendizaje").scrollIntoView({behavior:"smooth", block:"start"});
+  } else {
+    mostrarBalance();
+  }
+});
+
+$("solucion").addEventListener("click", consultarSolucion);
+$("verBalance").addEventListener("click", mostrarBalance);
+
+$("empezar").addEventListener("click", () => {
+  $("menu").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+$("proyectar").addEventListener("click", () => {
+  document.body.classList.add("proyeccion");
+  $("menu").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+$("salir").addEventListener("click", () => {
+  document.body.classList.remove("proyeccion");
+});
+
+$("reiniciar").addEventListener("click", () => {
+  if (!window.confirm("¿Borrar las respuestas y empezar de nuevo?")) return;
+
+  Object.keys(respuestas).forEach(id => delete respuestas[id]);
+
+  $("balance").hidden = true;
+  seleccionarTema(0);
+  actualizarContador();
+  $("aprendizaje").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+/* INICIO */
+
+dibujarMenu();
+dibujarTema();
+</script>
+</body>
+</html>
