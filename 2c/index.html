@@ -1,21 +1,818 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2.º C ESO | Aula Esperanza</title><style>
-:root{--cream:#f6f3ed;--ink:#171b18;--olive:#4d5b48;--gold:#b48b37;--terra:#9d6255;--line:#d9d3c8}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-header{padding:28px 5vw;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.brand{font-weight:900;letter-spacing:.16em;font-size:1.35rem}.brand small{display:block;font-size:.58rem;letter-spacing:.35em;font-weight:500;margin-top:5px}
-main{max-width:1250px;margin:auto;padding:64px 5vw 80px}.eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;color:var(--olive)}
-h1{font-size:clamp(2.8rem,7vw,6.2rem);line-height:.95;margin:16px 0 24px;max-width:950px}.lead{font-size:1.15rem;max-width:720px;line-height:1.7;color:#4b514c}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}.card{min-height:310px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;color:white;text-decoration:none;transition:.2s}
-.card:hover{transform:translateY(-5px)}.olive{background:var(--olive)}.gold{background:var(--gold)}.terra{background:var(--terra)}
-.num{letter-spacing:.2em;opacity:.8}.card h2{font-family:Georgia,serif;font-size:2rem;margin:16px 0 10px}.card p{line-height:1.5}.enter{font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-.back{display:inline-block;margin-bottom:28px;color:var(--olive);font-weight:800;text-decoration:none}.resource{display:block;background:white;border:1px solid var(--line);padding:24px;margin:14px 0;text-decoration:none;color:var(--ink)}
-.resource:hover{border-color:var(--olive)}.resource strong{font-size:1.2rem}footer{background:#3f4b3d;color:white;padding:28px 5vw;letter-spacing:.16em;font-size:.78rem}
-@media(max-width:800px){.cards{grid-template-columns:1fr}h1{font-size:3.2rem}}
-</style></head><body><header><div class="brand">AULA ESPERANZA<small>2.º C DE ESO</small></div></header><main><a class="back" href="../">← Volver al inicio</a><div class="eyebrow">Lengua Castellana y Literatura</div><h1>2.º C de ESO</h1><p class="lead">Actividades y materiales del curso.</p><a class="resource" href="comunicacion/"><strong>La comunicación y las funciones del lenguaje →</strong><br>Teoría, relaciones, práctica interactiva, reto y solucionario.</a><a class="resource" href="propiedades-texto/"><strong>Propiedades del texto y marcadores →</strong><br>Adecuación, coherencia, cohesión y marcadores textuales.</a><a class="resource" href="formacion%20de%20palabras/">
-<strong>Formación de palabras →</strong><br>
-Morfemas, formación de palabras, familias léxicas y sufijos apreciativos.
-</a> <a class="resource" href="situaciones-de-aprendizaje.html">
-  <strong>Situaciones de aprendizaje →</strong><br>
-  01. Carta a mi yo del futuro ·
-  02. Taller de superhéroes: descripción, narración y diálogo.
-</a> </main><footer>AULA ESPERANZA · 2.º C ESO</footer></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2.º C ESO · Aula Esperanza</title>
+
+<style>
+:root{
+  --fondo:#f5f4fa;
+  --papel:#ffffff;
+  --tinta:#28283f;
+  --suave:#6b6b80;
+  --morado:#7151d9;
+  --verde:#167665;
+  --borde:#e6e2ef;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--fondo);
+  color:var(--tinta);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.65;
+}
+
+a{color:inherit}
+button,input{font:inherit}
+
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:3px solid #ed9a54;
+  outline-offset:5px;
+}
+
+.contenedor{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+.barra{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px 0;
+}
+
+.marca{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  text-decoration:none;
+  font-weight:850;
+}
+
+.logo{
+  display:grid;
+  place-items:center;
+  width:41px;
+  height:41px;
+  border-radius:13px;
+  background:var(--morado);
+  color:white;
+  font:bold 26px Georgia,serif;
+}
+
+.marca small{
+  display:block;
+  color:var(--suave);
+  font-size:.63rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.volver{
+  text-decoration:none;
+  color:var(--suave);
+  font-size:.87rem;
+  font-weight:700;
+}
+
+.volver:hover{color:var(--morado)}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  align-items:center;
+  gap:30px;
+  padding:45px;
+  background:#292442;
+  color:white;
+  border-radius:30px;
+  overflow:hidden;
+}
+
+.etiqueta{
+  font-size:.7rem;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+}
+
+.hero .etiqueta{color:#c9baff}
+
+h1{
+  margin:16px 0;
+  font-size:clamp(2.7rem,6vw,4.6rem);
+  line-height:1.05;
+  letter-spacing:-.05em;
+}
+
+h1 span{color:#c7b5ff}
+
+.hero p{
+  margin:0;
+  max-width:560px;
+  color:#dcd6eb;
+  font-size:1.02rem;
+}
+
+.insignias{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:25px;
+}
+
+.insignias span{
+  padding:7px 12px;
+  border:1px solid #655974;
+  border-radius:30px;
+  font-size:.73rem;
+  color:#eee9f6;
+}
+
+.ilustracion{
+  position:relative;
+  min-height:240px;
+}
+
+.cuaderno{
+  position:absolute;
+  top:5px;
+  left:20%;
+  width:180px;
+  height:215px;
+  border-radius:20px;
+  background:#f0e9ff;
+  transform:rotate(9deg);
+  box-shadow:12px 12px 0 #17162b;
+}
+
+.cuaderno::before{
+  content:"";
+  position:absolute;
+  inset:34px 23px;
+  background:repeating-linear-gradient(
+    to bottom,
+    #d8cdeb 0 5px,
+    transparent 5px 29px
+  );
+}
+
+.pegatina{
+  position:absolute;
+  z-index:1;
+  padding:13px 20px;
+  border-radius:14px;
+  font-size:1.2rem;
+  font-weight:850;
+}
+
+.pegatina.leer{
+  top:55px;
+  left:0;
+  transform:rotate(-9deg);
+  background:#ffc8a6;
+  color:#654331;
+}
+
+.pegatina.crear{
+  top:155px;
+  right:0;
+  transform:rotate(5deg);
+  background:#c2ead8;
+  color:#315c4c;
+}
+
+.estrella{
+  position:absolute;
+  right:20px;
+  top:-12px;
+  font-size:3.5rem;
+  color:#ffe09b;
+}
+
+main{padding:35px 0 20px}
+
+.cabecera{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.cabecera .etiqueta{color:var(--morado)}
+
+h2{
+  margin:7px 0 0;
+  font-size:clamp(1.65rem,3vw,2.1rem);
+  letter-spacing:-.035em;
+  line-height:1.2;
+}
+
+.contador{
+  padding:8px 13px;
+  border-radius:30px;
+  border:1px solid var(--borde);
+  background:white;
+  color:var(--suave);
+  font-size:.8rem;
+}
+
+.herramientas{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:24px 0;
+}
+
+.filtros{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.filtro{
+  cursor:pointer;
+  min-height:43px;
+  border:1px solid var(--borde);
+  border-radius:12px;
+  background:white;
+  padding:9px 15px;
+  color:var(--suave);
+  font-size:.82rem;
+  font-weight:750;
+}
+
+.filtro:hover{background:#eee8fb}
+
+.filtro[aria-pressed="true"]{
+  background:var(--morado);
+  color:white;
+  border-color:var(--morado);
+}
+
+.buscador{
+  width:285px;
+  max-width:100%;
+  min-height:44px;
+  padding:10px 14px;
+  border:1px solid var(--borde);
+  border-radius:12px;
+  background:white;
+  color:var(--tinta);
+}
+
+.recursos{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+.recurso{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  background:white;
+  border:1px solid var(--borde);
+  border-radius:23px;
+  overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+
+.recurso:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px #32254e12;
+}
+
+.recurso[hidden]{display:none}
+
+.portada{
+  position:relative;
+  min-height:150px;
+  padding:24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  overflow:hidden;
+}
+
+.portada::after{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  border:20px solid #ffffff40;
+  border-radius:50%;
+  right:-27px;
+  bottom:-45px;
+}
+
+.violeta{background:#e8dfff;color:#6644a3}
+.menta{background:#d5efdf;color:#31674f}
+.melocoton{background:#ffe1cc;color:#98603c}
+.azul{background:#dce9fc;color:#446b9a}
+.amarillo{background:#fff0c3;color:#8e732b}
+.rosa{background:#f7dfeb;color:#945778}
+
+.simbolo{
+  font-size:3.4rem;
+  font-weight:850;
+  letter-spacing:-.06em;
+  line-height:1;
+}
+
+.mini-etiqueta{
+  position:relative;
+  z-index:1;
+  border-radius:30px;
+  padding:6px 10px;
+  background:#ffffffb0;
+  font-size:.65rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:850;
+}
+
+.cuerpo{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:23px;
+}
+
+.categoria{
+  color:var(--suave);
+  font-size:.63rem;
+  font-weight:850;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.recurso h3{
+  font-size:1.2rem;
+  line-height:1.35;
+  letter-spacing:-.02em;
+  margin:9px 0 12px;
+}
+
+.recurso p{
+  color:var(--suave);
+  font-size:.88rem;
+  margin:0 0 20px;
+}
+
+.entrar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-top:auto;
+  padding-top:15px;
+  border-top:1px solid #eeebf3;
+  color:var(--morado);
+  font-size:.82rem;
+  font-weight:800;
+}
+
+.flecha{
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  border-radius:10px;
+  background:#f0eafb;
+  font-size:1rem;
+}
+
+.sin-resultados{
+  background:white;
+  border:1px dashed #c9bddb;
+  border-radius:18px;
+  padding:28px;
+  text-align:center;
+  color:var(--suave);
+}
+
+.sin-resultados[hidden]{display:none}
+
+.recordatorio{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  margin-top:30px;
+  padding:25px;
+  background:#e6eee8;
+  border-radius:22px;
+}
+
+.recordatorio-icono{
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  background:#cde0d2;
+  color:#476b50;
+  font-size:1.6rem;
+}
+
+.recordatorio h3{
+  margin:0 0 5px;
+  font-size:1rem;
+}
+
+.recordatorio p{
+  margin:0;
+  color:#64766a;
+  font-size:.86rem;
+}
+
+footer{
+  padding:25px 0 30px;
+  color:var(--suave);
+  text-align:center;
+  font-size:.76rem;
+}
+
+.solo-lectores{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+}
+
+@media(max-width:1000px){
+  .recursos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{padding:33px}
+  .ilustracion{transform:scale(.85)}
+}
+
+@media(max-width:650px){
+  .contenedor{width:calc(100% - 28px)}
+  .barra{padding:17px 0}
+  .marca{font-size:.9rem}
+  .marca small{font-size:.52rem}
+  .volver{font-size:.75rem}
+  .hero{grid-template-columns:1fr;padding:28px}
+  .ilustracion{display:none}
+  h1{font-size:3rem}
+  .hero p{font-size:.9rem}
+  main{padding-top:28px}
+  .herramientas{align-items:stretch}
+  .buscador{width:100%}
+  .recursos{grid-template-columns:1fr}
+  .portada{min-height:130px}
+  .cuerpo{padding:22px}
+  .recordatorio{padding:21px;align-items:flex-start}
+  .recordatorio-icono{width:40px;height:40px;font-size:1.3rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<div class="contenedor">
+
+  <header class="barra">
+    <a class="marca" href="../">
+      <span class="logo" aria-hidden="true">E.</span>
+      <span>
+        AULA ESPERANZA
+        <small>Lengua · Literatura · Pensamiento</small>
+      </span>
+    </a>
+
+    <a class="volver" href="../">← Volver al inicio</a>
+  </header>
+
+  <section class="hero" aria-labelledby="tituloPrincipal">
+    <div>
+      <span class="etiqueta">Nuestro espacio de aprendizaje</span>
+      <h1 id="tituloPrincipal">
+        2.º C de ESO.<br>
+        <span>Ideas en marcha.</span>
+      </h1>
+
+      <p>
+        Un lugar para comprender, practicar y crear.
+        Elige un recurso, explora sus ejemplos y pon a prueba
+        lo que sabes.
+      </p>
+
+      <div class="insignias">
+        <span>Lengua y Literatura</span>
+        <span>Actividades interactivas</span>
+        <span>Talleres de escritura</span>
+      </div>
+    </div>
+
+    <div class="ilustracion" aria-hidden="true">
+      <div class="cuaderno"></div>
+      <span class="pegatina leer">LEER Y PENSAR</span>
+      <span class="pegatina crear">ESCRIBIR Y CREAR</span>
+      <span class="estrella">✦</span>
+    </div>
+  </section>
+
+  <main>
+    <div class="cabecera">
+      <div>
+        <span class="etiqueta">Tu biblioteca de aula</span>
+        <h2>¿Qué vamos a trabajar?</h2>
+      </div>
+
+      <span class="contador" id="contador" aria-live="polite">
+        6 recursos disponibles
+      </span>
+    </div>
+
+    <div class="herramientas">
+      <div class="filtros" role="group" aria-label="Filtrar recursos">
+        <button class="filtro" type="button"
+          data-filtro="todos" aria-pressed="true">
+          Todos
+        </button>
+
+        <button class="filtro" type="button"
+          data-filtro="comunicacion" aria-pressed="false">
+          Comunicación
+        </button>
+
+        <button class="filtro" type="button"
+          data-filtro="gramatica" aria-pressed="false">
+          Gramática
+        </button>
+
+        <button class="filtro" type="button"
+          data-filtro="talleres" aria-pressed="false">
+          Talleres
+        </button>
+      </div>
+
+      <label class="solo-lectores" for="buscar">
+        Buscar un recurso
+      </label>
+      <input
+        class="buscador"
+        id="buscar"
+        type="search"
+        placeholder="Buscar un tema…"
+        autocomplete="off">
+    </div>
+
+    <section class="recursos" aria-label="Materiales de 2.º C">
+
+      <!-- RECURSO ANTERIOR: COMUNICACIÓN -->
+      <a class="recurso"
+         data-categoria="comunicacion"
+         href="comunicacion/">
+
+        <div class="portada azul">
+          <span class="simbolo" aria-hidden="true">❞</span>
+          <span class="mini-etiqueta">Conectar</span>
+        </div>
+
+        <div class="cuerpo">
+          <span class="categoria">Comunicación</span>
+          <h3>La comunicación y las funciones del lenguaje</h3>
+          <p>
+            Elementos de la comunicación, funciones del lenguaje,
+            práctica interactiva, reto y solucionario.
+          </p>
+          <span class="entrar">
+            Explorar el recurso
+            <span class="flecha" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- RECURSO ANTERIOR: PROPIEDADES DEL TEXTO -->
+      <a class="recurso"
+         data-categoria="comunicacion"
+         href="propiedades-texto/">
+
+        <div class="portada amarillo">
+          <span class="simbolo" aria-hidden="true">≡</span>
+          <span class="mini-etiqueta">Dar sentido</span>
+        </div>
+
+        <div class="cuerpo">
+          <span class="categoria">Comunicación</span>
+          <h3>Propiedades del texto y marcadores</h3>
+          <p>
+            Adecuación, coherencia, cohesión y marcadores
+            para construir textos claros y bien conectados.
+          </p>
+          <span class="entrar">
+            Explorar el recurso
+            <span class="flecha" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- RECURSO ANTERIOR: FORMACIÓN DE PALABRAS -->
+      <a class="recurso"
+         data-categoria="gramatica"
+         href="formacion%20de%20palabras/">
+
+        <div class="portada melocoton">
+          <span class="simbolo" aria-hidden="true">a+b</span>
+          <span class="mini-etiqueta">Construir</span>
+        </div>
+
+        <div class="cuerpo">
+          <span class="categoria">Gramática</span>
+          <h3>Formación de palabras</h3>
+          <p>
+            Morfemas, procedimientos de formación,
+            familias léxicas y sufijos apreciativos.
+          </p>
+          <span class="entrar">
+            Explorar el recurso
+            <span class="flecha" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- PÁGINA NUEVA: MODALIDADES TEXTUALES -->
+      <a class="recurso"
+         data-categoria="comunicacion"
+         href="modalidades-textuales.html">
+
+        <div class="portada violeta">
+          <span class="simbolo" aria-hidden="true">Aa</span>
+          <span class="mini-etiqueta">30 retos</span>
+        </div>
+
+        <div class="cuerpo">
+          <span class="categoria">Comunicación</span>
+          <h3>Modalidades textuales</h3>
+          <p>
+            Narración, descripción, diálogo, exposición,
+            argumentación y textos prescriptivos.
+            Seis modalidades con ejemplos y retos.
+          </p>
+          <span class="entrar">
+            Explorar el recurso
+            <span class="flecha" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- PÁGINA NUEVA: TIPOS DE PALABRAS -->
+      <a class="recurso"
+         data-categoria="gramatica"
+         href="tipos-de-palabras.html">
+
+        <div class="portada menta">
+          <span class="simbolo" aria-hidden="true">↗</span>
+          <span class="mini-etiqueta">30 retos</span>
+        </div>
+
+        <div class="cuerpo">
+          <span class="categoria">Gramática</span>
+          <h3>Tipos de palabras</h3>
+          <p>
+            Sustantivos, adjetivos, pronombres y determinantes.
+            Clases, ejemplos y actividades para distinguirlos
+            dentro de la oración.
+          </p>
+          <span class="entrar">
+            Explorar el recurso
+            <span class="flecha" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- RECURSO ANTERIOR: SITUACIONES DE APRENDIZAJE -->
+      <a class="recurso"
+         data-categoria="talleres"
+         href="situaciones-de-aprendizaje.html">
+
+        <div class="portada rosa">
+          <span class="simbolo" aria-hidden="true">✎</span>
+          <span class="mini-etiqueta">Crear</span>
+        </div>
+
+        <div class="cuerpo">
+          <span class="categoria">Talleres de escritura</span>
+          <h3>Situaciones de aprendizaje</h3>
+          <p>
+            Carta a mi yo del futuro y taller de superhéroes:
+            descripción, narración y diálogo para dar forma
+            a tus propias ideas.
+          </p>
+          <span class="entrar">
+            Explorar el recurso
+            <span class="flecha" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+    </section>
+
+    <p class="sin-resultados" id="sinResultados" hidden>
+      No hay recursos que coincidan con esta búsqueda.
+      Prueba otra palabra o selecciona «Todos».
+    </p>
+
+    <aside class="recordatorio">
+      <span class="recordatorio-icono" aria-hidden="true">✦</span>
+      <div>
+        <h3>Aprender es poder explicarlo.</h3>
+        <p>
+          Lee con atención, prueba una respuesta y busca una razón.
+          Si te equivocas, revisa la pista y vuelve a pensar.
+        </p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    AULA ESPERANZA · 2.º C DE ESO<br>
+    Lengua, literatura y espacio para tus ideas.
+  </footer>
+
+</div>
+
+<script>
+"use strict";
+
+const botones = document.querySelectorAll("[data-filtro]");
+const recursos = document.querySelectorAll(".recurso");
+const buscador = document.getElementById("buscar");
+const contador = document.getElementById("contador");
+const sinResultados = document.getElementById("sinResultados");
+
+let filtroActual = "todos";
+
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+function filtrarRecursos() {
+  const consulta = normalizar(buscador.value);
+  let visibles = 0;
+
+  recursos.forEach(recurso => {
+    const coincideCategoria =
+      filtroActual === "todos" ||
+      recurso.dataset.categoria === filtroActual;
+
+    const coincideBusqueda =
+      normalizar(recurso.textContent).includes(consulta);
+
+    const mostrar = coincideCategoria && coincideBusqueda;
+
+    recurso.hidden = !mostrar;
+
+    if (mostrar) visibles++;
+  });
+
+  contador.textContent =
+    visibles === 1
+      ? "1 recurso disponible"
+      : visibles + " recursos disponibles";
+
+  sinResultados.hidden = visibles !== 0;
+}
+
+botones.forEach(boton => {
+  boton.addEventListener("click", () => {
+    filtroActual = boton.dataset.filtro;
+
+    botones.forEach(elemento => {
+      elemento.setAttribute(
+        "aria-pressed",
+        String(elemento === boton)
+      );
+    });
+
+    filtrarRecursos();
+  });
+});
+
+buscador.addEventListener("input", filtrarRecursos);
+</script>
+
+</body>
+</html>
