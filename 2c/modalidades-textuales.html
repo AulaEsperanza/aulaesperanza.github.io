@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modalidades textuales · Aula de Lengua</title>
+
+<style>
+:root {
+  --fondo: #f5f3ff;
+  --papel: #ffffff;
+  --tinta: #252342;
+  --suave: #67647e;
+  --morado: #6d4aff;
+  --lavanda: #eee8ff;
+  --borde: #e6e1f2;
+  --verde: #d9f6e6;
+  --coral: #ffe0d2;
+  --amarillo: #fff0bd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--tinta);
+  background: var(--fondo);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+button, input { font: inherit; }
+
+button {
+  cursor: pointer;
+  min-height: 46px;
+}
+
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 3px solid #f59a54;
+  outline-offset: 4px;
+}
+
+button:disabled { cursor: default; }
+
+button, .tarjeta, .pestana {
+  transition: background .2s, border-color .2s, transform .2s;
+}
+
+.contenedor {
+  width: min(1180px, calc(100% - 36px));
+  margin: auto;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 19px 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 13px;
+  color: white;
+  background: var(--morado);
+  font: bold 25px Georgia, serif;
+}
+
+.curso {
+  color: var(--suave);
+  font-size: .85rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 25px;
+  padding: 44px;
+  border-radius: 30px;
+  color: white;
+  background: #282244;
+}
+
+.etiqueta {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.hero .etiqueta { color: #cfc1ff; }
+
+h1 {
+  margin: 15px 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+h1 span { color: #c7b5ff; }
+
+.hero p {
+  max-width: 570px;
+  margin: 0;
+  color: #e0d9ef;
+}
+
+.hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.boton {
+  padding: 11px 18px;
+  border: 1px solid var(--borde);
+  border-radius: 13px;
+  color: var(--tinta);
+  background: white;
+  font-weight: 750;
+}
+
+.boton:hover { background: var(--lavanda); }
+
+.boton-principal {
+  color: white;
+  background: var(--morado);
+  border-color: var(--morado);
+}
+
+.boton-principal:hover { background: #5531df; }
+
+.hero .boton {
+  color: #253c34;
+  background: #cef2df;
+  border-color: #cef2df;
+}
+
+.hero .boton-secundario {
+  color: white;
+  background: #44395f;
+  border-color: #685880;
+}
+
+.ilustracion {
+  position: relative;
+  min-height: 230px;
+}
+
+.hoja {
+  position: absolute;
+  left: 17%;
+  top: 10px;
+  width: 190px;
+  height: 210px;
+  border-radius: 20px;
+  background: #f4eeff;
+  transform: rotate(9deg);
+  box-shadow: 12px 12px 0 #19172f;
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  inset: 35px 25px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #d7cceb 0 5px,
+    transparent 5px 28px
+  );
+}
+
+.pegatina {
+  position: absolute;
+  z-index: 1;
+  padding: 13px 22px;
+  border-radius: 15px;
+  font-weight: 850;
+  font-size: 1.2rem;
+  box-shadow: 0 7px 0 #00000012;
+}
+
+.pegatina.uno {
+  left: 0;
+  top: 60px;
+  background: #ffbf9d;
+  color: #613b32;
+  transform: rotate(-9deg);
+}
+
+.pegatina.dos {
+  right: 0;
+  top: 150px;
+  background: #bdeed8;
+  color: #295443;
+  transform: rotate(5deg);
+}
+
+.estrella {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #ffe18d;
+  font-size: 3.5rem;
+}
+
+.resumen {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 24px 0 18px;
+}
+
+.resumen p { margin: 0; color: var(--suave); }
+
+.contador {
+  background: white;
+  border: 1px solid var(--borde);
+  padding: 9px 15px;
+  border-radius: 30px;
+  font-size: .85rem;
+  font-weight: 750;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.pestana {
+  border: 1px solid var(--borde);
+  border-radius: 17px;
+  padding: 15px 10px;
+  background: white;
+  color: var(--tinta);
+  text-align: left;
+}
+
+.pestana:hover {
+  border-color: #b9a5ff;
+  transform: translateY(-2px);
+}
+
+.pestana[aria-pressed="true"] {
+  color: white;
+  background: var(--morado);
+  border-color: var(--morado);
+  box-shadow: 0 7px 20px #6d4aff25;
+}
+
+.pestana small {
+  display: block;
+  opacity: .72;
+  font-size: .63rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.pestana strong {
+  display: block;
+  font-size: .86rem;
+  margin-top: 5px;
+}
+
+.cabecera-tema {
+  margin-bottom: 23px;
+}
+
+.cabecera-tema .etiqueta { color: var(--morado); }
+
+h2 {
+  margin: 8px 0 10px;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  line-height: 1.15;
+  letter-spacing: -.035em;
+}
+
+.descripcion {
+  margin: 0;
+  color: var(--suave);
+  max-width: 800px;
+  font-size: 1.05rem;
+}
+
+.columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.esquema {
+  background: var(--lavanda);
+  border-radius: 24px;
+  padding: 26px;
+  margin-bottom: 18px;
+}
+
+.esquema .etiqueta {
+  color: #79649d;
+  font-size: .65rem;
+}
+
+.esquema h3 {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin: 10px 0 18px;
+}
+
+.pasos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+}
+
+.pasos span {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: white;
+  font-size: .85rem;
+  font-weight: 750;
+}
+
+.pasos span:nth-child(3n+2) { background: #ffd2b8; }
+.pasos span:nth-child(3n) { background: #c8efd9; }
+
+.esquema p {
+  font-size: .9rem;
+  color: #625370;
+  margin: 17px 0 0;
+}
+
+.teoria {
+  display: grid;
+  gap: 11px;
+}
+
+.tarjeta {
+  background: white;
+  border: 1px solid var(--borde);
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+summary {
+  cursor: pointer;
+  padding: 17px 20px;
+  font-weight: 750;
+}
+
+.contenido-tarjeta {
+  padding: 0 20px 19px;
+  color: var(--suave);
+  font-size: .92rem;
+}
+
+.contenido-tarjeta p { margin: 0; }
+
+.ejemplo {
+  margin-top: 18px;
+  padding: 23px;
+  border-radius: 20px;
+  background: #fff2d0;
+}
+
+.ejemplo h3 { margin: 0 0 10px; }
+
+.ejemplo blockquote {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 1.13rem;
+  color: #654b2e;
+}
+
+.ejemplo p {
+  margin-bottom: 0;
+  font-size: .87rem;
+  color: #7b6549;
+}
+
+.retos {
+  position: sticky;
+  top: 20px;
+  background: white;
+  border: 1px solid var(--borde);
+  border-top: 5px solid var(--morado);
+  border-radius: 24px;
+  padding: 27px;
+  box-shadow: 0 12px 35px #32265608;
+}
+
+.retos .etiqueta { color: var(--morado); }
+
+.reto-cabecera {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.reto-cabecera h3 { margin: 0; font-size: 1.2rem; }
+
+#numeroReto {
+  font-size: .78rem;
+  color: var(--suave);
+  white-space: nowrap;
+}
+
+.progreso {
+  height: 7px;
+  border-radius: 10px;
+  background: #efebf8;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progreso span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--morado);
+  transition: width .25s;
+}
+
+.pregunta {
+  font-size: 1.15rem;
+  font-weight: 750;
+  line-height: 1.55;
+  margin: 0 0 19px;
+}
+
+.opciones {
+  display: grid;
+  gap: 10px;
+}
+
+.opcion {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  text-align: left;
+  border: 1px solid var(--borde);
+  border-radius: 13px;
+  padding: 13px;
+  background: #fcfbff;
+  color: var(--tinta);
+  font-size: .91rem;
+}
+
+.opcion:hover:not(:disabled) {
+  background: var(--lavanda);
+  border-color: #b8a5ff;
+}
+
+.letra {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #eee8ff;
+  color: #6b50a8;
+  font-size: .75rem;
+  font-weight: 850;
+}
+
+.opcion.correcta {
+  background: var(--verde);
+  border-color: #62ad84;
+}
+
+.opcion.incorrecta {
+  background: #fff0e9;
+  border-color: #d99675;
+}
+
+.feedback {
+  margin-top: 17px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #f0ebff;
+  font-size: .9rem;
+}
+
+.feedback:empty { display: none; }
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 19px;
+}
+
+.acciones .boton {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: .78rem;
+}
+
+.acciones button:disabled { opacity: .4; }
+
+.nota {
+  color: var(--suave);
+  font-size: .77rem;
+  margin-bottom: 0;
+}
+
+.cierre {
+  margin: 27px 0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: 22px;
+  background: #e2f3eb;
+}
+
+.cierre h3 { margin: 0 0 5px; }
+.cierre p { margin: 0; color: #506b5e; font-size: .9rem; }
+
+.balance {
+  background: white;
+  border: 1px solid var(--borde);
+  border-radius: 24px;
+  padding: 28px;
+  margin: 25px 0;
+}
+
+.balance[hidden] { display: none; }
+
+.metricas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.metrica {
+  padding: 20px;
+  border-radius: 17px;
+  background: var(--lavanda);
+}
+
+.metrica:nth-child(2) { background: var(--verde); }
+.metrica:nth-child(3) { background: var(--coral); }
+
+.metrica strong {
+  display: block;
+  font-size: 2.3rem;
+  line-height: 1.3;
+}
+
+.metrica span { font-size: .82rem; }
+
+.lista-balance {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-balance li {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borde);
+  font-size: .9rem;
+}
+
+footer {
+  padding: 15px 0 30px;
+  color: var(--suave);
+  font-size: .77rem;
+  text-align: center;
+}
+
+.proyeccion .hero,
+.proyeccion .barra,
+.proyeccion footer { display: none; }
+
+.proyeccion .contenedor { width: min(1440px, calc(100% - 36px)); }
+.proyeccion .menu { margin-top: 20px; }
+.proyeccion .pregunta { font-size: 1.6rem; }
+.proyeccion .opcion { font-size: 1.15rem; }
+.proyeccion .descripcion { font-size: 1.2rem; }
+
+.salir-proyeccion {
+  display: none;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 10;
+  box-shadow: 0 4px 20px #0002;
+}
+
+.proyeccion .salir-proyeccion { display: block; }
+
+noscript {
+  display: block;
+  padding: 20px;
+  background: #fff0bd;
+  color: #594723;
+}
+
+@media (max-width: 950px) {
+  .menu { grid-template-columns: repeat(3, 1fr); }
+  .hero { padding: 32px; }
+  .ilustracion { transform: scale(.85); }
+  .columnas { grid-template-columns: 1fr; }
+  .retos { position: static; }
+}
+
+@media (max-width: 600px) {
+  .contenedor { width: calc(100% - 28px); }
+  .barra { padding: 15px 0; }
+  .curso { font-size: .7rem; }
+  .hero { grid-template-columns: 1fr; padding: 27px; }
+  .ilustracion { display: none; }
+  .hero p { font-size: .9rem; }
+  .menu { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .pestana { padding: 13px; }
+  .pestana strong { font-size: .84rem; }
+  .resumen { margin-top: 20px; }
+  .resumen p { font-size: .85rem; }
+  .retos, .balance, .esquema { padding: 22px; }
+  .cierre { display: block; }
+  .cierre button { margin-top: 15px; width: 100%; }
+  .metricas { gap: 7px; }
+  .metrica { padding: 15px 10px; }
+  .metrica strong { font-size: 1.8rem; }
+  .metrica span { font-size: .7rem; }
+  .proyeccion .pregunta { font-size: 1.25rem; }
+  .proyeccion .opcion { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media print {
+  body { background: white; color: black; }
+  .barra, .hero, .menu, .resumen, .retos,
+  .cierre, .balance, footer, .salir-proyeccion { display: none !important; }
+  .columnas { display: block; }
+  .contenedor { width: 100%; }
+  .tarjeta, .ejemplo, .esquema { break-inside: avoid; }
+}
+</style>
+</head>
+
+<body>
+
+<noscript>
+  Para mostrar los temas y los retos, abre esta página en un navegador
+  con JavaScript activado. La vista previa de un archivo puede no ejecutar
+  las actividades.
+</noscript>
+
+<div class="contenedor">
+
+  <div class="barra">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">L.</span>
+      Aula de Lengua
+    </div>
+    <span class="curso">2.º ESO · Aprende, practica y explica</span>
+  </div>
+
+  <header class="hero">
+    <div>
+      <span class="etiqueta">Exploradores de textos</span>
+      <h1>Cada texto tiene<br><span>algo que hacer.</span></h1>
+      <p>
+        Contar una historia, dibujar con palabras, conversar,
+        explicar, convencer o guiar una acción.
+        Descubre las seis modalidades textuales.
+      </p>
+
+      <div class="hero-acciones">
+        <button class="boton" id="botonEmpezar">Empezar a explorar →</button>
+        <button class="boton boton-secundario" id="botonProyeccion">
+          Modo proyección
+        </button>
+      </div>
+    </div>
+
+    <div class="ilustracion" aria-hidden="true">
+      <div class="hoja"></div>
+      <div class="pegatina uno">PALABRAS</div>
+      <div class="pegatina dos">CON PROPÓSITO</div>
+      <span class="estrella">✦</span>
+    </div>
+  </header>
+
+  <div class="resumen">
+    <p>Una idea clara. Un ejemplo. Cinco retos por modalidad.</p>
+    <span class="contador" id="contadorGlobal">0 de 30 retos respondidos</span>
+  </div>
+
+  <nav class="menu" id="menu" aria-label="Modalidades textuales"></nav>
+
+  <main id="zonaAprendizaje">
+
+    <section class="cabecera-tema" aria-labelledby="tituloTema">
+      <span class="etiqueta" id="bloqueTema"></span>
+      <h2 id="tituloTema"></h2>
+      <p class="descripcion" id="descripcionTema"></p>
+    </section>
+
+    <div class="columnas">
+      <section aria-label="Explicación y ejemplos">
+        <div class="esquema">
+          <span class="etiqueta">La idea en un vistazo</span>
+          <h3 id="tituloEsquema"></h3>
+          <div class="pasos" id="pasos"></div>
+          <p id="pistaEsquema"></p>
+        </div>
+
+        <div class="teoria" id="teoria"></div>
+
+        <article class="ejemplo">
+          <h3>Así se ve en un texto</h3>
+          <blockquote id="ejemploTexto"></blockquote>
+          <p id="ejemploComentario"></p>
+        </article>
+      </section>
+
+      <section class="retos" aria-labelledby="tituloRetos">
+        <span class="etiqueta">Activa lo que sabes</span>
+
+        <div class="reto-cabecera">
+          <h3 id="tituloRetos">Tu siguiente reto</h3>
+          <span id="numeroReto"></span>
+        </div>
+
+        <div class="progreso" aria-hidden="true">
+          <span id="barraProgreso"></span>
+        </div>
+
+        <p class="pregunta" id="pregunta"></p>
+        <div class="opciones" id="opciones"></div>
+
+        <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+
+        <div class="acciones">
+          <button class="boton" id="anterior">← Anterior</button>
+          <button class="boton" id="verSolucion">Ver solución</button>
+          <button class="boton boton-principal" id="siguiente">Siguiente →</button>
+        </div>
+
+        <p class="nota">
+          Piensa primero y justifica después. Consultar una solución
+          no cuenta como acierto.
+        </p>
+      </section>
+    </div>
+
+    <section class="cierre">
+      <div>
+        <h3>Ahora, explícalo con tus palabras.</h3>
+        <p>
+          ¿Qué pretende este texto? ¿Qué dos pistas apoyan tu respuesta?
+          ¿Puedes inventar otro ejemplo?
+        </p>
+      </div>
+      <button class="boton" id="verBalance">Ver mi progreso</button>
+    </section>
+
+    <section class="balance" id="balance" hidden aria-labelledby="tituloBalance">
+      <span class="etiqueta">Tu aprendizaje, paso a paso</span>
+      <h2 id="tituloBalance">¿Cómo vas?</h2>
+      <p class="descripcion">
+        Este balance sirve para saber qué repasar. No es una nota oficial.
+      </p>
+
+      <div class="metricas">
+        <div class="metrica">
+          <strong id="totalRespondidos">0</strong>
+          <span>respondidos de 30</span>
+        </div>
+        <div class="metrica">
+          <strong id="totalAciertos">0</strong>
+          <span>aciertos sin consultar</span>
+        </div>
+        <div class="metrica">
+          <strong id="totalRepasar">0</strong>
+          <span>para revisar</span>
+        </div>
+      </div>
+
+      <ul class="lista-balance" id="listaBalance"></ul>
+
+      <p>
+        <strong>Diario de aprendizaje:</strong>
+        hoy he comprendido… / todavía confundo… /
+        para comprobarlo puedo usar este ejemplo…
+      </p>
+
+      <button class="boton" id="reiniciar">Reiniciar todos los retos</button>
+    </section>
+
+  </main>
+
+  <footer>
+    Aula de Lengua · Seis modalidades · 30 retos<br>
+    Las modalidades pueden combinarse: identifica la finalidad predominante.<br>
+    Las respuestas se conservan mientras esta página permanezca abierta.
+  </footer>
+
+</div>
+
+<button class="boton salir-proyeccion" id="salirProyeccion">
+  Salir de proyección
+</button>
+
+<script>
+"use strict";
+
+/* ==========================================================
+   CONTENIDOS: SEIS MODALIDADES Y CINCO RETOS POR MODALIDAD
+   ========================================================== */
+
+const temas = [
+  {
+    nombre: "Narración",
+    icono: "↝",
+    bloque: "Modalidades textuales I",
+    descripcion:
+      "Cuenta hechos reales o imaginarios que les suceden a unos personajes en un tiempo y un espacio.",
+    esquema: "Una historia avanza.",
+    pasos: ["Planteamiento", "Nudo", "Desenlace"],
+    pista:
+      "¿Quién participa? ¿Qué sucede? ¿Cuándo y dónde ocurre?",
+    teoria: [
+      {
+        titulo: "Las piezas del relato",
+        texto:
+          "<b>Narrador:</b> voz que cuenta los hechos. " +
+          "<b>Personajes:</b> quienes participan. " +
+          "<b>Acción:</b> lo que sucede. " +
+          "<b>Tiempo y espacio:</b> cuándo y dónde ocurre."
+      },
+      {
+        titulo: "El narrador y el autor",
+        texto:
+          "El <b>autor</b> es la persona real que escribe. El <b>narrador</b> " +
+          "es la voz del relato. Puede narrar en primera persona, como " +
+          "protagonista o testigo, o en tercera persona, desde fuera de la historia."
+      },
+      {
+        titulo: "Estructura y pistas",
+        texto:
+          "El planteamiento presenta la situación; el nudo desarrolla el " +
+          "conflicto y el desenlace lo resuelve o lo deja abierto. " +
+          "Son frecuentes los verbos de acción y conectores como " +
+          "<i>después, mientras, finalmente</i>. Este esquema no es obligatorio."
+      }
+    ],
+    ejemplo:
+      "Al salir de clase, Sara encontró una llave junto al puerto. " +
+      "La guardó en el bolsillo y decidió buscar a su dueño.",
+    comentario:
+      "Hay un personaje, varias acciones y un lugar. La historia avanza.",
+    retos: [
+      {
+        pregunta: "«Ayer, Leo abrió la caja y encontró una carta». ¿Qué predomina?",
+        opciones: ["La narración", "La descripción", "La exposición"],
+        correcta: 0,
+        explicacion:
+          "Se cuentan acciones encadenadas que ocurren en un momento."
+      },
+      {
+        pregunta: "¿Son siempre la misma persona el autor y el narrador?",
+        opciones: ["Sí", "No", "Solo en los cuentos"],
+        correcta: 1,
+        explicacion:
+          "El autor es una persona real; el narrador es la voz que cuenta la historia."
+      },
+      {
+        pregunta: "«Entré en el aula y vi la ventana abierta». El narrador habla en…",
+        opciones: ["Tercera persona", "Segunda persona", "Primera persona"],
+        correcta: 2,
+        explicacion:
+          "Entré y vi son formas de primera persona: la voz participa en la historia."
+      },
+      {
+        pregunta: "¿En qué parte se desarrolla habitualmente el conflicto?",
+        opciones: ["En el nudo", "En el título", "En la presentación del autor"],
+        correcta: 0,
+        explicacion:
+          "El nudo desarrolla el problema y las acciones relacionadas con él."
+      },
+      {
+        pregunta: "¿Puede una narración incluir descripciones y diálogos?",
+        opciones: ["No", "Sí", "Solo si está escrita en verso"],
+        correcta: 1,
+        explicacion:
+          "Las modalidades se pueden combinar dentro de un mismo texto."
+      }
+    ]
+  },
+
+  {
+    nombre: "Descripción",
+    icono: "◈",
+    bloque: "Modalidades textuales I",
+    descripcion:
+      "Presenta cómo es una persona, un animal, un objeto, un lugar o cualquier otra realidad.",
+    esquema: "Dibuja con palabras.",
+    pasos: ["Observa", "Selecciona rasgos", "Sigue un orden"],
+    pista:
+      "No basta con acumular adjetivos: ayuda al lector a construir una imagen clara.",
+    teoria: [
+      {
+        titulo: "Objetiva y subjetiva",
+        texto:
+          "La descripción <b>objetiva</b> busca precisión y evita valoraciones " +
+          "personales. La <b>subjetiva</b> incorpora impresiones, emociones " +
+          "y recursos expresivos."
+      },
+      {
+        titulo: "Describir personas y lugares",
+        texto:
+          "<b>Prosopografía:</b> rasgos físicos. <b>Etopeya:</b> carácter y " +
+          "costumbres. <b>Retrato:</b> rasgos físicos y psicológicos. " +
+          "<b>Topografía:</b> un lugar. <b>Caricatura:</b> exageración expresiva de rasgos."
+      },
+      {
+        titulo: "Orden y lenguaje",
+        texto:
+          "Puedes ir de lo general a lo particular, de arriba abajo o de cerca " +
+          "a lejos. Son frecuentes los adjetivos y verbos como <i>ser, estar " +
+          "y parecer</i>. La finalidad principal es presentar características."
+      }
+    ],
+    ejemplo:
+      "El patio era pequeño y luminoso. Junto al muro blanco crecía un " +
+      "limonero de hojas brillantes.",
+    comentario:
+      "El texto presenta rasgos del lugar y los organiza espacialmente.",
+    retos: [
+      {
+        pregunta: "«La mochila es azul, amplia y tiene dos bolsillos». Predomina…",
+        opciones: ["La argumentación", "La descripción", "La narración"],
+        correcta: 1,
+        explicacion:
+          "Se presentan las características de un objeto."
+      },
+      {
+        pregunta: "Una descripción del carácter y las costumbres de alguien es una…",
+        opciones: ["Topografía", "Prosopografía", "Etopeya"],
+        correcta: 2,
+        explicacion:
+          "La etopeya describe rasgos psicológicos y formas de comportarse."
+      },
+      {
+        pregunta: "«La sala mide treinta metros cuadrados». Es una descripción principalmente…",
+        opciones: ["Objetiva", "Subjetiva", "Caricaturesca"],
+        correcta: 0,
+        explicacion:
+          "Aporta una medida verificable sin introducir una valoración personal."
+      },
+      {
+        pregunta: "Un retrato combina…",
+        opciones: [
+          "Normas e instrucciones",
+          "Rasgos físicos y psicológicos",
+          "Una tesis y sus argumentos"
+        ],
+        correcta: 1,
+        explicacion:
+          "El retrato integra la apariencia física y el carácter."
+      },
+      {
+        pregunta: "¿Qué ayuda a que una descripción sea clara?",
+        opciones: [
+          "Cambiar de objeto continuamente",
+          "Añadir adjetivos sin orden",
+          "Seguir un orden reconocible"
+        ],
+        correcta: 2,
+        explicacion:
+          "El orden permite que el lector construya una imagen coherente."
+      }
+    ]
+  },
+
+  {
+    nombre: "Diálogo",
+    icono: "❞",
+    bloque: "Modalidades textuales I",
+    descripcion:
+      "Reproduce o construye un intercambio de intervenciones entre dos o más interlocutores.",
+    esquema: "Las voces se encuentran.",
+    pasos: ["Escuchar", "Intervenir", "Responder"],
+    pista:
+      "El intercambio tiene sentido cuando las intervenciones se relacionan entre sí.",
+    teoria: [
+      {
+        titulo: "Espontáneo y planificado",
+        texto:
+          "Una conversación cotidiana puede ser <b>espontánea</b>. " +
+          "Una entrevista o un debate suelen ser <b>planificados</b>. " +
+          "Es importante escuchar y respetar los turnos."
+      },
+      {
+        titulo: "Estilo directo e indirecto",
+        texto:
+          "El <b>directo</b> reproduce las palabras: «—Llegaré mañana». " +
+          "El <b>indirecto</b> integra lo dicho en la voz narradora: " +
+          "«Dijo que llegaría al día siguiente». Pueden cambiar " +
+          "pronombres, tiempos y referencias."
+      },
+      {
+        titulo: "Escribir un diálogo",
+        texto:
+          "En los relatos, las intervenciones suelen marcarse con " +
+          "<b>raya (—)</b>, no con guion (-). En teatro aparecen los nombres " +
+          "de los personajes y las <b>acotaciones</b>, que indican gestos, movimientos o tono."
+      }
+    ],
+    ejemplo:
+      "—¿Has visto mi libro? —preguntó Sara.\n" +
+      "—Está sobre la mesa —respondió Dani.",
+    comentario:
+      "Dos personajes intercambian intervenciones en estilo directo.",
+    retos: [
+      {
+        pregunta: "«—¿Vienes? —Sí, ahora voy». Está escrito en…",
+        opciones: ["Estilo indirecto", "Estilo directo", "Forma de exposición"],
+        correcta: 1,
+        explicacion:
+          "Se reproducen directamente las intervenciones de los personajes."
+      },
+      {
+        pregunta: "«Ana dijo que llegaría tarde». Es un ejemplo de…",
+        opciones: ["Estilo indirecto", "Estilo directo", "Texto normativo"],
+        correcta: 0,
+        explicacion:
+          "La voz narradora integra lo que dijo Ana."
+      },
+      {
+        pregunta: "¿Qué signo suele iniciar las intervenciones de un diálogo narrativo?",
+        opciones: ["El guion (-)", "El punto y coma (;)", "La raya (—)"],
+        correcta: 2,
+        explicacion:
+          "La raya se utiliza para marcar las intervenciones en el diálogo narrativo."
+      },
+      {
+        pregunta: "Una entrevista con preguntas preparadas es un diálogo…",
+        opciones: ["Sin interlocutores", "Planificado", "Siempre improvisado"],
+        correcta: 1,
+        explicacion:
+          "Existe una preparación previa de las preguntas y los temas."
+      },
+      {
+        pregunta: "¿Para qué sirve una acotación teatral?",
+        opciones: [
+          "Para indicar gestos, movimientos o tono",
+          "Para explicar la tesis",
+          "Para sustituir todos los diálogos"
+        ],
+        correcta: 0,
+        explicacion:
+          "Las acotaciones orientan la representación de la escena."
+      }
+    ]
+  },
+
+  {
+    nombre: "Exposición",
+    icono: "≡",
+    bloque: "Modalidades textuales II",
+    descripcion:
+      "Explica un tema de forma clara y organizada para que otra persona lo comprenda.",
+    esquema: "Haz comprensible una idea.",
+    pasos: ["Presenta el tema", "Desarrolla", "Recapitula"],
+    pista:
+      "Definiciones, ejemplos y datos ayudan a explicar.",
+    teoria: [
+      {
+        titulo: "Finalidad y estructura",
+        texto:
+          "Su finalidad principal es <b>informar y explicar</b>. " +
+          "Es frecuente organizarla en introducción, desarrollo y conclusión. " +
+          "También puede seguir relaciones de comparación, causa y consecuencia " +
+          "o problema y solución."
+      },
+      {
+        titulo: "Divulgativa y especializada",
+        texto:
+          "La exposición <b>divulgativa</b> se dirige al público general " +
+          "y explica el vocabulario técnico. La <b>especializada</b> " +
+          "presupone conocimientos del área."
+      },
+      {
+        titulo: "Recursos para explicar",
+        texto:
+          "Utiliza <b>definiciones, ejemplos, clasificaciones, datos y " +
+          "comparaciones</b>. Emplea conectores como <i>por ejemplo, además, " +
+          "por esta causa</i>. El vocabulario debe ser preciso y adecuado al destinatario."
+      }
+    ],
+    ejemplo:
+      "La evaporación es el paso de un líquido al estado gaseoso. " +
+      "Puede producirse en su superficie sin que el líquido llegue a hervir.",
+    comentario:
+      "Se define y explica un fenómeno. La intención principal es hacer comprender.",
+    retos: [
+      {
+        pregunta: "Un texto que explica cómo se forman las nubes es principalmente…",
+        opciones: ["Expositivo", "Argumentativo", "Dialogado"],
+        correcta: 0,
+        explicacion:
+          "Su finalidad principal es explicar un fenómeno."
+      },
+      {
+        pregunta: "¿Qué recurso ayuda a comprender un concepto nuevo?",
+        opciones: ["Un insulto", "Un ejemplo", "Una orden sin contexto"],
+        correcta: 1,
+        explicacion:
+          "Un ejemplo relaciona una explicación general con un caso concreto."
+      },
+      {
+        pregunta: "Una exposición dirigida a lectores no especialistas es…",
+        opciones: ["Obligatoriamente literaria", "Una narración", "Divulgativa"],
+        correcta: 2,
+        explicacion:
+          "Adapta el tema y el vocabulario a un público general."
+      },
+      {
+        pregunta: "¿Qué relación expresa «por esta causa»?",
+        opciones: [
+          "Causa y consecuencia",
+          "Cambio de interlocutor",
+          "Descripción del aspecto físico"
+        ],
+        correcta: 0,
+        explicacion:
+          "Relaciona una causa con una consecuencia."
+      },
+      {
+        pregunta: "Para reconocer la modalidad de un texto, conviene atender sobre todo a…",
+        opciones: [
+          "Su número de líneas",
+          "Su finalidad predominante",
+          "La cantidad de palabras largas"
+        ],
+        correcta: 1,
+        explicacion:
+          "La intención global es decisiva: explicar, contar, describir, convencer…"
+      }
+    ]
+  },
+
+  {
+    nombre: "Argumentación",
+    icono: "◇",
+    bloque: "Modalidades textuales II",
+    descripcion:
+      "Defiende una postura o tesis mediante razones para intentar convencer al destinatario.",
+    esquema: "Tu postura necesita razones.",
+    pasos: ["Tesis", "Argumentos", "Conclusión"],
+    pista:
+      "Una opinión no se demuestra repitiéndola: hay que sostenerla.",
+    teoria: [
+      {
+        titulo: "Tesis y argumentos",
+        texto:
+          "La <b>tesis</b> es la postura que se defiende. Los <b>argumentos</b> " +
+          "son las razones que la apoyan. La conclusión puede recoger " +
+          "y reforzar la postura."
+      },
+      {
+        titulo: "Argumentos y contraargumentos",
+        texto:
+          "Pueden utilizarse datos contrastables, ejemplos pertinentes y " +
+          "relaciones de causa y consecuencia. Un <b>contraargumento</b> " +
+          "presenta una objeción que conviene considerar y responder."
+      },
+      {
+        titulo: "Convencer con rigor",
+        texto:
+          "Distingue opiniones y hechos. Comprueba los datos. Atacar a quien " +
+          "habla no refuta su idea. Que una persona sea famosa o que muchas " +
+          "personas repitan algo no garantiza que sea verdadero."
+      }
+    ],
+    ejemplo:
+      "Deberíamos ampliar el horario de la biblioteca, porque algunos " +
+      "alumnos necesitan un lugar tranquilo para estudiar por la tarde.",
+    comentario:
+      "Se defiende una propuesta y se aporta una razón que intenta justificarla.",
+    retos: [
+      {
+        pregunta: "La tesis de un texto argumentativo es…",
+        opciones: [
+          "El lugar en que ocurre una historia",
+          "La postura que se defiende",
+          "Cualquier ejemplo del texto"
+        ],
+        correcta: 1,
+        explicacion:
+          "Es la idea central que se pretende sostener mediante razones."
+      },
+      {
+        pregunta: "«Debemos cuidar el patio porque es un espacio compartido». La parte con «porque» aporta…",
+        opciones: ["Un personaje", "Una acotación", "Una razón"],
+        correcta: 2,
+        explicacion:
+          "Explica por qué se defiende la propuesta."
+      },
+      {
+        pregunta: "¿Cuál es una mala forma de argumentar?",
+        opciones: [
+          "Atacar personalmente al interlocutor",
+          "Aportar un dato pertinente",
+          "Responder a una objeción"
+        ],
+        correcta: 0,
+        explicacion:
+          "El ataque personal no demuestra que las razones de alguien sean falsas."
+      },
+      {
+        pregunta: "Un contraargumento es…",
+        opciones: [
+          "Una descripción de un lugar",
+          "Una objeción a la postura defendida",
+          "El título de cualquier artículo"
+        ],
+        correcta: 1,
+        explicacion:
+          "Presenta una dificultad o una razón contraria que puede ser examinada."
+      },
+      {
+        pregunta: "¿Una afirmación queda demostrada por repetirse muchas veces?",
+        opciones: ["Sí", "Solo si está en mayúsculas", "No"],
+        correcta: 2,
+        explicacion:
+          "La repetición no sustituye a las pruebas y los argumentos."
+      }
+    ]
+  },
+
+  {
+    nombre: "Textos prescriptivos",
+    icono: "☑",
+    bloque: "Modalidades textuales II",
+    descripcion:
+      "Orientan la conducta: establecen normas o indican los pasos para realizar una tarea.",
+    esquema: "De comprender a actuar.",
+    pasos: ["Normas: regulan", "Instrucciones: guían"],
+    pista:
+      "Las normas indican qué se debe hacer; las instrucciones explican cómo hacerlo.",
+    teoria: [
+      {
+        titulo: "Textos normativos",
+        texto:
+          "Establecen <b>obligaciones, permisos o prohibiciones</b>. " +
+          "Por ejemplo, las normas de convivencia o de uso de una biblioteca. " +
+          "Deben aclarar la conducta que regulan."
+      },
+      {
+        titulo: "Textos instructivos",
+        texto:
+          "Guían un procedimiento mediante <b>pasos ordenados</b>. " +
+          "Por ejemplo, una receta o las instrucciones de un juego. " +
+          "Pueden incluir materiales, imágenes y advertencias."
+      },
+      {
+        titulo: "Lenguaje claro y preciso",
+        texto:
+          "Son frecuentes el <b>imperativo</b> («mezcla»), el <b>infinitivo</b> " +
+          "con valor instructivo («añadir») y expresiones como " +
+          "«se debe» o «no se permite». Evita indicaciones ambiguas como «hazlo bien»."
+      }
+    ],
+    ejemplo:
+      "1. Abre el documento.\n2. Escribe tu nombre.\n" +
+      "3. Guarda el archivo antes de cerrar.",
+    comentario:
+      "Es un texto instructivo: presenta una secuencia de acciones concreta y ordenada.",
+    retos: [
+      {
+        pregunta: "Una receta de cocina es principalmente un texto…",
+        opciones: ["Instructivo", "Narrativo", "Argumentativo"],
+        correcta: 0,
+        explicacion:
+          "Indica cómo realizar una tarea mediante pasos."
+      },
+      {
+        pregunta: "«No se permite comer en la biblioteca» es…",
+        opciones: ["Un relato", "Una norma", "Un retrato"],
+        correcta: 1,
+        explicacion:
+          "Regula la conducta en un espacio mediante una prohibición."
+      },
+      {
+        pregunta: "¿Qué instrucción es más precisa?",
+        opciones: [
+          "Haz eso",
+          "Ponlo como siempre",
+          "Pulsa Guardar antes de cerrar el documento"
+        ],
+        correcta: 2,
+        explicacion:
+          "Identifica la acción que debe realizarse y el momento."
+      },
+      {
+        pregunta: "¿Qué forma verbal es «mezcla» en «Mezcla la harina con el agua»?",
+        opciones: ["Imperativo", "Participio", "Infinitivo"],
+        correcta: 0,
+        explicacion:
+          "Se dirige una acción al interlocutor mediante el imperativo."
+      },
+      {
+        pregunta: "En esta clasificación, normas e instrucciones se agrupan como textos…",
+        opciones: ["Descriptivos", "Prescriptivos", "Líricos"],
+        correcta: 1,
+        explicacion:
+          "Ambos orientan o regulan acciones, aunque tienen finalidades específicas distintas."
+      }
+    ]
+  }
+];
+
+/* ==========================================================
+   ESTADO DE LA SESIÓN
+   ========================================================== */
+
+let temaActual = 0;
+let retoActual = 0;
+
+// Cada reto registra una sola respuesta.
+// Se conserva en memoria hasta recargar o cerrar la página.
+const respuestas = {};
+
+const $ = id => document.getElementById(id);
+
+function claveReto() {
+  return temaActual + "-" + retoActual;
+}
+
+function totalRetos() {
+  return temas.reduce((total, tema) => total + tema.retos.length, 0);
+}
+
+/* ==========================================================
+   MENÚ Y CONTENIDO
+   ========================================================== */
+
+function dibujarMenu() {
+  const menu = $("menu");
+  menu.innerHTML = "";
+
+  temas.forEach((tema, indice) => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "pestana";
+    boton.setAttribute("aria-pressed", String(indice === temaActual));
+
+    const pequeno = document.createElement("small");
+    pequeno.textContent = indice < 3 ? "Modalidades I" : "Modalidades II";
+
+    const nombre = document.createElement("strong");
+    nombre.textContent = tema.icono + " " + tema.nombre;
+
+    boton.append(pequeno, nombre);
+    boton.addEventListener("click", () => seleccionarTema(indice));
+
+    menu.appendChild(boton);
+  });
+}
+
+function seleccionarTema(indice) {
+  temaActual = indice;
+  retoActual = 0;
+  dibujarMenu();
+  dibujarTema();
+}
+
+function dibujarTema() {
+  const tema = temas[temaActual];
+
+  $("bloqueTema").textContent = tema.bloque;
+  $("tituloTema").textContent = tema.nombre;
+  $("descripcionTema").textContent = tema.descripcion;
+  $("tituloEsquema").textContent = tema.esquema;
+  $("pistaEsquema").textContent = tema.pista;
+
+  $("pasos").innerHTML = "";
+
+  tema.pasos.forEach(paso => {
+    const elemento = document.createElement("span");
+    elemento.textContent = paso;
+    $("pasos").appendChild(elemento);
+  });
+
+  $("teoria").innerHTML = "";
+
+  tema.teoria.forEach((apartado, indice) => {
+    const articulo = document.createElement("article");
+    articulo.className = "tarjeta";
+
+    const detalles = document.createElement("details");
+    detalles.open = indice === 0;
+
+    const resumen = document.createElement("summary");
+    resumen.textContent = apartado.titulo;
+
+    const contenido = document.createElement("div");
+    contenido.className = "contenido-tarjeta";
+
+    // Contenido didáctico fijo incluido en este archivo.
+    contenido.innerHTML = "<p>" + apartado.texto + "</p>";
+
+    detalles.append(resumen, contenido);
+    articulo.appendChild(detalles);
+    $("teoria").appendChild(articulo);
+  });
+
+  $("ejemploTexto").textContent = tema.ejemplo;
+  $("ejemploTexto").style.whiteSpace = "pre-line";
+  $("ejemploComentario").textContent = tema.comentario;
+
+  dibujarReto();
+}
+
+/* ==========================================================
+   RETOS Y CORRECCIÓN
+   ========================================================== */
+
+function dibujarReto() {
+  const tema = temas[temaActual];
+  const reto = tema.retos[retoActual];
+  const respuesta = respuestas[claveReto()];
+
+  $("numeroReto").textContent =
+    (retoActual + 1) + " de " + tema.retos.length;
+
+  const completados = tema.retos.filter((_, indice) =>
+    respuestas[temaActual + "-" + indice] !== undefined
+  ).length;
+
+  $("barraProgreso").style.width =
+    (completados / tema.retos.length * 100) + "%";
+
+  $("pregunta").textContent = reto.pregunta;
+  $("opciones").innerHTML = "";
+  $("feedback").textContent = "";
+
+  reto.opciones.forEach((opcion, indice) => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "opcion";
+
+    const letra = document.createElement("span");
+    letra.className = "letra";
+    letra.textContent = String.fromCharCode(65 + indice);
+    letra.setAttribute("aria-hidden", "true");
+
+    const texto = document.createElement("span");
+    texto.textContent = opcion;
+
+    if (respuesta !== undefined) {
+      boton.disabled = true;
+
+      if (indice === reto.correcta) {
+        boton.classList.add("correcta");
+        texto.textContent += " · ✓ Respuesta correcta";
+      } else if (respuesta.elegida === indice) {
+        boton.classList.add("incorrecta");
+        texto.textContent += " · Tu respuesta";
+      }
+    }
+
+    boton.append(letra, texto);
+    boton.addEventListener("click", () => responder(indice));
+    $("opciones").appendChild(boton);
+  });
+
+  if (respuesta !== undefined) {
+    let inicio;
+
+    if (respuesta.consultada) {
+      inicio = "Solución consultada. ";
+    } else if (respuesta.acierto) {
+      inicio = "¡Correcto! ";
+    } else {
+      inicio = "Vamos a revisarlo. ";
+    }
+
+    $("feedback").textContent = inicio + reto.explicacion;
+  }
+
+  $("anterior").disabled = retoActual === 0;
+  $("verSolucion").disabled = respuesta !== undefined;
+
+  $("siguiente").textContent =
+    retoActual === tema.retos.length - 1
+      ? (temaActual === temas.length - 1 ? "Ver balance →" : "Otro tema →")
+      : "Siguiente →";
+
+  actualizarContador();
+}
+
+function responder(indice) {
+  const clave = claveReto();
+
+  if (respuestas[clave] !== undefined) return;
+
+  const reto = temas[temaActual].retos[retoActual];
+
+  respuestas[clave] = {
+    elegida: indice,
+    acierto: indice === reto.correcta,
+    consultada: false
+  };
+
+  dibujarReto();
+
+  if (!$("balance").hidden) dibujarBalance();
+}
+
+function consultarSolucion() {
+  const clave = claveReto();
+
+  if (respuestas[clave] !== undefined) return;
+
+  respuestas[clave] = {
+    elegida: null,
+    acierto: false,
+    consultada: true
+  };
+
+  dibujarReto();
+
+  if (!$("balance").hidden) dibujarBalance();
+}
+
+function actualizarContador() {
+  const respondidos = Object.keys(respuestas).length;
+
+  $("contadorGlobal").textContent =
+    respondidos + " de " + totalRetos() + " retos respondidos";
+}
+
+/* ==========================================================
+   BALANCE
+   ========================================================== */
+
+function dibujarBalance() {
+  const registros = Object.values(respuestas);
+  const aciertos = registros.filter(respuesta => respuesta.acierto).length;
+
+  $("totalRespondidos").textContent = registros.length;
+  $("totalAciertos").textContent = aciertos;
+  $("totalRepasar").textContent = registros.length - aciertos;
+  $("listaBalance").innerHTML = "";
+
+  temas.forEach((tema, indiceTema) => {
+    let completados = 0;
+    let correctos = 0;
+
+    tema.retos.forEach((_, indiceReto) => {
+      const registro = respuestas[indiceTema + "-" + indiceReto];
+
+      if (registro !== undefined) {
+        completados++;
+        if (registro.acierto) correctos++;
+      }
+    });
+
+    const fila = document.createElement("li");
+    const nombre = document.createElement("strong");
+    const datos = document.createElement("span");
+
+    nombre.textContent = tema.nombre;
+    datos.textContent =
+      completados + "/5 respondidos · " + correctos + " aciertos";
+
+    fila.append(nombre, datos);
+    $("listaBalance").appendChild(fila);
+  });
+}
+
+function mostrarBalance() {
+  dibujarBalance();
+  $("balance").hidden = false;
+  $("balance").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ==========================================================
+   CONTROLES
+   ========================================================== */
+
+$("anterior").addEventListener("click", () => {
+  if (retoActual > 0) {
+    retoActual--;
+    dibujarReto();
+  }
+});
+
+$("siguiente").addEventListener("click", () => {
+  const tema = temas[temaActual];
+
+  if (retoActual < tema.retos.length - 1) {
+    retoActual++;
+    dibujarReto();
+  } else if (temaActual < temas.length - 1) {
+    seleccionarTema(temaActual + 1);
+    $("zonaAprendizaje").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  } else {
+    mostrarBalance();
+  }
+});
+
+$("verSolucion").addEventListener("click", consultarSolucion);
+$("verBalance").addEventListener("click", mostrarBalance);
+
+$("botonEmpezar").addEventListener("click", () => {
+  $("menu").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("botonProyeccion").addEventListener("click", () => {
+  document.body.classList.add("proyeccion");
+  $("menu").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+$("salirProyeccion").addEventListener("click", () => {
+  document.body.classList.remove("proyeccion");
+});
+
+$("reiniciar").addEventListener("click", () => {
+  if (!window.confirm("¿Quieres borrar las respuestas y empezar de nuevo?")) {
+    return;
+  }
+
+  Object.keys(respuestas).forEach(clave => delete respuestas[clave]);
+
+  $("balance").hidden = true;
+  seleccionarTema(0);
+  actualizarContador();
+
+  $("zonaAprendizaje").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+/* INICIO */
+dibujarMenu();
+dibujarTema();
+</script>
+
+</body>
+</html>
