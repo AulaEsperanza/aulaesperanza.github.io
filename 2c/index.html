@@ -482,6 +482,17 @@ footer{
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important}
 }
+
+/* Acceso destacado a la biblioteca de Literatura */
+.literatura-destacada{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:26px 0 32px;padding:30px 34px;border-radius:26px;background:linear-gradient(115deg,#31234e,#6747a4 72%,#9a68c2);color:#fff;text-decoration:none;box-shadow:0 12px 28px #33264a24;transition:transform .2s,box-shadow .2s}
+.literatura-destacada:hover{transform:translateY(-3px);box-shadow:0 16px 32px #33264a35}
+.literatura-destacada:focus-visible{outline:3px solid #ed9a54;outline-offset:4px}
+.literatura-destacada .sello{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#f6d9ff;font-weight:850}
+.literatura-destacada h2{font-family:Georgia,serif;font-size:clamp(2rem,4vw,3rem);margin:7px 0 8px;letter-spacing:-.025em}
+.literatura-destacada p{margin:0;color:#eee5ff;max-width:650px;font-size:.95rem}
+.literatura-destacada .icono-literatura{font-size:clamp(3.5rem,7vw,6rem);flex-shrink:0;line-height:1}
+.literatura-destacada .ir-literatura{display:inline-block;margin-top:15px;font-weight:800;color:#fff;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:650px){.literatura-destacada{padding:25px;gap:10px}.literatura-destacada .icono-literatura{font-size:3rem}}
 </style>
 </head>
 
@@ -575,7 +586,19 @@ footer{
         autocomplete="off">
     </div>
 
-    <section class="recursos" aria-label="Materiales de 2.º C">
+
+    <!-- SECCIÓN INDEPENDIENTE: LITERATURA -->
+    <a class="literatura-destacada" href="literatura/" aria-label="Entrar en la sección de Literatura">
+      <div>
+        <span class="sello">Una biblioteca dentro de nuestra aula</span>
+        <h2>Literatura</h2>
+        <p>Historias, personajes, géneros y lecturas. Un espacio propio para descubrir la literatura, sin mezclarla con los recursos de Lengua.</p>
+        <span class="ir-literatura">Entrar en Literatura →</span>
+      </div>
+      <span class="icono-literatura" aria-hidden="true">📖</span>
+    </a>
+
+    <section class="recursos" aria-label="Materiales de Lengua de 2.º C">
 
       <!-- RECURSO ANTERIOR: COMUNICACIÓN -->
       <a class="recurso"
