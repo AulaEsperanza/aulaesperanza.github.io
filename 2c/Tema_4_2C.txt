@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tema 4 · Textos del ámbito social · 2.º C</title>
+<style>
+:root{--ink:#171b29;--paper:#f5f3ef;--red:#a42431;--line:#d0cac1;--soft:#f4dfde}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:1.06rem/1.6 system-ui,sans-serif}a{color:inherit}h1,h2,h3{font-family:Georgia,serif;line-height:1.1}h1{font-size:clamp(3rem,9vw,7rem);max-width:11ch;margin:.23em 0}h2{font-size:clamp(2.2rem,5vw,3.5rem);margin:0 0 .5em}h3{font-size:1.55rem;margin:.3em 0}.wrap{width:min(1120px,calc(100% - 2rem));margin:auto}.mast{background:var(--ink);color:white;padding:1rem 0}.mast .wrap{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap}.hero{padding:clamp(2rem,7vw,5rem) 0;background:var(--soft);border-bottom:1px solid var(--line)}.hero p{max-width:55ch}.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.86rem;color:var(--red)}nav{border-bottom:1px solid var(--line);background:white}nav .wrap{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;padding:.8rem 0}nav a{font-weight:700;text-underline-offset:4px}section{padding:2.7rem 0;border-bottom:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));gap:1rem}.card,article,.quiz{background:white;border:1px solid var(--line);padding:clamp(1rem,3vw,1.55rem);border-radius:.65rem}.card p:last-child,article p:last-child{margin-bottom:0}.accent{border-left:5px solid var(--red)}.sample{font-family:Georgia,serif;font-size:1.18rem}.sample .label{font:700 .83rem system-ui;color:var(--red);display:block;margin-bottom:.2em}.pyramid{display:grid;gap:.35rem;justify-items:center;margin-top:1rem;text-align:center}.pyramid div{background:var(--ink);color:white;padding:.45rem .6rem;width:100%;border-radius:.2rem}.pyramid div:nth-child(2){width:87%;background:#484555}.pyramid div:nth-child(3){width:74%;background:#793641}.pyramid div:nth-child(4){width:65%;background:var(--red)}button,.cta{font:700 1rem system-ui;padding:.7rem 1rem;border:1px solid var(--ink);border-radius:.35rem;background:white;color:var(--ink);cursor:pointer}.cta,.primary{display:inline-block;background:var(--red);color:white;border-color:var(--red);text-decoration:none}button:disabled{cursor:default}.choices{display:flex;flex-wrap:wrap;gap:.55rem}.choices button[data-result=ok]{background:#dceee0;border-color:#24613b}.choices button[data-result=bad]{background:#fae0e0;border-color:#a42431}:focus-visible{outline:3px solid #2263a4;outline-offset:3px}.quiz blockquote{margin:1rem 0;padding:1rem;border-left:4px solid var(--red);background:var(--paper);white-space:pre-line}.quiz h3{margin-top:1rem}details{padding:.6rem 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:750}.muted{color:#494959}.spread{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.ad{background:#183a42;color:white;padding:1.4rem;border-radius:.65rem}.ad h3{font-size:2.1rem}.ad button{margin-top:.6rem}.admark{display:inline-grid;place-items:center;background:#daf59b;color:#183a42;border-radius:50%;width:3rem;height:3rem;margin-right:.5rem}.ad p{margin:.65rem 0}footer{padding:1.4rem 0}.quiz progress{width:100%;accent-color:var(--red)}.steps li{margin:.5rem 0}[hidden]{display:none!important}@media print{nav,.hero,.mast,#prensa,#noticia,#generos,#redes,#publicidad,#juego,footer,.print{display:none}body{background:white}.wrap{width:100%}section{padding:0;border:0}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="wrap"><strong>Aula Esperanza</strong><span>Lengua Castellana y Literatura · 2.º C</span></div></header>
+<div class="hero"><div class="wrap"><div class="eyebrow">Tema 4</div><h1>Textos del ámbito social</h1><p>Lee como periodista. Distingue qué ocurrió, quién lo cuenta y qué quiere conseguir cada mensaje.</p><a class="cta" href="#juego">Jugar a mesa de redacción</a></div></div>
+<nav aria-label="Índice del tema"><div class="wrap"><a href="#prensa">Prensa</a><a href="#noticia">Noticia</a><a href="#generos">Géneros</a><a href="#redes">Redes y netiqueta</a><a href="#publicidad">Publicidad</a><a href="#juego">Juego</a><a href="#trabajo">Trabajo</a></div></nav>
+<main class="wrap">
+<section id="prensa"><h2>La prensa y otros medios</h2><p>Los textos del ámbito social circulan en espacios públicos como los medios de comunicación y las redes. Pueden informar, interpretar hechos o persuadir.</p>
+<div class="grid"><div class="card"><h3>Prensa escrita y audiovisual</h3><p>La prensa difunde mensajes escritos en periódicos y revistas, en papel o en formato digital. Los medios audiovisuales, como un telediario, combinan imagen y sonido. La radio transmite la información mediante el sonido.</p></div><div class="card"><h3>Generalista y especializada</h3><p>La prensa generalista o no especializada trata asuntos variados y se dirige a un público amplio. La especializada se centra en un ámbito, como deportes, moda o ciencia.</p></div><div class="card"><h3>Ediciones digitales</h3><p>Un periódico digital puede actualizar las noticias, enlazar documentos e incorporar vídeos, audios y galerías. En Internet, los medios pueden ofrecer secciones específicas, como una cobertura en directo, un espacio de verificación o una sección de contenidos multimedia.</p></div></div></section>
+<section id="noticia"><h2>La noticia</h2><p>Es el relato breve de un suceso reciente y de interés para el público. Se organiza en <strong>titular, entrada y cuerpo</strong>.</p>
+<div class="grid"><article class="sample accent"><div class="eyebrow">Ejemplo ficticio</div><p><span class="label">Antetítulo</span>Vida escolar</p><h3><span class="label">Título</span>El instituto abre la biblioteca durante el recreo</h3><p><span class="label">Subtítulo</span>El servicio funcionará tres días a la semana.</p><p><span class="label">Entrada</span>El IES del Faro abrió este lunes su biblioteca durante el recreo para que el alumnado pueda leer y tomar libros prestados.</p><p><span class="label">Cuerpo</span>La biblioteca abrirá los lunes, miércoles y viernes. El préstamo se registrará en el mostrador y los libros podrán devolverse en un plazo de dos semanas.</p><p>El espacio cuenta con una mesa de novedades junto a la entrada.</p></article>
+<div class="card"><h3>Titular</h3><p>Presenta el asunto. El <strong>título</strong> expresa lo principal. El <strong>antetítulo</strong> puede situar el tema y el <strong>subtítulo</strong> puede ampliar un dato.</p><h3>Entrada o entradilla</h3><p>El primer párrafo resume lo esencial. Puede responder a las preguntas <strong>qué, quién, cuándo, dónde, cómo y por qué</strong>, según los datos disponibles.</p><h3>Cuerpo</h3><p>Amplía la información con detalles, antecedentes o declaraciones. En la <strong>pirámide invertida</strong>, los datos se presentan en orden decreciente de importancia.</p><div class="pyramid" aria-label="Orden decreciente de importancia"><div>Hecho principal</div><div>Datos esenciales</div><div>Detalles y contexto</div><div>Datos secundarios</div></div></div></div></section>
+<section id="generos"><h2>Entrevista, crónica y reportaje</h2><div class="grid"><div class="card"><h3>Entrevista</h3><p>Género dialogado que suele organizarse en preguntas y respuestas. Permite conocer las opiniones o la experiencia de un personaje público o de alguien relacionado con un hecho de interés.</p><p><strong>Pista.</strong> ¿Quién pregunta y quién responde?</p></div><div class="card"><h3>Crónica</h3><p>Narra hechos de una jornada, un partido u otro acontecimiento. Combina información con observaciones o valoraciones de quien lo cuenta. Puede seguir el orden en que sucedieron los hechos.</p><p>El <strong>corresponsal</strong> informa habitualmente desde un lugar. El <strong>enviado especial</strong> se desplaza para cubrir un acontecimiento concreto.</p></div><div class="card"><h3>Reportaje</h3><p>Texto generalmente más extenso que profundiza en un tema. Aporta contexto, datos y declaraciones de expertos y protagonistas. Combina información con interpretación y puede recoger opiniones atribuidas a sus fuentes.</p><p><strong>Pista.</strong> ¿Qué fuentes y datos ayudan a entender el tema?</p></div></div></section>
+<section id="redes"><h2>Redes sociales y netiqueta</h2><p>Son comunidades interactivas de usuarios que intercambian información y contenidos a través de plataformas digitales.</p><div class="grid"><div class="card"><h3>Usos</h3><ul><li><strong>LinkedIn</strong> · contactos y contenidos profesionales.</li><li><strong>X (antes Twitter)</strong> · mensajes breves y conversaciones sobre actualidad.</li><li><strong>YouTube</strong> · vídeos, tutoriales y directos.</li><li><strong>Instagram</strong> · fotos, vídeos e historias.</li><li><strong>TikTok</strong> · vídeos breves, tendencias y divulgación.</li></ul></div><div class="card"><h3>Veracidad y privacidad</h3><p>Un <strong>bulo</strong> es una información falsa difundida como si fuera cierta. Un <strong>ciberanzuelo</strong> busca que hagas clic mediante un titular exagerado o intrigante. Antes de compartir, comprueba quién lo publica, cuándo y qué pruebas aporta. Contrasta con otra fuente fiable.</p><p>Protege tus datos y tu ubicación, revisa quién puede ver tus publicaciones y pide permiso antes de compartir imágenes de otras personas.</p></div><div class="card"><h3>Etiqueta digital</h3><p>La <strong>netiqueta</strong> reúne normas de convivencia en línea.</p><ul><li>Evita comentarios ofensivos y respeta las opiniones ajenas.</li><li>Usa un lenguaje claro, correcto y adecuado al contexto.</li><li>Evita mensajes irrelevantes y solicitudes de amistad o invitaciones no deseadas.</li></ul></div></div></section>
+<section id="publicidad"><h2>Publicidad y propaganda</h2><p>Los mensajes persuasivos intentan influir en lo que hacemos o pensamos. Para distinguirlos, fíjate en su <strong>finalidad principal</strong>.</p><div class="grid"><div class="card"><h3>Publicidad</h3><p>Promociona un producto, un servicio o una acción. Suele destacar un beneficio e incluir una llamada a actuar, como comprar, inscribirse o visitar un lugar.</p></div><div class="card"><h3>Propaganda</h3><p>Difunde ideas políticas, ideológicas, religiosas o sociales para conseguir adhesión o influir en la conducta. Suele recurrir a lemas, símbolos y apelaciones a valores o emociones.</p></div></div><br>
+<div class="grid"><div class="ad"><p>Anuncio ficticio</p><h3>Mercadillo de moda circular</h3><p><strong>Dale otra vuelta a tu ropa.</strong></p><p>Intercambia prendas el sábado en el patio del centro.</p><p aria-label="Logotipo de Vuelta con un símbolo circular"><span class="admark" aria-hidden="true">↻</span><strong>VUELTA</strong></p><div role="img" aria-label="Ilustración de una camiseta y un abrigo" style="font-size:2.7rem">👕 🧥</div><button id="adToggle" aria-expanded="false" aria-controls="anatomia">Explorar las partes del anuncio</button></div>
+<div class="card" id="anatomia" hidden><h3>Partes del anuncio</h3><ul><li><strong>Título</strong> · «Mercadillo de moda circular» presenta la actividad.</li><li><strong>Eslogan</strong> · «Dale otra vuelta a tu ropa» es una frase breve y memorable.</li><li><strong>Marca</strong> · Vuelta identifica a quien organiza y firma el anuncio.</li><li><strong>Logotipo</strong> · VUELTA es la representación gráfica del nombre.</li><li><strong>Símbolo</strong> · La flecha circular es el signo visual asociado a la marca.</li><li><strong>Imagen</strong> · Las prendas muestran de qué trata el mercadillo.</li></ul></div></div></section>
+<section id="juego"><h2>Mesa de redacción</h2><p>Lee cada texto breve y elige una respuesta. En clase, justifica tu elección con una pista del fragmento antes de votar.</p>
+<div class="quiz"><div class="spread"><strong id="position"></strong><strong id="score"></strong></div><progress id="progress" aria-label="Progreso del juego"></progress><div id="round"><h3 id="question" tabindex="-1"></h3><blockquote id="excerpt"></blockquote><div class="choices" id="choices"></div></div><p id="feedback" role="status"></p><button id="next" class="primary" hidden>Siguiente texto</button> <button id="restart" hidden>Volver a jugar</button></div>
+<noscript>Activa JavaScript para jugar.</noscript></section>
+<section id="trabajo"><h2>Trabajo · La redacción de 2.º C</h2><div class="card accent"><p><strong>En parejas, preparad una página de periódico escolar.</strong> Elegid un hecho reciente del centro o del barrio que podáis comprobar. Podéis trabajar con un caso inventado si lo identificáis como simulación y usáis fuentes ficticias claramente señaladas.</p>
+<ol class="steps"><li><strong>Recoged datos.</strong> Anotad qué ocurrió, quién participó, cuándo y dónde. Contrastad dos fuentes, por ejemplo, un aviso del centro y el testimonio de una persona participante.</li><li><strong>Redactad la noticia.</strong> Escribid título, entrada y cuerpo de dos o tres párrafos. Colocad primero lo más importante. Podéis añadir antetítulo y subtítulo.</li><li><strong>Añadid otra pieza.</strong> Elegid una entrevista de tres preguntas con sus respuestas, una crónica breve de la jornada o un minirreportaje con contexto y dos fuentes identificadas.</li><li><strong>Preparad la difusión.</strong> Redactad un mensaje breve para anunciar vuestra noticia en una red social simulada. Usad un lenguaje respetuoso y evitad datos privados o imágenes sin permiso.</li></ol><p><strong>Entrega.</strong> Una página en papel o en formato digital con la noticia, la segunda pieza, el mensaje para redes y las fuentes al pie.</p></div>
+<div class="card" style="margin-top:1rem"><h3>Cómo se valorará</h3><ul><li><strong>4 puntos</strong> · Estructura de la noticia y orden de la información.</li><li><strong>2 puntos</strong> · Rasgos del segundo género elegido.</li><li><strong>2 puntos</strong> · Datos comprobables y fuentes identificadas.</li><li><strong>2 puntos</strong> · Claridad, corrección, privacidad y netiqueta.</li></ul><button class="print" onclick="window.print()">Imprimir la ficha del trabajo</button></div></section>
+</main>
+<footer class="wrap">Aula Esperanza · Lengua de 2.º C · Tema 4</footer>
+<script>
+const items = [
+['¿Qué género periodístico es?', 'El instituto abrió una sala de estudio el martes. Podrá utilizarse durante el recreo a partir de esta semana. La dirección indicó que habrá veinte plazas.', ['Noticia','Crónica','Reportaje'],0,'Cuenta un hecho reciente y presenta los datos principales desde el comienzo.'],
+['¿Qué género periodístico es?', '—¿Por qué decidiste ilustrar tu primer libro?\n—Quería contar con dibujos lo que de niña imaginaba cuando leía.\n—¿Cómo empezaste?\n—Con un cuaderno que llevaba a todas partes.', ['Crónica','Entrevista','Noticia'],1,'Las preguntas y las respuestas permiten conocer la experiencia de la ilustradora.'],
+['¿Qué género periodístico es?', 'A las nueve se abrió la feria. La primera media hora fue tranquila, pero el patio se llenó con el desfile. El momento más emocionante llegó al final, cuando todo el grupo salió a saludar.', ['Reportaje','Entrevista','Crónica'],2,'Sigue el transcurso de la jornada e incorpora una valoración.'],
+['¿Qué género periodístico es?', '¿Por qué se desperdicia comida en los comedores escolares? Examinamos los registros de tres centros, seguimos durante una semana a un equipo de cocina y preguntamos a una especialista cómo se pueden aprovechar mejor las raciones.', ['Reportaje','Noticia','Crónica'],0,'Profundiza en un problema mediante datos, observación y fuentes diversas.'],
+['¿Qué función cumple este párrafo bajo el título?', 'El alumnado de 2.º C plantó veinte árboles el viernes en el patio para crear una zona de sombra, con ayuda del equipo de jardinería.', ['Subtítulo','Entrada','Cuerpo'],1,'Es el primer párrafo que resume el hecho y aporta sus datos esenciales.'],
+['¿Qué dato pondrías primero en esta noticia?', 'Notas de la redacción sobre la reapertura del patio: el banco nuevo es gris; los operarios empezaron hace tres semanas; el patio reabre el lunes tras las obras.', ['El color del banco','El inicio de las obras','La reapertura del patio el lunes'],2,'La fecha de reapertura comunica el hecho principal. El resto puede desarrollarse después.'],
+['¿En qué sección de un periódico encaja mejor?', 'El equipo juvenil ganó la final por dos goles a uno. Marcó el tanto decisivo en los últimos minutos.', ['Cultura','Deportes','Economía'],1,'La información se centra en el resultado de una competición deportiva.'],
+['¿Qué tipo de prensa describe este ejemplo?', 'Una revista digital dedica todos sus números a la astronomía y publica observaciones, entrevistas a especialistas y guías para usar telescopios.', ['Generalista','Audiovisual','Especializada'],2,'Toda la publicación se centra en un ámbito concreto: la astronomía.'],
+['¿Qué pista indica que es un ciberanzuelo?', '¡No creerás lo que pasó en el patio! Haz clic y descúbrelo antes de que lo borren.', ['Oculta el hecho y mete prisa','Incluye una fuente comprobable','Resume lo ocurrido con precisión'],0,'Crea intriga y urgencia para conseguir el clic. El titular, por sí solo, no permite saber si hay un bulo.'],
+['¿Qué harías antes de compartirlo?', 'Un mensaje sin fecha ni fuente dice que mañana se suspenden todas las clases.', ['Reenviarlo al grupo','Comprobar el aviso en un canal oficial del centro','Publicar una captura con los nombres visibles'],1,'El canal oficial permite verificar la información antes de difundirla.'],
+['¿Cuál es la finalidad principal del mensaje?', 'Descubre las nuevas mochilas Brisa. Reserva la tuya esta semana con un 20 % de descuento.', ['Conseguir apoyo para una idea política','Informar de un suceso reciente','Promocionar un producto'],2,'La marca y el descuento ayudan a persuadir al público para que compre.'],
+['¿Cómo clasificarías este cartel ficticio?', 'Vota a la candidatura Horizonte. Defendemos un barrio con más espacios vecinales.', ['Propaganda','Publicidad comercial','Noticia'],0,'Pide adhesión a una candidatura y a su propuesta política.'],
+['¿Qué respuesta respeta la privacidad y la netiqueta?', 'El grupo quiere publicar una foto del equipo tras la final. En la imagen aparecen varias personas reconocibles.', ['Etiquetar a todos sin consultar','Pedir permiso y respetar a quien no quiera aparecer','Insistir con invitaciones si no contestan'],1,'Pedir permiso y respetar la decisión de cada persona protege su privacidad.']
+];
+const byId = (id) => document.getElementById(id);
+let index = 0;
+let points = 0;
+let answered = false;
+const progress = byId('progress');
+progress.max = items.length;
+function updateScore() {
+  byId('score').textContent = 'Aciertos: ' + points;
+  progress.value = index + Number(answered);
+}
+function showRound(focus = false) {
+  answered = false;
+  byId('round').hidden = false;
+  byId('next').hidden = true;
+  byId('restart').hidden = true;
+  byId('feedback').textContent = '';
+  byId('position').textContent = 'Reto ' + (index + 1) + ' de ' + items.length;
+  updateScore();
+  const [question, excerpt, options] = items[index];
+  byId('question').textContent = question;
+  byId('excerpt').textContent = excerpt;
+  byId('choices').replaceChildren();
+  options.forEach((option, choice) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = option;
+    button.addEventListener('click', () => checkAnswer(choice));
+    byId('choices').append(button);
+  });
+  if (focus) byId('question').focus();
+}
+function checkAnswer(choice) {
+  if (answered) return;
+  answered = true;
+  const [, , options, correct, explanation] = items[index];
+  if (choice === correct) points++;
+  updateScore();
+  const buttons = byId('choices').children;
+  buttons[choice].dataset.result = 'bad';
+  buttons[correct].dataset.result = 'ok';
+  byId('feedback').textContent = (choice === correct ? 'Correcto. ' : 'Respuesta correcta: ' + options[correct] + '. ') + explanation;
+  byId('next').textContent = index + 1 === items.length ? 'Ver resultado' : 'Siguiente texto';
+  byId('next').hidden = false;
+  byId('next').focus();
+  for (const button of buttons) button.disabled = true;
+}
+byId('next').addEventListener('click', () => {
+  index++;
+  if (index < items.length) {
+    showRound(true);
+    return;
+  }
+  byId('round').hidden = true;
+  byId('next').hidden = true;
+  byId('position').textContent = 'Juego completado';
+  byId('feedback').textContent = 'Has acertado ' + points + ' de ' + items.length + ' retos.';
+  byId('restart').hidden = false;
+  byId('restart').focus();
+});
+byId('restart').addEventListener('click', () => {
+  index = 0;
+  points = 0;
+  showRound(true);
+});
+byId('adToggle').addEventListener('click', () => {
+  const panel = byId('anatomia');
+  panel.hidden = !panel.hidden;
+  byId('adToggle').setAttribute('aria-expanded', String(!panel.hidden));
+  byId('adToggle').textContent = panel.hidden ? 'Explorar las partes del anuncio' : 'Ocultar las partes del anuncio';
+});
+showRound();
+</script>
+</body>
+</html>
